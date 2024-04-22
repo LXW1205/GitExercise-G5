@@ -39,3 +39,33 @@ for (i = 0; i < coll.length; i++) {
   });
 }
   </script>
+
+  -----------------------------------
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose file</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script type="text/javascript">
+<<<<<<< HEAD
+=======
+
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+    </script>
+
+>>>>>>> 1e3f86db33fd47ee9bf6ec44c977cfeeee22f7d8
+
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+    </script>
+   
+</head>
+
+<input type="file" id="imageInput" accept="image/*">
+    <button>Submit</button>
