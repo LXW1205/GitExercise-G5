@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('MixTooLz\ Images/Background_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p{
+    position: center;
+    color: rgb(240, 151, 7);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 20px;
+    border: 1px solid gold;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: fit-content;
+    background-color: rgb(250, 244, 117);
+    box-shadow: 10px 20px 10px lemonchiffon inset;
+    
+}
