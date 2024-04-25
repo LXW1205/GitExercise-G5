@@ -7,34 +7,18 @@
 
 <title>MixTooLz</title>
 <link rel="stylesheet" type="text/css" href="MixToolz.css">
-   
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
-    }
-</script>
 
 </head>
 
 <body>
   <img src= "MixTooLz Images\MixTooLz Logo.png" width="30%" align="left" margin="0px">
-  <button class="collapsible">Tools</button>
-  <div class="content1">
-    <h4><li>Comparison</a></li></h4>
-    <h4><li>Most searched and frequently asked questions</a></li></h4>
+
+  <div align="right">
+    <button type="button" class="collapsible" >Tools</button>
+      <div class="content1">
+        <h4><li>Tools...</a></li></h4>
+      </div>
   </div>
-<script src="MixToolz.js"></script>
 
 <br></br>
 <br></br>
@@ -48,7 +32,26 @@
 
   </center>
 </div>
+
 <br></br>
+
+<!--NEED TO IMPLIMENT IN JS idk how yet-->
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } 
+    });
+  }
+  </script>
 
 </body>
 </html>
