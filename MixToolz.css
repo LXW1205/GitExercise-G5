@@ -115,5 +115,56 @@ tr:nth-child(even) {background-color: #eaeaea;}
      width: 100%;
     }
 }
-  
-  
+
+.paint{
+  width: 100%;
+  height: fit-content;
+  background: #f4fad1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper{
+  width: 75%;
+  height: fit-content;
+  background: #fdffeeea;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 10px 20px 10px rgb(244, 232, 206);
+}
+
+.paper h1{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  color: #000;
+}
+
+.paper img{
+  width: 70%;
+  height: fit-content;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 15px;
+}
+
+.paper label{
+  width: 150px;
+  height: fit-content;
+  display: block;
+  padding: 10px;
+  margin: 10px auto;
+  font-weight: 600;
+  border-radius: 25px;
+  background-color: #f5a84a;
+  color: #fd2424;
+  cursor: pointer;
+}
+
+.paper input{
+  display: none;
+}
