@@ -12,3 +12,11 @@
       } 
     });
   }
+
+  let ori_img = document.querySelector("none");
+    let import_img = document.querySelector("import-file");
+
+    import_img.addEventListener("change", () => {
+      ori_img.src = URL.createObjectURL(import_img.files[0]);
+             
+    });
