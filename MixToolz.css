@@ -44,78 +44,76 @@ p{
     font-size: 15px;
   }
   
-  .active, .collapsible:hover {
+.active, .collapsible:hover {
     background-color: #555;
-  }
+}
   
-  .collapsible:after {
+.collapsible:after {
     content: '\002B';
     color: white;
     font-weight: bold;
     float: right;
     margin-left: 5px;
-  }
+}
   
-  .active:after {
+.active:after {
     content: "\2212";
-  }
+}
   
-  .content1 {
+.content1 {
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-  }
+}
   
-  table, th, td {
+table, th, td {
     border-bottom: 2px solid #555;
-  }
+}
   
-  td {
+td {
     padding: 15px;
     text-align: left;
-  }
+}
   
-  th {
+th {
     padding: 15px;
     text-align: center;
+}
+  
+tr:nth-child(even) {background-color: #eaeaea;}
+  
+.table1 {
+  background-color: #b3b5b3;
   }
   
-  tr:nth-child(even) {background-color: #eaeaea;}
+.table2 {
+   background-color: #88ffbeea;
+}
   
-  .table1 {
-    background-color: #b3b5b3;
-    }
-  
-  .table2 {
-    background-color: #88ffbeea;
-  }
-  
-  
-    .column {
-      float: left;
-      width: 30%;
-      padding: 10px;
-      height: 350px;
-    }
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 350px;
+}
     
-    .row{
-      margin-left: 65px;
-    }
+.row{
+  margin-left: 65px;
+}
   
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-      padding: 18px;
-    }
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  padding: 18px;
+}
   
-    @media screen and (max-width: 70%) {
-    .column {
-      width: 100%;
+@media screen and (max-width: 70%) {
+  .column {
+     width: 100%;
     }
-  
-  }
+}
   
   
