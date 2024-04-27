@@ -16,13 +16,13 @@
     <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px">
     
     <div class="container">
-      <h2>Edit PDF</h2>
      <form action="/">
        
         <div id="selectedBanner"></div>
         <div class="form-group">
+          <h2>Edit PDF</h2>
           <label for="pwd">Image:</label>
-          <input type="file" class="form-control" name="image" id="img" />
+          <input type="file" class="form-control" name="image" id="pwd">
         </div>
  
         <button type="submit" class="btn btn-default">Submit</button>
@@ -37,7 +37,7 @@
       var selDiv = "";
       var storedFiles = [];
       $(document).ready(function () {
-        $("#img").on("change", handleFileSelect);
+        $("#pwd").on("change", handleFileSelect);
         selDiv = $("#selectedBanner");
       });
 
