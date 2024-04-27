@@ -17,7 +17,7 @@
       var storedFiles = [];
       $(document).ready(function () {
         $("#input-file").on("change", handleFileSelect);
-        selDiv = $(".ink");
+        selDiv = $(".poster");
       });
 
       function handleFileSelect(e) {
@@ -36,7 +36,7 @@
               e.target.result +
               "\" data-file='" +
               f.name +
-              "alt='Category Image' height='300px' width='200px'>";
+              "alt='Category Image' height='250px' width='200px'>";
             selDiv.html(html);
           };
           reader.readAsDataURL(f);

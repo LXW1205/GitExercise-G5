@@ -7,7 +7,7 @@ body{
     background-attachment: fixed;
 }
 
-img{
+#logo{
     width:30%;
     margin: auto;
     padding: 0px;
@@ -125,13 +125,13 @@ tr:nth-child(even) {background-color: #eaeaea;}
     }
 }
 
-.paint form{
+.wall form{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ink{
+.poster{
   width: 75%;
   background: #fdffeeea;
   margin-top: 12px;
@@ -142,13 +142,13 @@ tr:nth-child(even) {background-color: #eaeaea;}
   box-shadow: 10px 20px 10px rgb(244, 232, 206);
 }
 
-.ink h2{
+.poster h2{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   color: #000;
 }
 
-.ink label{
+.poster label{
   width: 150px;
   height: fit-content;
   display: block;
@@ -161,6 +161,6 @@ tr:nth-child(even) {background-color: #eaeaea;}
   cursor: pointer;
 }
 
-.ink input{
+.poster input{
   display: none;
 }
