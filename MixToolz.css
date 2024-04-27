@@ -125,15 +125,14 @@ tr:nth-child(even) {background-color: #eaeaea;}
     }
 }
 
-.paint{
+.paint form{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.paper{
+.ink{
   width: 75%;
-  height: fit-content;
   background: #fdffeeea;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -143,13 +142,13 @@ tr:nth-child(even) {background-color: #eaeaea;}
   box-shadow: 10px 20px 10px rgb(244, 232, 206);
 }
 
-.paper h1{
+.ink h2{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   color: #000;
 }
 
-.paper label{
+.ink label{
   width: 150px;
   height: fit-content;
   display: block;
@@ -162,6 +161,6 @@ tr:nth-child(even) {background-color: #eaeaea;}
   cursor: pointer;
 }
 
-.paper input{
+.ink input{
   display: none;
 }

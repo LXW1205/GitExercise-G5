@@ -13,17 +13,35 @@
     });
   }
 
-  const input_file = document.querySelector("#input-file");
-    var import_img = "";
+  var selDiv = "";
+      var storedFiles = [];
+      $(document).ready(function () {
+        $("#input-file").on("change", handleFileSelect);
+        selDiv = $(".ink");
+      });
 
-    input_file.addEventListener("change", function() {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        upload_image = reader.result;
-        document.querySelector("#display_img").style.backgroundImage = `url(${upload_image})`;
-    });
-    reader.readAsDataURL(this.files[0]);
-  })
+      function handleFileSelect(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        filesArr.forEach(function (f) {
+          if (!f.type.match("image.*")) {
+            return;
+          }
+          storedFiles.push(f);
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            var html =
+              '<img src="' +
+              e.target.result +
+              "\" data-file='" +
+              f.name +
+              "alt='Category Image' height='300px' width='200px'>";
+            selDiv.html(html);
+          };
+          reader.readAsDataURL(f);
+        });
+      }
 
   const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");    
@@ -57,3 +75,8 @@
     canvas.addEventListener("mousedown", initial_position);
     canvas.addEventListener("mouseup", final_position);
     canvas.addEventListener("mousemove", draw);
+
+    $(document).ready(function () {
+      $(draw(e)).on("change", handleFileSelect);
+      selDiv = $(reader.readAsDataURL(f));
+    });
