@@ -43,12 +43,15 @@
         });
       }
 
-  const canvas = document.getElementById("canvas");
+  const canvas = document.getElementById("#drawing-board");
     const ctx = canvas.getContext("2d");    
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    const canvasOffsetX = canvas.offsetLeft;
+    const canvasOffsetY = canvas.offsetTop;
 
+    canvas.width = window.innerWidth - canvasOffsetX;
+    canvas.height = window.innerHeight - canvasOffsetY;
+    
     let drawing = false;
 
     function initial_position(){
