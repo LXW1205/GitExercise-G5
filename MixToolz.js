@@ -84,7 +84,7 @@
       selDiv = $(reader.readAsDataURL(f));
     });
 
-import ReactCrop from "react-image-crop";
+/*import ReactCrop from "react-image-crop";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
@@ -175,4 +175,4 @@ class wall extends ReactCrop {
   }
 }
 
-ReactDom.render(<wall />, document.getElementById('input-file'))
+ReactDom.render(<wall />, document.getElementById('input-file'))*/
