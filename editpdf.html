@@ -23,9 +23,10 @@
           <h2>Edit PDF</h2>
           <label for="pwd">Image:</label>
           <input type="file" class="form-control" name="image" id="pwd">
+          <button type="submit" class="btn btn-default">Submit</button>
         </div>
  
-        <button type="submit" class="btn btn-default">Submit</button>
+       
       </form>
     </div>
     <script
@@ -57,7 +58,7 @@
               e.target.result +
               "\" data-file='" +
               f.name +
-              "alt='Category Image' height='200px' width='200px'>";
+              "alt='Category Image' >";
             selDiv.html(html);
           };
           reader.readAsDataURL(f);
