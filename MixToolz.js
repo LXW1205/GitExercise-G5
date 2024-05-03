@@ -16,8 +16,8 @@
   var selDiv = "";
       var storedFiles = [];
       $(document).ready(function () {
-        $("#input-file").on("change", handleFileSelect);
-        selDiv = $(".poster");
+        $("#file").on("change", handleFileSelect);
+        selDiv = $(".volume");
       });
 
       function handleFileSelect(e) {
