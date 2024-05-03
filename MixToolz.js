@@ -43,45 +43,43 @@
         });
       }
 
-  const canvas = document.getElementById("#drawing-board");
-    const ctx = canvas.getContext("2d");    
-
-    const canvasOffsetX = canvas.offsetLeft;
-    const canvasOffsetY = canvas.offsetTop;
-
-    canvas.width = window.innerWidth - canvasOffsetX;
-    canvas.height = window.innerHeight - canvasOffsetY;
+      window.addEventListener("load", () => {
+        const canvas = document.querySelector("#canvas");
+        const ctx = canvas.getContext("2d");
     
-    let drawing = false;
-
-    function initial_position(){
-      drawing = true;
-      draw(e);
-    }
-
-    function final_position(){
-      drawing = false;
-      ctx.beginPath();
-    }
-
-    function draw(e){
-      if(!drawing) return;
-      ctx.linewidth = 10;
-      ctx.lineCap = 'round';
-
-      ctx.lineTo(e.clientx, e.clientY);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(e.clientX, e.clientY);
-    }
-
-    canvas.addEventListener("mousedown", initial_position);
-    canvas.addEventListener("mouseup", final_position);
-    canvas.addEventListener("mousemove", draw);
-
-    $(document).ready(function () {
-      $(draw(e)).on("change", handleFileSelect);
-      selDiv = $(reader.readAsDataURL(f));
+        //Resizing
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+    
+        //Variables
+        let painting = false;
+    
+        function startPosition(){
+            painting = true;
+            draw(e);
+        }
+        function finishedPosition(){
+            painting =false;
+            ctx.beginPath();
+        }
+    
+        //e is an event
+        function draw(e){
+            if(!painting) return;
+            ctx.linewidth = 10;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = "red";
+    
+            //clinetX is the position of the mouse at x-axis and vice versa with Y
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            ctx.beginPath();//optional to add (To make it more pixelated)
+            ctx.moveTo(e.clientX, e.clientY);//optional to add (To make it more pixelated)
+        }
+        //EventListners
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener("mouseup", finishedPosition);
+        canvas.addEventListener("mousemove", draw);
     });
 
 /*import ReactCrop from "react-image-crop";
