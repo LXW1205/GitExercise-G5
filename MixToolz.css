@@ -191,7 +191,6 @@ tr:nth-child(even) {background-color: #eaeaea;}
 
 .poster label, .form-group label, .btn-default{
   width: 150px;
-  height: 150px;
   height: fit-content;
   display: block;
   padding: 10px;
