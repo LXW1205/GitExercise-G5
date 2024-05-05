@@ -28,10 +28,9 @@ p{
     max-width: fit-content;
     background-color: rgb(250, 244, 117);
     box-shadow: 10px 20px 10px lemonchiffon inset;
-    
 }
 
-#edit{
+#edit, #icon{
   width: 180px;
   height: 90px;
   border: none;
@@ -39,17 +38,29 @@ p{
   display: inline-flex;
 }
 
+#icon{
+  width: 30px;
+  height: 30px;
+}
+
 #home, #pdf{
-  width: 120px;
-  height: 35px;
+  width: 140px;
+  height: 55px;
   border: none;
-  border-radius: 10%;
-  padding: 0px;
+  border-radius: 10px;
+  padding-top: 10px;
   margin: 5px;
-  background: #353434;
+  background: #f88533;
   color:#f1f1f1;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
   font-weight: 500;
-  display: inline-flex;
+  justify-content: center;
+  display: inline-flex; 
+}
+
+#home, #pdf:hover{
+  background-color: #ff4a47;
 }
 
 .collapsible {
@@ -273,12 +284,16 @@ tr:nth-child(even) {background-color: #eaeaea;}
   border: 1px solid transparent;
   background-color: #fde360;
   font-size: 16px;
-  transition-duration: .4s;
+  transition-duration: .6s;
   cursor: pointer;
 }
 
 .aspect-ratio li:active{
   border: 1px solid #f5a84a;
+}
+
+.aspect-ratio li:hover{
+  background-color: #f7c78d;
 }
 
 .btn{

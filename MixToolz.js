@@ -82,7 +82,7 @@
         canvas.addEventListener("mousemove", draw);
     });
 
-let file_input = document.getElementById("file");
+  let file_input = document.getElementById("file");
   let image = document.getElementById("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");
