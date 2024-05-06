@@ -1,0 +1,71 @@
+useful commands:
+git add .
+git commit -m "..."
+git push
+git status
+
+<div class="footer">
+  <button type="button" class="collapsible">Operating Sytem Introductions</button>
+<div class="content1">
+  <h4><li><a href="ios.html">What is IOS?</a></li></h4>
+  <h4><li><a href="android.html">What is Android?</a></li></h4>
+</div>
+<div>
+<button type="button" class="collapsible">Comparison and FAQ</button>
+<div class="content1">
+  <h4><li><a href="comparison.html">Comparison</a></li></h4>
+  <h4><li><a href="faq.html">Most searched and frequently asked questions</a></li></h4>
+</div>
+<button type="button" class="collapsible">Team</button>
+<div class="content1">
+  <h4><li><a href="team.html">Our Team</a></li></h4>
+</div>
+</div>
+https://docs.google.com/presentation/d/1y9GRtJQ-drGqzEg6SD4t6jeDFUEv9fIh/edit?usp=sharing&ouid=101231189856917721410&rtpof=true&sd=true
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+  </script>
+
+  -----------------------------------
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose file</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script type="text/javascript">
+<<<<<<< HEAD
+=======
+
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+    </script>
+
+>>>>>>> 1e3f86db33fd47ee9bf6ec44c977cfeeee22f7d8
+
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+    </script>
+   
+</head>
+
+<input type="file" id="imageInput" accept="image/*">
+    <button>Submit</button>
