@@ -4,42 +4,6 @@ git commit -m "..."
 git push
 git status
 
-<div class="footer">
-  <button type="button" class="collapsible">Operating Sytem Introductions</button>
-<div class="content1">
-  <h4><li><a href="ios.html">What is IOS?</a></li></h4>
-  <h4><li><a href="android.html">What is Android?</a></li></h4>
-</div>
-<div>
-<button type="button" class="collapsible">Comparison and FAQ</button>
-<div class="content1">
-  <h4><li><a href="comparison.html">Comparison</a></li></h4>
-  <h4><li><a href="faq.html">Most searched and frequently asked questions</a></li></h4>
-</div>
-<button type="button" class="collapsible">Team</button>
-<div class="content1">
-  <h4><li><a href="team.html">Our Team</a></li></h4>
-</div>
-</div>
-https://docs.google.com/presentation/d/1y9GRtJQ-drGqzEg6SD4t6jeDFUEv9fIh/edit?usp=sharing&ouid=101231189856917721410&rtpof=true&sd=true
-
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-  </script>
-
   -----------------------------------
   <head>
     <link rel="stylesheet" type="text/css" href="index.css">

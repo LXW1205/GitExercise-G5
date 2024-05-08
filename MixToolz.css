@@ -114,53 +114,12 @@ p{
   background:#fffecb;
 }
   
-table, th, td {
-    border-bottom: 2px solid #555;
-}
-  
-td {
-    padding: 15px;
-    text-align: left;
-}
-  
-th {
-    padding: 15px;
-    text-align: center;
-}
-  
-tr:nth-child(even) {background-color: #eaeaea;}
-  
-.table1 {
-  background-color: #b3b5b3;
-  }
-  
-.table2 {
-   background-color: #88ffbeea;
-}
-  
-.column {
-  float: left;
-  width: 30%;
-  padding: 10px;
-  height: 350px;
-}
-    
-.row{
-  margin-left: 65px;
-}
-  
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-  padding: 18px;
-}
-  
 @media screen and (max-width: 70%) {
   .column {
      width: 100%;
     }
 }
+
 
 /*Adding border for image when an image is chosen by the user */
 #selectedBanner {
