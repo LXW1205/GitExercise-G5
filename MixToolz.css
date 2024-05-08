@@ -64,6 +64,7 @@ p{
   background-color: #ff4a47;
 }
 
+/*Adding border for image when an image is chosen by the user */
 #selectedBanner {
   width: 100%;
   height: 400px;
