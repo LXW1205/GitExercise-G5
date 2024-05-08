@@ -19,7 +19,7 @@ p{
     color: rgb(234, 144, 1);
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
-    font-size: 50px;
+    font-size: 30px;
     border: 1px solid gold;
     border-radius: 25px;
     padding: 20px;
@@ -72,7 +72,7 @@ p{
     margin: auto;
     padding: 0px;
     width: 70%;
-    height: 160px;
+    aspect-ratio: 8.5/1;
     border: none;
     text-align: center;
     outline: none;
