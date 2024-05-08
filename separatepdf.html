@@ -47,28 +47,30 @@
         <img id="icon" src="MixTooLz Images/Crop.png">
         Crop
         </button>
-
-
-
-      </div>
+      
+    </div>
   </div>
 
-<br></br>
-<br></br>
-<br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  
+    <div class="wall" align="center">
+      <form action="/">
+          <div id="paper"></div>
+            <div class="poster">
+                <h2>Import pdf to Separate</h2>
 
-<div>
+                <label for="file">pdf</label>
+                <input type="file" id="file" accept=".pdf"><br>
 
-  <center>
-  <p>
-    Set of useful tools that processes PDF documents or edit images on your own browser.
-  </center>
-</div>
-
-<br></br>
-
+                <label onclick="separatePDF()">Separate PDF</label>
+                <div id="output"></div>
+              
+            </div>
+          </div>
+  </body>
 
 <script src="MixToolz.js"></script>
-
-</body>
-</html>
+<script src="separatepdf.js"></script>
+<script src="https://unpkg.com/pdf-lib"></script>
