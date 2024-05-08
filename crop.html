@@ -15,7 +15,7 @@
 
         <div align="right">
             <button type="button" class="collapsible">
-              <img id="edit" src="MixTooLz Images/Edit.png">Tools</button>
+              <img id="menubar" src="MixTooLz Images/Edit.png">Tools</button>
             
               <div class="content1">
         
@@ -44,32 +44,39 @@
                 </button>
         </div>
 
-        <div class="box">
-            <div class="volume">
-                <div class="image-volume">
-                    <img id="img">
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <div class="wall" align="center">
+            <form action="/">
+                <div id="paper"></div>
+                <div class="poster">
+                <div class="volume">
+                    <div class="image-volume">
+                        <img id="img">
+                    </div>
+                    <div class="preview-volume">
+                        <img id="preview-image">
+                    </div>
                 </div>
-                <div class="preview-volume">
-                    <img id="preview-image">
+                <center><h2>Import your image here</h2></center>
+                <input type="file" id="file" accept="image/jpg, image/png, image/jpeg">
+                <label for="file">Import Image</label>
+                <div class="aspect-ratio hide">
+                    <span>Aspect Ratio</span>
+                    <li>16:9</li>
+                    <li>5:4</li>
+                    <li>2:3</li>
+                    <li>1:1</li>
+                    <li>Custom</li>
+                </div>
+                <div class="btn">
+                    <button id="preview" class="hide">Preview</button>
+                    <a href="" id="download" class="hide">Download</a>
                 </div>
             </div>
-            <center><h2>Import your image here</h2></center>
-            <input type="file" id="file" accept="image/jpg, image/png, image/jpeg">
-            <label for="file">Import Image</label>
-            <div class="aspect-ratio hide">
-                <span>Aspect Ratio</span>
-                <li>16:9</li>
-                <li>5:4</li>
-                <li>2:3</li>
-                <li>1:1</li>
-                <li>Custom</li>
-            </div>
-            <div class="btn">
-                <button id="preview" class="hide">Preview</button>
-                <a href="" id="download" class="hide">Download</a>
-            </div>
-        </div>
-        </script>
-        <script src="MixToolz.js"></script>
-    </body>
-</html>
+            </script>
+            <script src="MixToolz.js"></script>
+        </body>
+    </html>

@@ -9,6 +9,7 @@ body{
 
 #logo{
     width:30%;
+    height: 20%;
     margin: auto;
     padding: 0px;
 }
@@ -30,7 +31,7 @@ p{
     box-shadow: 10px 20px 10px lemonchiffon inset;
 }
 
-#edit, #icon{
+#menubar, #icon{
   width: 180px;
   height: 90px;
   border: none;
@@ -64,28 +65,11 @@ p{
   background-color: #ff4a47;
 }
 
-/*Adding border for image when an image is chosen by the user */
-#selectedBanner {
-  width: 100%;
-  height: 400px;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-#selectedBanner img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-
-
 .collapsible {
     background-color: #fde360;
     color: rgb(0, 0, 0);
     cursor: pointer;
+    margin: auto;
     padding: 0px;
     width: 70%;
     height: 160px;
@@ -178,10 +162,23 @@ tr:nth-child(even) {background-color: #eaeaea;}
     }
 }
 
-.container{
+/*Adding border for image when an image is chosen by the user */
+#selectedBanner {
+  width: 100%;
+  height: 400px;
+  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
+
+#selectedBanner img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
 
 .form-group{
   width: 500px;
@@ -232,46 +229,6 @@ tr:nth-child(even) {background-color: #eaeaea;}
 
 .poster input, .form-group input{
   display: none;
-}
-
-.box{
-  width: 80%;
-  position: absolute;
-  transform: translateX(-50%);
-  top:30%;
-  left: 50%;
-  background-color: #ffffff;
-  padding: 2px 3px;
-  border-radius: 10px;
-}
-
-.volume{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  border-radius: 10px;
-}
-
-.volume .image-volume, .volume .preview-volume{
-  width: 100%;
-}
-
-.box input{
-  display: none;
-}
-
-.box label{
-  display: block;
-  position: relative;
-  background-color: #f5a84a;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  width: 150px;
-  padding: 10px 0;
-  border-radius: 10px;
-  margin: 10px auto;
-  cursor: pointer;
 }
 
 .preview-volume img{
