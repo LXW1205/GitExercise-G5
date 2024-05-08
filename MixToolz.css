@@ -44,7 +44,7 @@ p{
 }
 
 /*Replace id="pdf" to blocks because of id clashing */
-#home, #blocks{
+#blocks{
   width: 140px;
   height: 55px;
   border: none;
@@ -60,7 +60,7 @@ p{
   display: inline-flex; 
 }
 
-#home, #blocks:hover{
+#blocks:hover{
   background-color: #ff4a47;
 }
 
