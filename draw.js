@@ -24,7 +24,7 @@
     drawing = true;
     ctx.beginPath();
     ctx.lineWidth = 10;
-    ctx.strokeStyle = color;
+    ctx.strokeStyle = red;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.moveTo(e.offsetX, e.offsetY);
