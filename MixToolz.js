@@ -13,36 +13,6 @@
     });
   }
 
-  /*var selDiv = "";
-      var storedFiles = [];
-      $(document).ready(function () {
-        $("#input-file").on("change", handleFileSelect);
-        selDiv = $(".poster");
-      });
-
-      function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function (f) {
-          if (!f.type.match("image.*")) {
-            return;
-          }
-          storedFiles.push(f);
-
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              '<img src="' +
-              e.target.result +
-              "\" data-file='" +
-              f.name +
-              "alt='Category Image' height='250px' width='200px'>";
-            selDiv.html(html);
-          };
-          reader.readAsDataURL(f);
-        });
-      }*/
-
   const image_sel = document.getElementById('input-file');
   const canvas = document.querySelector('#canvas');
   const ctx = canvas.getContext('2d');    
@@ -55,45 +25,45 @@
       images.onload = () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
-        
-      }
-      let drawing;
-      canvas.onmousedown = (e) => {
-        drawing = true;
-        ctx.beginPath();
-        ctx.lineWidth = 10;
-        ctx.strokeStyle = "red";
-        ctx.lineJoin = "round";
-        ctx.lineCap = "round";
-        ctx.moveTo(e.clientX, e.clientY);
-      };
-
-      canvas.onmousemove = (e) => {
-        if (drawing) {
-          ctx.lineTo(e.clientX, e.clientY);
-          ctx.stroke();
-        }
-      };
-
-      canvas.onmouseup = function () {
-        drawing = false;
-        ctx.closePath();
-      };
-
+        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)        
+      }      
       images.src = e.target.result
     }
     reader.readAsDataURL(image_sel.files[0])
   })
 
-        
+  let drawing;
+  canvas.onmousedown = (e) => {
+    //console.log('mousedown', e.clientX, e.clientY);
+    drawing = true;
+    ctx.beginPath();
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "red";
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.moveTo(e.offsetX, e.offsetY);
+  };
+
+  canvas.onmousemove = (e) => {
+    //console.log('mousemove', e.clientX, e.clientY);
+    if (drawing) {
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+    }
+  };
+
+  canvas.onmouseup = function () {
+    //console.log('mousemove', e.clientX, e.clientY);
+    drawing = false;
+    ctx.closePath();
+  };
     
         
         
     
         
 
-  /*let file_input = document.getElementById("file");
+  let file_input = document.getElementById("file");
   let image = document.getElementById("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");
@@ -146,4 +116,4 @@
     download.classList.add("hide");
     option.classList.add("hide");
     previewButton.classList.add("hide");
-  }*/
+  }
