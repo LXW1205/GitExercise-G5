@@ -13,7 +13,7 @@
     });
   }
 
-  var selDiv = "";
+  /*var selDiv = "";
       var storedFiles = [];
       $(document).ready(function () {
         $("#input-file").on("change", handleFileSelect);
@@ -41,48 +41,59 @@
           };
           reader.readAsDataURL(f);
         });
+      }*/
+
+  const image_sel = document.getElementById('input-file');
+  const canvas = document.querySelector('#canvas');
+  const ctx = canvas.getContext('2d');    
+  let img = null
+      
+  image_sel.addEventListener('change', () => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const images = new Image()
+      images.onload = () => {
+        canvas.width = images.width//Resizing
+        canvas.height = images.height
+        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
+        
       }
+      let drawing;
+      canvas.onmousedown = (e) => {
+        drawing = true;
+        ctx.beginPath();
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "red";
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        ctx.moveTo(e.clientX, e.clientY);
+      };
 
-      window.addEventListener("load", () => {
-        const canvas = document.querySelector("#canvas");
-        const ctx = canvas.getContext("2d");
-    
-        //Resizing
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-    
-        //Variables
-        let painting = false;
-    
-        function startPosition(){
-            painting = true;
-            draw(e);
+      canvas.onmousemove = (e) => {
+        if (drawing) {
+          ctx.lineTo(e.clientX, e.clientY);
+          ctx.stroke();
         }
-        function finishedPosition(){
-            painting =false;
-            ctx.beginPath();
-        }
-    
-        //e is an event
-        function draw(e){
-            if(!painting) return;
-            ctx.linewidth = 10;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = "red";
-    
-            //clinetX is the position of the mouse at x-axis and vice versa with Y
-            ctx.lineTo(e.clientX, e.clientY);
-            ctx.stroke();
-            ctx.beginPath();//optional to add (To make it more pixelated)
-            ctx.moveTo(e.clientX, e.clientY);//optional to add (To make it more pixelated)
-        }
-        //EventListners
-        canvas.addEventListener('mousedown', startPosition);
-        canvas.addEventListener("mouseup", finishedPosition);
-        canvas.addEventListener("mousemove", draw);
-    });
+      };
 
-  let file_input = document.getElementById("file");
+      canvas.onmouseup = function () {
+        drawing = false;
+        ctx.closePath();
+      };
+
+      images.src = e.target.result
+    }
+    reader.readAsDataURL(image_sel.files[0])
+  })
+
+        
+    
+        
+        
+    
+        
+
+  /*let file_input = document.getElementById("file");
   let image = document.getElementById("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");
@@ -135,4 +146,4 @@
     download.classList.add("hide");
     option.classList.add("hide");
     previewButton.classList.add("hide");
-  }
+  }*/

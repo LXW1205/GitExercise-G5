@@ -2,19 +2,12 @@
 <html lang="en">
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Draw</title>
-        <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        />
-        <link 
-        href="https://unpkg.com/react-image-crop/dist/ReactCrop.css" 
-        rel="stylesheet"
-        />  
+        
       <link rel="stylesheet" type="text/css" href="MixToolz.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <body>
         <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px">
 
@@ -62,19 +55,17 @@
             <form action="/">
                 <div id="paper"></div>
                 <div class="poster">
+                  <div>
+                    <img id="image">
+                  </div>
                     <h2>Import your image here</h2>
                     <label for="input-file">Import Image</label>
-                    <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">                                                          
+                    <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+                    <canvas id="canvas"></canvas>                                                          
                 </div>
-                <canvas id="drawing-board"></canvas>
+                
             </form>        
         </div>
-        <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"
-      ></script>
-      <script src="https://unpkg.com/react-image-crop/dist/index.umd.cjs"></script>
 
     <script src="MixToolz.js">
     </script>
