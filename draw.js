@@ -17,13 +17,14 @@
     reader.readAsDataURL(image_sel.files[0])
   })
 
+  //Draw
   let drawing;
   canvas.onmousedown = (e) => {
     //console.log('mousedown', e.clientX, e.clientY);
     drawing = true;
     ctx.beginPath();
     ctx.lineWidth = 10;
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = color;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.moveTo(e.offsetX, e.offsetY);
@@ -41,4 +42,4 @@
     //console.log('mousemove', e.clientX, e.clientY);
     drawing = false;
     ctx.closePath();
-  };
+  };  
