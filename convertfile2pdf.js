@@ -25,3 +25,23 @@ function handleFileSelect(e) {
       $(".btn-default").hide();
     });
   }
+
+  const fileInput = document.getElementById('fileInput');
+const convertButton = document.getElementById('convertButton');
+const pdfContainer = document.getElementById('pdfContainer');
+
+convertButton.addEventListener('click', () => {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const img = new Image();
+    img.src = event.target.result;
+    img.onload = () => {
+      const doc = new jsPDF();
+      doc.addImage(img, 'JPEG', 15, 40, 180, 160);
+      doc.save('output.pdf');
+      pdfContainer.innerHTML = '<a href="output.pdf" download>Download PDF</a>';
+    };
+  };
+  reader.readAsDataURL(file);
+});

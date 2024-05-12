@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Edit PDF</title>
+    <title>Convert PDF</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -15,6 +15,7 @@
   <body>
     <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='MixToolz.html'">
     
+    
 
     <div align="right">
       <button type="button" class="collapsible">
@@ -27,8 +28,8 @@
           Home 
           </button>
   
-          <button type="button" onclick="location.href='editpdf.html'" id="blocks">
-          Edit PDF
+          <button type="button" onclick="location.href='convertfile2pdf.html'" id="blocks">
+          Convert file to PDF
           </button>
 
           <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
@@ -50,6 +51,7 @@
           <img id="icon" src="MixTooLz Images/Crop.png">
           Crop
           </button>
+
         </div>
     </div>
 
@@ -61,14 +63,24 @@
      <form action="/">
       <div id="paper"></div>
         <div class="poster">
+
+         
+
+
+
+
+
         <!--Banner?-->
+        <center>
         <div id="selectedBanner"></div>
         <div class="form-group" align="center">
-          <h2>Edit PDF</h2>
-          <label for="pwd">Image:</label>
-          <input type="file" class="form-control" name="image" id="pwd">
-          <button type="submit" class="btn btn-default">Submit</button>
+          <h2>Convert file to PDF</h2>
+          <label for="pwd">Choose file</label>
+          <input type="file" class="form-control" accept="image/*" id="pwd">
+        </center>
         </div>
+
+        
 
       </form>
     </div>
@@ -77,6 +89,16 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+
+
+
+
+
+
+    </script>
+
     <script src="https://unpkg.com/react-image-crop/dist/index.umd.cjs"></script>
     <script>
       var selDiv = "";
@@ -109,7 +131,7 @@
         });
       }
     </script>
-    <script src="editpdf.js"></script>
+    <script src="convertfile2pdf.js"></script>
     
   </body>
 </html>
