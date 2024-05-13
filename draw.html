@@ -52,18 +52,30 @@
 <br></br>
 
         <div class="wall" align="center">
-            <form action="/">
-                <div id="paper"></div>
-                <div class="poster">
-                  <div>
-                    <img id="image">
-                  </div>
-                    <h2>Import your image here</h2>
-                    <label for="input-file">Import Image</label>
-                    <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
-                    <canvas id="canvas"></canvas>                                     
-                </div>                                
-            </form>        
+          <div id="paper"></div>
+          <div class="poster">
+            <div>
+              <img id="image">
+            </div>
+          <h2>Import your image here</h2>
+          <label for="input-file">Import Image</label>
+          <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+          <canvas id="canvas"></canvas>  
+          <div class="colors">
+            <label class="warna">Colors</label>
+            <ul class="options">
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option">
+                <input type="color" id="color-picker" value="#4A98F7">
+              </li>
+            </ul>
+          </div>                                   
+          </div>
+                                          
         </div>
 
     <script src="draw.js"></script>
