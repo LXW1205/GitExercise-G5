@@ -136,3 +136,56 @@
     option.classList.add("hide");
     previewButton.classList.add("hide");
   }
+
+  var selDiv = "";
+      var storedFiles = [];
+      $(document).ready(function () {
+        $("#input-file").on("change", handleFileSelect);
+        selDiv = $(".poster");
+      });
+
+
+      const fileInput = document.getElementById('selectedimg');
+const selectedBanner = document.getElementById('output');
+
+fileInput.addEventListener('change', () => {
+  const files = fileInput.files;
+  const filesArr = Array.prototype.slice.call(files);
+  filesArr.forEach(function (f) {
+    if (!f.type.match("image.*")) {
+      return;
+    }
+    storedFiles.push(f);
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var html =
+        '<img src="' +
+        e.target.result +
+        "\" data-file='" +
+        f.name +
+        "alt='Category Image' >";
+      selectedBanner.innerHTML = html;
+    };
+    reader.readAsDataURL(f);
+  });
+});
+      
+     
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
