@@ -11,7 +11,76 @@
         content.style.maxHeight = content.scrollHeight + "px";
       } 
     });
-  }           
+  }
+
+  var selDiv = "";
+      var storedFiles = [];
+      $(document).ready(function () {
+        $("#input-file").on("change", handleFileSelect);
+        selDiv = $(".poster");
+      });
+
+      function handleFileSelect(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        filesArr.forEach(function (f) {
+          if (!f.type.match("image.*")) {
+            return;
+          }
+          storedFiles.push(f);
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            var html =
+              '<img src="' +
+              e.target.result +
+              "\" data-file='" +
+              f.name +
+              "alt='Category Image' height='250px' width='200px'>";
+            selDiv.html(html);
+          };
+          reader.readAsDataURL(f);
+        });
+      }
+
+      window.addEventListener("load", () => {
+        const canvas = document.querySelector("#canvas");
+        const ctx = canvas.getContext("2d");
+    
+        //Resizing
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+    
+        //Variables
+        let painting = false;
+    
+        function startPosition(){
+            painting = true;
+            draw(e);
+        }
+        function finishedPosition(){
+            painting =false;
+            ctx.beginPath();
+        }
+    
+        //e is an event
+        function draw(e){
+            if(!painting) return;
+            ctx.linewidth = 10;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = "red";
+    
+            //clinetX is the position of the mouse at x-axis and vice versa with Y
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            ctx.beginPath();//optional to add (To make it more pixelated)
+            ctx.moveTo(e.clientX, e.clientY);//optional to add (To make it more pixelated)
+        }
+        //EventListners
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener("mouseup", finishedPosition);
+        canvas.addEventListener("mousemove", draw);
+    });
 
   let file_input = document.getElementById("file");
   let image = document.getElementById("img");
