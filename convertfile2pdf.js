@@ -1,4 +1,4 @@
-function handleFileSelect(e) {
+function choosefile() {
     var files = e.target.files;
     var filesArr = Array.prototype.slice.call(files);
     filesArr.forEach(function (f) {
@@ -26,22 +26,58 @@ function handleFileSelect(e) {
     });
   }
 
-  const fileInput = document.getElementById('fileInput');
-const convertButton = document.getElementById('convertButton');
-const pdfContainer = document.getElementById('pdfContainer');
+  var selDiv = "";
+      var storedFiles = [];
+      $(document).ready(function () {
+        $("#input-file").on("change", handleFileSelect);
+        selDiv = $(".poster");
+      });
 
-convertButton.addEventListener('click', () => {
-  const file = fileInput.files[0];
-  const reader = new FileReader();
-  reader.onload = (event) => {
-    const img = new Image();
-    img.src = event.target.result;
-    img.onload = () => {
-      const doc = new jsPDF();
-      doc.addImage(img, 'JPEG', 15, 40, 180, 160);
-      doc.save('output.pdf');
-      pdfContainer.innerHTML = '<a href="output.pdf" download>Download PDF</a>';
+      '1'
+
+ 
+
+
+
+const fileInput = document.getElementById('fileInput');
+const selectedBanner = document.getElementById('selectedBanner');
+
+fileInput.addEventListener('change', () => {
+  const files = fileInput.files;
+  const filesArr = Array.prototype.slice.call(files);
+  filesArr.forEach(function (f) {
+    if (!f.type.match("image.*")) {
+      return;
+    }
+    storedFiles.push(f);
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var html =
+        '<img src="' +
+        e.target.result +
+        "\" data-file='" +
+        f.name +
+        "alt='Category Image' >";
+      selectedBanner.innerHTML = html;
+      selectedBanner.style.display = 'none';
     };
-  };
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(f);
+  });
 });
+
+previewButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  downloadButton.classList.remove("hide");
+  let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
+
+  previewImage.src = imgSrc;
+  downloadButton.download = `cropped_$(fileName).png`;
+  downloadButton.setAttribute("href", imgSrc);
+});
+
+window.onload = () => {
+  download.classList.add("hide");
+  option.classList.add("hide");
+  previewButton.classList.add("hide");
+}

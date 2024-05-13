@@ -11,14 +11,14 @@
     <link rel="stylesheet" type="text/css" href="MixToolz.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   </head>
   <body>
     <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='MixToolz.html'">
     
-    
-
-    <div align="right">
-      <button type="button" class="collapsible">
+        <div align="right">
+          <button type="button" class="collapsible">
         <img id="menubar" src="MixTooLz Images/Edit.png">Tools</button>
       
         <div class="content1">
@@ -29,7 +29,7 @@
           </button>
   
           <button type="button" onclick="location.href='convertfile2pdf.html'" id="blocks">
-          Convert file to PDF
+          Convert PDF
           </button>
 
           <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
@@ -60,78 +60,55 @@
     <br></br>
     
     <div class="wall" align="center">
-     <form action="/">
-      <div id="paper"></div>
-        <div class="poster">
+      <form action="/">
+          <div id="paper"></div>
+          <div class="poster">
+              <h2>Convert an Image to PDF</h2>
+          <div class="upload-img">
+            <input type="file" id="selectedimg" accept="image/*" onchange="loadFile(event)">
+            <img id="output" width="200" height="200" />
+            <center>
+            <button class=button-87>Convert to PDF</button>
+            </center>
+            <input type="file" id="fileInput" style="display: none;" accept="image/*">
+            <button onclick="choosefile()"> Choose File from Desktop</button>
 
+ 
+           
+
+
+
+          </div>
+              
          
+      </form>     
+      
+      
+
+      </div>
+      
+      
+      
 
 
 
-
-
-        <!--Banner?-->
-        <center>
-        <div id="selectedBanner"></div>
-        <div class="form-group" align="center">
-          <h2>Convert file to PDF</h2>
-          <label for="pwd">Choose file</label>
-          <input type="file" class="form-control" accept="image/*" id="pwd">
-        </center>
-        </div>
-
-        
-
-      </form>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+      
+    
+      
 
 
 
 
 
 
-    </script>
 
-    <script src="https://unpkg.com/react-image-crop/dist/index.umd.cjs"></script>
-    <script>
-      var selDiv = "";
-      var storedFiles = [];
-      $(document).ready(function () {
-        $("#pwd").on("change", handleFileSelect);
-        selDiv = $("#selectedBanner");
-      });
 
-      function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function (f) {
-          if (!f.type.match("image.*")) {
-            return;
-          }
-          storedFiles.push(f);
 
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              '<img src="' +
-              e.target.result +
-              "\" data-file='" +
-              f.name +
-              "alt='Category Image' >";
-            selDiv.html(html);
-          };
-          reader.readAsDataURL(f);
-        });
-      }
-    </script>
-    <script src="convertfile2pdf.js"></script>
+
+  </div>
+
+<script src="MixToolz.js"></script>
+
     
   </body>
 </html>
