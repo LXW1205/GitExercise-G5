@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('MixTooLz\ Images/Background_image.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('MixTooLz\ Images/Bg2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -173,6 +173,10 @@ p{
   display: none;
 }
 
+.tools{
+  justify-content: center;
+  align-items: center;
+}
 .slider{
   display: flex;
   justify-content: center;
@@ -186,6 +190,24 @@ p{
 
 #color-picker{
   display: flex;
+}
+
+.clean{
+  width: 75px;
+  height: 20px;
+  display: flex;
+  cursor: pointer;
+  border: 1px solid #f5a84a;
+  border-radius: 25px;
+  background: #f5a84a;
+  margin: 5px;
+  margin-left: 43%;
+  padding: 10px;
+}
+
+#tool_icon{
+  width: 20px;
+  height: 20px;
 }
 
 .tools label{
@@ -234,7 +256,7 @@ p{
 }
 
 .tools .option:nth-child(4){
-  background-color: #00fa25;
+  background-color: #00e422;
 }
 
 .tools .option:nth-child(5){
@@ -246,7 +268,7 @@ p{
   border: 1px solid #bfbfbf;
 }
 
-.tools .option.selected:hover::before{
+.tools .option:hover::before{
   position: absolute;
   content: "";
   top: 50%;
@@ -259,7 +281,7 @@ p{
   transform: translate(-50%, -50%);
 }
 
-.color .option:last-child.selected:hover::before{
+.color .option:last-child:hover::before{
   border-color: #ccc;
 }
 

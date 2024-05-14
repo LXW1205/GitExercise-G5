@@ -43,7 +43,8 @@ let file_input = document.getElementById("file");
     let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
 
     previewImage.src = imgSrc;
-    downloadButton.download = `cropped_$(fileName).png`;
+    const fileName = "edited_image";
+    downloadButton.download = `${fileName}.png`;
     downloadButton.setAttribute("href", imgSrc);
   });
 

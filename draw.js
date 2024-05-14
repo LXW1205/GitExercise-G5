@@ -4,13 +4,15 @@
   const color_btn = document.querySelectorAll(".tools .option");
   const color_picker = document.querySelector("#color-picker");
   const downloadButton = document.getElementById("download");
+  const clear = document.querySelector(".clean");
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
   
   //Global variables
-  let img = null
+  let img = null;
   let draw_weight = 5;
   let selected_color = "#000";
+  let uploaded_img = null;
       
   image_sel.addEventListener('change', () => {
     const reader = new FileReader()
@@ -19,19 +21,27 @@
       images.onload = () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)        
+        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
+        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);   
       }      
-      images.src = e.target.result
+      images.src = e.target.result;
       tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   })
 
-//Line Weight/Width
+//Tools Weight/Width
 line_weight.addEventListener("change", () => 
   draw_weight = line_weight.value
 );
 
+//Clear Drawing
+clear.addEventListener("click", (e) => {
+  ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
+  
+})
+
+//Color Selection
 color_btn.forEach(btn => {
   btn.addEventListener("click", () => {
     const select = document.querySelector(".tools .option .selected")
@@ -43,6 +53,7 @@ color_btn.forEach(btn => {
   })
 })
 
+//Color Picker
 color_picker.addEventListener("change", () => {
   color_picker.parentElement.style.background = color_picker.value;
   color_picker.parentElement.click();
@@ -81,7 +92,8 @@ color_picker.addEventListener("change", () => {
     e.preventDefault();
     downloadButton.classList.remove("hide");
     let imgSrc = canvas.toDataURL();
-    downloadButton.download = `canvas_$(fileName).png`;
+    const fileName = "edited_image";
+    downloadButton.download = `${fileName}.png`;
     downloadButton.setAttribute("href", imgSrc);
   })
 
