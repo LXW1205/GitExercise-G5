@@ -1,11 +1,15 @@
   const image_sel = document.getElementById("input-file");
-  const color_btn = document.querySelectorAll(".colors .option");
+  const line_weight = document.querySelector("#size");
+  const tools_element = document.querySelector(".tools");
+  const color_btn = document.querySelectorAll(".tools .option");
   const color_picker = document.querySelector("#color-picker");
+  const downloadButton = document.getElementById("download");
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
   
   //Global variables
   let img = null
+  let draw_weight = 5;
   let selected_color = "#000";
       
   image_sel.addEventListener('change', () => {
@@ -18,13 +22,19 @@
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)        
       }      
       images.src = e.target.result
+      tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   })
 
+//Line Weight/Width
+line_weight.addEventListener("change", () => 
+  draw_weight = line_weight.value
+);
+
 color_btn.forEach(btn => {
   btn.addEventListener("click", () => {
-    const select = document.querySelector(".colors .option .selected")
+    const select = document.querySelector(".tools .option .selected")
       if (select){
         select.classList.remove("selected");
       }
@@ -44,7 +54,7 @@ color_picker.addEventListener("change", () => {
     //console.log('mousedown', e.clientX, e.clientY);
     drawing = true;
     ctx.beginPath();
-    ctx.lineWidth = 10;
+    ctx.lineWidth = draw_weight;
     ctx.strokeStyle = selected_color;
     ctx.fillStyle = selected_color;
     ctx.lineJoin = "round";
@@ -64,4 +74,17 @@ color_picker.addEventListener("change", () => {
     //console.log('mousemove', e.clientX, e.clientY);
     drawing = false;
     ctx.closePath();
+  }
+
+  //Download Edited Image
+  canvas.addEventListener("click", (e) => {
+    e.preventDefault();
+    downloadButton.classList.remove("hide");
+    let imgSrc = canvas.toDataURL();
+    downloadButton.download = `canvas_$(fileName).png`;
+    downloadButton.setAttribute("href", imgSrc);
+  })
+
+  window.onload = () => {
+    download.classList.add("hide");
   }
