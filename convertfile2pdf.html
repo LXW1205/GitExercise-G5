@@ -56,8 +56,6 @@
     </div>
 
     <br></br>
-    <br></br>
-    <br></br>
     
     <div class="wall" align="center">
       <form action="/">
@@ -65,13 +63,24 @@
           <div class="poster">
               <h2>Convert an Image to PDF</h2>
           <div class="upload-img">
-            <input type="file" id="selectedimg" accept="image/*" onchange="loadFile(event)">
-            <img id="output" width="200" height="200" />
-            <center>
-            <button class=button-87>Convert to PDF</button>
-            </center>
-            <input type="file" id="fileInput" style="display: none;" accept="image/*">
-            <button onclick="choosefile()"> Choose File from Desktop</button>
+            <input type="file" id="container" accept="image/*" onchange="container(event)">
+            <img id="output" width="400" height="400" />
+  
+            <div class="upload-img">
+              <input type="file" id="imageUpload" accept="image/*" onchange="displayImage(event)">
+              <label for="imageUpload">Choose file</label>
+              <div id="imageContainer" style="margin-top: 20px;">
+                  <img id="output" style="max-width: 400px; max-height: 400px;" />
+              </div>
+              <center>
+                <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
+              </center>
+          </div>
+          </div>
+      </form>
+          </div>
+
+               
 
  
            
