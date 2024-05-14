@@ -61,11 +61,14 @@
             <div class="poster">
                 <h2>Import pdf to Separate</h2>
 
-                <label for="file">pdf</label>
-                <input type="file" id="file" accept=".pdf"><br>
+                <label for="fileInput">pdf</label>
+                <input type="file" id="fileInput" accept=".pdf"><br>
 
-                <label onclick="separatePDF()">Separate PDF</label>
-                <div id="output"></div>
+                <h2>Enter Pages to Extract</h2>
+                <textarea id="pages" rows="4" cols="50" placeholder="Enter text"></textarea>
+
+                <label onclick="separatePDF()">separate PDF</label><br>
+                <a id="downloadLink" href="#" style="display:none">Download Separated PDF</a>
               
             </div>
           </div>

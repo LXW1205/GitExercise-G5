@@ -65,6 +65,7 @@ p{
   background-color: #ff4a47;
 }
 
+/*Collapsible Menu*/
 .collapsible {
     background-color: #fde360;
     color: rgb(0, 0, 0);
@@ -138,7 +139,7 @@ p{
 }
 
 
-
+/*Interface for all the tools*/
 .form-group{
   width: 500px;
   border: none;
@@ -190,6 +191,7 @@ p{
   display: none;
 }
 
+/*Crop function interface*/
 .preview-volume img{
   display: block;
   max-width: 100%;
@@ -198,64 +200,6 @@ p{
 .image-volume{
   width: 60%;
   margin: 0 auto;
-}
-
-.colors .optoins{
-  display: flex;
-  justify-content: space-between;
-}
-
-.colors .option{
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  background: #000000;
-  border-radius: 50%;
-  margin-left: 3px;
-  position: relative;
-  cursor: pointer;
-}
-
-.colors .option:nth-child(1){
-  background-color: #000000;
-}
-
-.colors .option:nth-child(2){
-  background-color: #ff0000;
-}
-
-.colors .option:nth-child(3){
-  background-color: #fefe00;
-}
-
-.colors .option:nth-child(4){
-  background-color: #00fa25;
-}
-
-.colors .option:nth-child(5){
-  background-color: #0c00f4;
-}
-
-.colors .option:nth-child(6){
-  background-color: #ffffff;
-  border: 1px solid #bfbfbf;
-}
-
-.colors .option:hover::before{
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  background: inherit;
-  border-radius: inherit;
-  border: 2px solid #ffffff;
-  transform: translate(-50%, -50%);
-}
-
-.color .option:last-child:hover::before{
-  border-color: #ccc;
 }
 
 .aspect-ratio{
@@ -312,45 +256,3 @@ p{
 .hide{
   display: none;
 }
-
-
-/* CSS */
-.button-87 {
-  margin: 10px;
-  padding: 15px 30px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 10px;
-  display: block;
-  border: 0px;
-  font-weight: 700;
-  box-shadow: 0px 0px 14px -7px #f09819;
-  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-87:hover {
-  background-position: right center;
-  /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
-
-.button-87:active {
-  transform: scale(0.95);
-}
-
-
-
-
-
-
-
-
-
