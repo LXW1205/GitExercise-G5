@@ -52,7 +52,7 @@
 <br></br>
 
         <div class="wall" align="center">
-          <div id="paper"></div>
+          <div id="paper">
           <div class="poster">
             <div>
               <img id="image">
@@ -61,10 +61,15 @@
           <label for="input-file">Import Image</label>
           <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
           <canvas id="canvas"></canvas>  
-          <div class="colors">
-            <label class="warna">Colors</label>
+          <div class="tools hide">
+            <label class="title">Line Width :</label>
             <ul class="options">
-              <li class="option"></li>
+              <li class="slider">
+                <input type="range" id="size" min="1" max="30" value="5">
+              </li>
+            <label class="warna">Colors :</label>
+            <ul class="options">
+              <li class="option selected"></li>
               <li class="option"></li>
               <li class="option"></li>
               <li class="option"></li>
@@ -73,11 +78,15 @@
                 <input type="color" id="color-picker" value="#4A98F7">
               </li>
             </ul>
+          </div>
+          <div class="btn">
+            <a href="" id="download" class="hide">Download</a>
           </div>                                   
           </div>
                                           
         </div>
 
+    <script src="MixToolz.js"></script>
     <script src="draw.js"></script>
     
     </body>

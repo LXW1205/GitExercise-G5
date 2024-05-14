@@ -159,6 +159,7 @@ p{
 
 .poster{
   width: 75%;
+  height: fit-content;
   background: #fdffeeea;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -190,6 +191,28 @@ p{
   display: none;
 }
 
+.slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#size{
+  display: inline-block;
+  cursor: pointer;
+}
+
+#color-picker{
+  display: flex;
+}
+
+.tools label{
+  margin-bottom: 5px;
+  border: none;
+  background: none;
+  cursor: none;
+}
+
 .preview-volume img{
   display: block;
   max-width: 100%;
@@ -200,12 +223,12 @@ p{
   margin: 0 auto;
 }
 
-.colors .optoins{
+.tools .optoins{
   display: flex;
   justify-content: space-between;
 }
 
-.colors .option{
+.tools .option{
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -216,32 +239,32 @@ p{
   cursor: pointer;
 }
 
-.colors .option:nth-child(1){
+.tools .option:nth-child(1){
   background-color: #000000;
 }
 
-.colors .option:nth-child(2){
+.tools .option:nth-child(2){
   background-color: #ff0000;
 }
 
-.colors .option:nth-child(3){
+.tools .option:nth-child(3){
   background-color: #fefe00;
 }
 
-.colors .option:nth-child(4){
+.tools .option:nth-child(4){
   background-color: #00fa25;
 }
 
-.colors .option:nth-child(5){
+.tools .option:nth-child(5){
   background-color: #0c00f4;
 }
 
-.colors .option:nth-child(6){
+.tools .option:nth-child(6){
   background-color: #ffffff;
   border: 1px solid #bfbfbf;
 }
 
-.colors .option:hover::before{
+.tools .option.selected:hover::before{
   position: absolute;
   content: "";
   top: 50%;
@@ -254,8 +277,13 @@ p{
   transform: translate(-50%, -50%);
 }
 
-.color .option:last-child:hover::before{
+.color .option:last-child.selected:hover::before{
   border-color: #ccc;
+}
+
+.option #color-picker{
+  opacity: 0;
+  cursor: pointer;
 }
 
 .aspect-ratio{
