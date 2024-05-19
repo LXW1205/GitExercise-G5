@@ -189,11 +189,15 @@ p{
   cursor: pointer;
 }
 
+.text_option{
+  display: inline;
+}
+
 #color-picker{
   display: flex;
 }
 
-.clean{
+.clean, .text_option span{
   width: 75px;
   height: 20px;
   display: flex;
@@ -204,6 +208,10 @@ p{
   margin: 5px;
   margin-left: 43%;
   padding: 10px;
+}
+
+.options{
+  display: inline-flex;
 }
 
 .tools label{

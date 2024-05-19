@@ -9,7 +9,6 @@
   const ctx = canvas.getContext("2d");
   
   //Global variables
-  let img = null;
   let draw_weight = 5;
   let selected_color = "#000";
   let uploaded_img = null;
@@ -36,9 +35,9 @@ line_weight.addEventListener("change", () =>
 );
 
 //Clear Drawing
-clear.addEventListener("click", (e) => {
+clear.addEventListener("click", () => {
   ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
-  
+  download.classList.add("hide");
 })
 
 //Color Selection
