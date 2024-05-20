@@ -12,6 +12,11 @@ let uploaded_img = null;
 let images = new Image();
 let selected_color = "#000";
 let dragging = false;
+let drag_x = 0;
+let drag_y = 0;
+let text_x = 0;
+let text_y = 0;
+
 
 image_sel.addEventListener('change', () => {
     const reader = new FileReader()
@@ -20,7 +25,9 @@ image_sel.addEventListener('change', () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);      
+        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        text_x = canvas.width / 2;
+        text_y = canvas.height / 2;      
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
@@ -47,13 +54,55 @@ color_picker.addEventListener("change", () => {
 })
 
 text_btn.addEventListener("click", () => {
-  text.addEventListener('input', () => {
-    insert_text = text.value;
+  insert_text = text.value;
+  inputText();
+})
+
+  function inputText() {
     ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
     ctx.borderStyle = "1px dashed black";
     ctx.font = "24px Arial";
     ctx.textBaseline = "middle";
     ctx.fillStyle = selected_color;
-    ctx.fillText(insert_text, canvas.width / 2, canvas.height / 2);
-  })
+    ctx.fillText(insert_text, text_x, text_y);
+  }
+
+function mousePosition(canvas, e) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  }
+}
+
+function isInsideText(position) {
+  const text_width = ctx.measureText(insert_text).width;
+  const text_height = 24;
+  return position.x >= text_x &&
+         position.x <= text_x + text_width &&
+         position.y >= text_y - text_height / 2 &&
+         position.y <= text_y + text_height / 2;
+}
+
+//Dragging Text
+canvas.addEventListener("mousedown", (e) => {
+  const position = mousePosition(canvas, e);
+  if (isInsideText(position)) {
+    dragging = true;
+    drag_x = position.x - text_x;
+    drag_y = position.y - text_y;    
+  } 
+})
+
+canvas.addEventListener("mousemove", (e) => {
+  if (dragging) {
+    const position = mousePosition(canvas, e);
+    text_x = position.x - drag_x;
+    text_y = position.y - drag_y;
+    inputText();
+  }
+})
+
+canvas.addEventListener("mouseup", () => {
+  dragging = false;
 })
