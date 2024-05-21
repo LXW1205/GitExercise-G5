@@ -73,14 +73,16 @@
           <img id="output" width="400" height="400" />
 
           <div class="upload-img">
-            <input type="file" id="imageUpload" accept="image/*" onchange="displayImage(event)">
-            <label for="imageUpload">Choose file</label>
+            <input type="file" id="imageUpload" accept="image/jpg, image/jpeg" onchange="displayImage(event)">
+            <label for="imageUpload">Import file</label>
             <div id="imageContainer" style="margin-top: 20px;">
                 <img id="output" style="max-width: 400px; max-height: 400px;" />
             </div>
             <center>
-              <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
+                <button class="button-87" type="button" id="imageUpload" onclick="convertToPng()">Convert to PNG</button>
             </center>
+            <center>
+                <button class="button-87" type="button" onclick="convertToJpg()">Convert to JPG</button>
         </div>
         </div>
       
