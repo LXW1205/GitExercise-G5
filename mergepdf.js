@@ -4,6 +4,9 @@ async function mergePDFs() {
   
     const file1 = fileInput1.files[0];
     const file2 = fileInput2.files[0];
+
+    let filename = document.getElementById('filename'); 
+    let Filerename = filename;
   
     if (!file1 || !file2) {
       alert("Please select two PDF files.");
@@ -36,5 +39,5 @@ async function mergePDFs() {
 
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = 'merged_pdf.pdf';
+  downloadLink.download = `${Namefile}.pdf`;
 }

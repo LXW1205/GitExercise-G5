@@ -2,6 +2,11 @@ async function separatePDF() {
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
 
+  let filename = document.getElementById('filename'); 
+  let Filerename = filename;
+
+  const Namefile = Filerename.value.trim() || 'extracted_pages';
+
   const fileInput = document.getElementById('fileInput');
 
   const file = fileInput.files[0];
@@ -32,6 +37,6 @@ async function separatePDF() {
 
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = 'Separated_pdf.pdf';
+  downloadLink.download = `${Namefile}.pdf`;
 
-}
+};
