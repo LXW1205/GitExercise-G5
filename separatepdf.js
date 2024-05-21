@@ -2,6 +2,11 @@ async function separatePDF() {
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
 
+  let filename = document.getElementById('filename'); 
+  let Filerename = filename;
+
+  const Namefile = Filerename.value.trim() || 'extracted_pages';
+
   const fileInput = document.getElementById('fileInput');
 
   const file = fileInput.files[0];
@@ -12,11 +17,19 @@ async function separatePDF() {
 
   const separatedPdf = await PDFLib.PDFDocument.create();
 
-  // var totalpages = pdfDoc.getPageCount()
+  const selectedPages = pagesInput.split(',')
+    .map(page => parseInt(page.trim(), 10))
+    .filter(page => !isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount());
 
-  //Extract pages
-  const [page] = await separatedPdf.copyPages(pdfDoc, [(pagesInput)-(1)]);
-  separatedPdf.addPage(page);
+  if (selectedPages.length === 0) {
+    alert("No valid pages selected.");
+    return;
+  }
+
+  for (const pageNum of selectedPages) {
+    const [copiedPage] = await separatedPdf.copyPages(pdfDoc, [pageNum - 1]);
+    separatedPdf.addPage(copiedPage);
+  }
 
   const separatedPdfData = await separatedPdf.save();
   const blob = new Blob([separatedPdfData], { type: 'application/pdf' });
@@ -24,6 +37,6 @@ async function separatePDF() {
 
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = 'Separated_pdf.pdf';
+  downloadLink.download = `${Namefile}.pdf`;
 
-}
+};

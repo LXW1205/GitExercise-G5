@@ -54,6 +54,11 @@
         <img id="icon" src="MixTooLz Images/Crop.png">
         Crop
         </button>
+
+        <button type="button" onclick="location.href='imgConvert.html'" id="blocks">
+        <img id="icon" src="">
+        Image Convert
+        </button>
       
     </div>
   </div>
@@ -73,7 +78,8 @@
 
               <label for="file2">pdf 2</label>
               <input type="file" id="file2" accept=".pdf">
-              
+
+              <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
               <label class="button-87" onclick="mergePDFs()">Merge PDFs</label>
               <a id="downloadLink" href="#" style="display:none">Download Merged PDF</a>
 
