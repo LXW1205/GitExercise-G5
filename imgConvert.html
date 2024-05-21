@@ -5,7 +5,7 @@
   
 <head>
 
-<title>MixTooLz</title>
+<title>Image format converter</title>
 <link rel="stylesheet" type="text/css" href="MixToolz.css">
 
 
@@ -60,26 +60,42 @@
         <img id="icon" src="">
         Image Convert
         </button>
-      </div>
-  </div>
+        </div>
+    </div>
 
-<br></br>
-<br></br>
-<br></br>
+    <div class="wall" align="center">
+        
+        <div id="paper"></div>
+        <div class="poster">
+            <h2>Convert Image Format</h2>
+        <div class="upload-img">
+          <input type="file" id="container" accept="image/*" onchange="container(event)">
+          <img id="output" width="400" height="400" />
 
-<div>
+          <div class="upload-img">
+            <input type="file" id="imageUpload" accept="image/*" onchange="displayImage(event)">
+            <label for="imageUpload">Choose file</label>
+            <div id="imageContainer" style="margin-top: 20px;">
+                <img id="output" style="max-width: 400px; max-height: 400px;" />
+            </div>
+            <center>
+              <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
+            </center>
+        </div>
+        </div>
+      
+    
+    
 
-  <center>
-  <p>
-    Set of useful tools that processes PDF documents or edit images on your own browser.
-  </center>
-</div>
-
-<br></br>
+    </div>
 
 
 
-<script src="MixToolz.js"></script>
 
+
+
+
+    <script src="MixToolz.js"></script>
+    <script src="imgConvert.js"></script>
 </body>
 </html>
