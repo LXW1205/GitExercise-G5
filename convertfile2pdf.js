@@ -1,46 +1,5 @@
-function choosefile() {
-    var files = e.target.files;
-    var filesArr = Array.prototype.slice.call(files);
-    filesArr.forEach(function (f) {
-      if (!f.type.match("image.*")) {
-        return;
-      }
-      storedFiles.push(f);
-  
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var html =
-          '<img src="' +
-          e.target.result +
-          "\" data-file='" +
-          f.name +
-          "alt='Category Image' >";
-        selDiv.html(html);
-      };
-      reader.readAsDataURL(f);
-  
-      // Hide the file input field, label, and submit button
-      $("#pwd").hide();
-      $("#pwd + label").hide();
-      $(".btn-default").hide();
-    });
-  }
-
-  var selDiv = "";
-      var storedFiles = [];
-      $(document).ready(function () {
-        $("#input-file").on("change", handleFileSelect);
-        selDiv = $(".poster");
-      });
-
-      '1'
-
- 
-
-
-
-const fileInput = document.getElementById('fileInput');
-const selectedBanner = document.getElementById('selectedBanner');
+const fileInput = document.getElementById('container');
+const selectedBanner = document.getElementById('output');
 
 fileInput.addEventListener('change', () => {
   const files = fileInput.files;
@@ -60,24 +19,32 @@ fileInput.addEventListener('change', () => {
         f.name +
         "alt='Category Image' >";
       selectedBanner.innerHTML = html;
-      selectedBanner.style.display = 'none';
     };
     reader.readAsDataURL(f);
   });
 });
 
-previewButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  downloadButton.classList.remove("hide");
-  let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
 
-  previewImage.src = imgSrc;
-  downloadButton.download = `cropped_$(fileName).png`;
-  downloadButton.setAttribute("href", imgSrc);
-});
+function displayImage(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          const output = document.getElementById('output');
+          output.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  }
+}
 
-window.onload = () => {
-  download.classList.add("hide");
-  option.classList.add("hide");
-  previewButton.classList.add("hide");
+function convertToPDF() {
+  const { jsPDF } = window.jspdf;
+  const img = document.getElementById('output');
+  const pdf = new jsPDF();
+  if (img.src) {
+      pdf.addImage(img.src, 'JPEG', 15, 40, 180, 160);
+      pdf.save('download.pdf');
+  } else {
+      alert("Please upload an image first.");
+  }
 }
