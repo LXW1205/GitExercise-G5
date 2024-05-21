@@ -19,7 +19,6 @@ let text_x = 0;
 let text_y = 0;
 let insert_text = null;
 
-
 image_sel.addEventListener('change', () => {
     const reader = new FileReader()
     reader.onload = (e) => {      
@@ -28,8 +27,6 @@ image_sel.addEventListener('change', () => {
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
         uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        text_x = canvas.width / 2;
-        text_y = canvas.height / 2;      
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
@@ -57,6 +54,8 @@ color_picker.addEventListener("change", () => {
 
 text_btn.addEventListener("click", () => {
   insert_text = text.value;
+  text_x = Math.floor((images.naturalWidth - ctx.measureText(insert_text).width) / 2); 
+  text_y = Math.floor((images.naturalHeight + parseInt(ctx.font, 10)) / 2); 
   inputText();
 })
 
