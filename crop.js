@@ -37,6 +37,7 @@ let file_input = document.getElementById("file");
     });
   });
 
+  //Download Editied Image
   previewButton.addEventListener("click", (e) => {
     e.preventDefault();
     downloadButton.classList.remove("hide");

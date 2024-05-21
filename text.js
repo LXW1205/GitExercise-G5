@@ -4,6 +4,7 @@ const color_btn = document.querySelectorAll(".tools .option");
 const color_picker = document.querySelector("#color-picker");
 const text = document.getElementById("text");
 const text_btn = document.getElementById("text-btn");
+const downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
@@ -16,6 +17,7 @@ let drag_x = 0;
 let drag_y = 0;
 let text_x = 0;
 let text_y = 0;
+let insert_text = null;
 
 
 image_sel.addEventListener('change', () => {
@@ -106,3 +108,26 @@ canvas.addEventListener("mousemove", (e) => {
 canvas.addEventListener("mouseup", () => {
   dragging = false;
 })
+
+//Download Edited Image
+if (text_btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  downloadButton.classList.remove("hide"); 
+  let imgSrc = canvas.toDataURL();
+  const fileName = "edited_image";
+  downloadButton.download = `${fileName}.png`;
+  downloadButton.setAttribute("href", imgSrc);
+})
+|| 
+canvas.addEventListener)("click", (e) => {
+  e.preventDefault();
+  downloadButton.classList.remove("hide"); 
+  let imgSrc = canvas.toDataURL();
+  const fileName = "edited_image";
+  downloadButton.download = `${fileName}.png`;
+  downloadButton.setAttribute("href", imgSrc);
+}) 
+  
+window.onload = () => {
+  download.classList.add("hide");
+}
