@@ -186,7 +186,7 @@ display: none;
   border: none;
 }
 
-.options .slider{
+.options .slider, .text_option{
 display: flex;
 }
 
@@ -195,12 +195,16 @@ display: inline-block;
 cursor: pointer;
 }
 
+.text_option{
+  display: flex;
+}
+
 #color-picker{
 display: flex;
 }
 
-.tools .clean{
-width: 85px;
+.tools .clean, .text_option span{
+width: 95px;
 height: 20px;
 display: flex;
 cursor: pointer;

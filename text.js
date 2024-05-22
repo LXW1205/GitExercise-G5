@@ -109,7 +109,7 @@ canvas.addEventListener("mouseup", () => {
 })
 
 //Download Edited Image
-if (text_btn.addEventListener("click", (e) => {
+canvas.addEventListener("click", (e) => {
   e.preventDefault();
   downloadButton.classList.remove("hide"); 
   let imgSrc = canvas.toDataURL();
@@ -117,16 +117,7 @@ if (text_btn.addEventListener("click", (e) => {
   downloadButton.download = `${fileName}.png`;
   downloadButton.setAttribute("href", imgSrc);
 })
-|| 
-canvas.addEventListener)("click", (e) => {
-  e.preventDefault();
-  downloadButton.classList.remove("hide"); 
-  let imgSrc = canvas.toDataURL();
-  const fileName = "edited_image";
-  downloadButton.download = `${fileName}.png`;
-  downloadButton.setAttribute("href", imgSrc);
-}) 
-  
+
 window.onload = () => {
   download.classList.add("hide");
 }
