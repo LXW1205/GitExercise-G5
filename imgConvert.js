@@ -10,7 +10,7 @@ fileInput.addEventListener('change', () => {
     }
     storedFiles.push(f);
 
-    //Set the file chosen by the user can only be image
+    //only image file can be chosen
     var reader = new FileReader();
     reader.onload = function (e) {
       var html =
@@ -26,7 +26,7 @@ fileInput.addEventListener('change', () => {
 });
 
 
-//Display image chosen by the user inside the border
+//display img in the border
 function displayImage(event) {
     const file = event.target.files[0];
     if (file) {
@@ -39,44 +39,37 @@ function displayImage(event) {
     }
 }
 
-
 function convertToPng() {
     var fileInput = document.getElementById('imageUpload');
     var file = fileInput.files[0];
 
-    // Check if user selected a file
     if (file) {
         var allowedExtensions = /(\.jpg|\.jpeg)$/i;
         var pngExtension = /(\.png)$/i;
 
         downloadLink.style.display = 'none';
 
-        // Check if file is a PNG
         if (pngExtension.exec(file.name)) {
             alert('The image you chosen is already in PNG format.');
             fileInput.value = '';
             return false;
         }
 
-       
-        
-        // Create a FileReader to read the file
         var reader = new FileReader();
         
         reader.onload = function(event) {
             var img = new Image();
             img.onload = function() {
-                // Draw the image on a canvas
+                
                 var canvas = document.getElementById('canvas');
                 var ctx = canvas.getContext('2d');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
                 
-                // Convert canvas content to PNG
+                // convert img to png
                 var pngDataUrl = canvas.toDataURL('image/png');
                 
-                // Create a download link
                 var downloadLink = document.getElementById('downloadLink');
                 downloadLink.href = pngDataUrl;
                 downloadLink.download = 'converted-image.png';
