@@ -6,7 +6,8 @@ let file_input = document.getElementById("file");
   const previewButton = document.getElementById("preview");
   const previewImage = document.getElementById("preview-image");
   let cropper = "";
-  let fileName = "";
+
+  
 
   file_input.onchange = () => {
     previewImage.src = "";
@@ -44,8 +45,12 @@ let file_input = document.getElementById("file");
     let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
 
     previewImage.src = imgSrc;
-    const fileName = "edited_image";
-    downloadButton.download = `${fileName}.png`;
+
+    let filename = document.getElementById('filename'); 
+    let Filerename = filename;
+    const Namefile = Filerename.value.trim() || 'cropped_image';
+
+    downloadButton.download = `${Namefile}.png`;
     downloadButton.setAttribute("href", imgSrc);
   });
 
