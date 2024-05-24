@@ -91,8 +91,12 @@ color_picker.addEventListener("change", () => {
     e.preventDefault();
     downloadButton.classList.remove("hide");
     let imgSrc = canvas.toDataURL();
-    const fileName = "edited_image";
-    downloadButton.download = `${fileName}.png`;
+
+    let filename = document.getElementById('filename'); 
+    let Filerename = filename;
+    const Namefile = Filerename.value.trim() || 'drawed_image';
+
+    downloadButton.download = `${Namefile}.png`;
     downloadButton.setAttribute("href", imgSrc);
   })
 

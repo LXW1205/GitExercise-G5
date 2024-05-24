@@ -7,6 +7,8 @@ async function mergePDFs() {
 
     let filename = document.getElementById('filename'); 
     let Filerename = filename;
+
+    const Namefile = Filerename.value.trim() || 'merged_pdf';
   
     if (!file1 || !file2) {
       alert("Please select two PDF files.");

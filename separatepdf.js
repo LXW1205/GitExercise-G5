@@ -4,7 +4,7 @@ async function separatePDF() {
 
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
-  const Namefile = Filerename.value.trim() || 'separatedpdf';
+  const Namefile = Filerename.value.trim() || 'separated_pdf';
 
   const fileInput = document.getElementById('fileInput');
 
