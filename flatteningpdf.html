@@ -63,31 +63,27 @@
     </div>
   </div>
 
-<br></br>
-<br></br>
-<br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+  
+    <div class="wall" align="center">
+      <form action="/">
+          <div id="paper"></div>
+            <div class="poster">
+                <h2>Import pdf to flatten</h2>
 
-  <div class="wall" align="center">
-    <form action="/">
-        <div id="paper"></div>
-          <div class="poster">
-              <h2>Import pdfs to merge</h2>
+                <label for="fileInput">pdf</label>
+                <input type="file" id="fileInput" accept=".pdf"><br>
 
-              <label for="file1">pdf 1</label>
-              <input type="file" id="file1" accept=".pdf">        
-
-              <label for="file2">pdf 2</label>
-              <input type="file" id="file2" accept=".pdf">
-
-              <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
-              <label class="button-87" onclick="mergePDFs()">Merge PDFs</label>
-              <a id="downloadLink" href="#" style="display:none">Download Merged PDF</a>
-
-
+                <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+                <label class="button-87" onclick="flattenPDF()">Flatten PDF</label><br>
+                <a id="downloadLink" href="#" style="display:none">Download flattened PDF</a>
+              
+            </div>
           </div>
-        </div>
-</body>
+  </body>
 
 <script src="MixToolz.js"></script>
-<script src="mergepdf.js"></script>
+<script src="flatteningpdf.js"></script>
 <script src="https://unpkg.com/pdf-lib"></script>
