@@ -1,3 +1,7 @@
+async function Removehide() {
+  hide.classList.remove("hide");
+}
+
 async function separatePDF() {
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
@@ -9,6 +13,16 @@ async function separatePDF() {
   const fileInput = document.getElementById('fileInput');
 
   const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please select PDF file.");
+    return;
+  }
+
+  if (!pagesInput) {
+    alert("Please enter the pages you want to extract.");
+    return;
+  }
 
   const pdfData = await file.arrayBuffer();
 

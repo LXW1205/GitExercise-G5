@@ -1,3 +1,7 @@
+async function Removehide() {
+    hide.classList.remove("hide");
+  }
+
 async function mergePDFs() {
     const fileInput1 = document.getElementById('file1');
     const fileInput2 = document.getElementById('file2');
@@ -15,7 +19,7 @@ async function mergePDFs() {
       return;
     }
   
-    const pdfData1 = await file1.arrayBuffer();
+  const pdfData1 = await file1.arrayBuffer();
   const pdfData2 = await file2.arrayBuffer();
 
   const pdfDoc1 = await PDFLib.PDFDocument.load(pdfData1);

@@ -71,16 +71,20 @@
       <form action="/">
           <div id="paper"></div>
             <div class="poster">
-                <h2>Import pdf to Separate</h2>
+                <h2>Import your PDF to separate</h2>
 
-                <label for="fileInput">pdf</label>
-                <input type="file" id="fileInput" accept=".pdf"><br>
+                <label class="button-87" for="fileInput">Import PDF</label>
+                <input type="file" id="fileInput" onclick="Removehide()" accept=".pdf"><br>
 
+                <div id="hide" class="hide">
                 <h2>Enter Pages to Extract</h2>
                 <textarea id="pages" rows="4" cols="50" placeholder="Enter pages to be separated (e.g. 1,3,5)"></textarea>
 
                 <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+                
                 <label class="button-87" onclick="separatePDF()">separate PDF</label><br>
+                </div>
+
                 <a id="downloadLink" href="#" style="display:none">Download Separated PDF</a>
               
             </div>
