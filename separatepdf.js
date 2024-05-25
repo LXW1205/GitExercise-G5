@@ -5,8 +5,6 @@ async function timer() {
 async function removehide() {
   setTimeout(timer,1000);
 }
-  hide.classList.remove("hide");
-}
 
 async function separatePDF() {
   let pages = document.getElementById('pages'); 
