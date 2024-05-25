@@ -37,9 +37,9 @@
   })
 
 //Tools Weight/Width
-line_weight.addEventListener("change", () => 
-  draw_weight = line_weight.value
-);
+line_weight.addEventListener("change", () => {
+  draw_weight = line_weight.value;
+})
 
 //Clear Drawing
 clear.addEventListener("click", () => {
