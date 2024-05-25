@@ -1,4 +1,10 @@
-async function Removehide() {
+async function timer() {
+  hide.classList.remove("hide");
+}
+
+async function removehide() {
+  setTimeout(timer,1000);
+}
     hide.classList.remove("hide");
   }
 
