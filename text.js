@@ -1,10 +1,10 @@
-const image_sel = document.getElementById("input-file");
-const tools_element = document.querySelector(".tools");
-const color_btn = document.querySelectorAll(".tools .option");
-const color_picker = document.querySelector("#color-picker");
-const text = document.getElementById("text");
-const text_btn = document.getElementById("text-btn");
-const downloadButton = document.getElementById("download");
+let image_sel = document.getElementById("input-file");
+let tools_element = document.querySelector(".tools");
+let color_btn = document.querySelectorAll(".tools .option");
+let color_picker = document.querySelector("#color-picker");
+let text = document.getElementById("text");
+let text_btn = document.getElementById("text-btn");
+let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 

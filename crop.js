@@ -43,7 +43,6 @@ let file_input = document.getElementById("file");
     e.preventDefault();
     downloadButton.classList.remove("hide");
     let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
-
     previewImage.src = imgSrc;
 
     let filename = document.getElementById('filename'); 

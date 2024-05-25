@@ -1,10 +1,11 @@
-  const image_sel = document.getElementById("input-file");
-  const line_weight = document.querySelector("#size");
-  const tools_element = document.querySelector(".tools");
-  const color_btn = document.querySelectorAll(".tools .option");
-  const color_picker = document.querySelector("#color-picker");
-  const downloadButton = document.getElementById("download");
-  const clear = document.querySelector(".clean");
+  let image_sel = document.getElementById("input-file");
+  let line_weight = document.querySelector("#size");
+  let tools_element = document.querySelector(".tools");
+  let shape_btn = document.querySelectorAll(".shape");
+  let color_btn = document.querySelectorAll(".tools .option");
+  let color_picker = document.querySelector("#color-picker");
+  let downloadButton = document.getElementById("download");
+  let clear = document.querySelector(".clean");
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
   
@@ -12,7 +13,13 @@
   let draw_weight = 5;
   let selected_color = "#000";
   let uploaded_img = null;
-      
+  let drawing = false;
+  let selected_shape = "free";
+  let prevMouseX;
+  let prevMouseY;
+  let snapshot;
+  
+  //Import or Upload Image
   image_sel.addEventListener('change', () => {
     const reader = new FileReader()
     reader.onload = (e) => {
@@ -58,11 +65,40 @@ color_picker.addEventListener("change", () => {
   color_picker.parentElement.click();
 })
 
-  //Draw
-  let drawing;
+//Draw Line Shape
+const drawLine = (e) => {
+  ctx.beginPath();
+  ctx.moveTo(prevMouseX, prevMouseY);
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+}
+
+//Draw Rectangle Shape
+const drawRectangle = (e) => {
+  ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetY);
+}
+
+//Draw Circle Shape
+const drawCircle = (e) => {
+  ctx.beginPath();
+  let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX), 2) + Math.pow((prevMouseY - e.offsetY), 2));
+  ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI);
+  ctx.stroke();
+}
+
+shape_btn.forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    selected_shape = btn.id;
+  })
+})
+
+  //Draw  
   canvas.onmousedown = (e) => {
     //console.log('mousedown', e.clientX, e.clientY);
-    drawing = true;
+    prevMouseX = e.offsetX;
+    prevMouseY = e.offsetY;
+    snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    drawing = true;      
     ctx.beginPath();
     ctx.lineWidth = draw_weight;
     ctx.strokeStyle = selected_color;
@@ -70,13 +106,21 @@ color_picker.addEventListener("change", () => {
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.moveTo(e.offsetX, e.offsetY);
-  }
+    }  
 
   canvas.onmousemove = (e) => {
     //console.log('mousemove', e.clientX, e.clientY);
-    if (drawing) {
+    if (!drawing) return;
+    ctx.putImageData(snapshot, 0, 0);
+    if (selected_shape === "free") {
       ctx.lineTo(e.offsetX, e.offsetY);
       ctx.stroke();
+    } else if (selected_shape === "line") {
+      drawLine(e);
+    } else if (selected_shape === "rectangle"){
+      drawRectangle(e)
+    } else {
+      drawCircle(e);
     }
   }
 

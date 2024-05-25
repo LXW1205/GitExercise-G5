@@ -26,7 +26,7 @@ p{
   margin-top: 50px;
   margin-left: 20px;
   margin-right: 20px;
-  width: fit-content;
+  max-width: 70%;
   background-color: rgb(250, 244, 117);
   box-shadow: 10px 20px 10px lemonchiffon inset;
 }
@@ -103,7 +103,7 @@ background-color: #ff4a47;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #ffffff;
+  background-color: #f1f1f1;
 }
 
 .content button{
@@ -179,31 +179,32 @@ display: none;
   flex-direction: row;
 }
 
-.tools .title{
-  margin-top: 17px;
-  margin-left: 5%;
-  margin-right: 2px;
-  border: none;
-}
-
-.options .slider, .text_option{
-display: flex;
+.options, .text_option{
+  display: flex;
+  list-style: none;
 }
 
 #size{
-display: inline-block;
+display: inline;
 cursor: pointer;
+padding-left: 0%;
 }
 
-.text_option{
-  display: flex;
+.shape{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  margin-left: 3px;
+  border: 1px solid #f5a84a;
+  border-radius: 50%;
+  background: #f5a84a;
 }
 
 #color-picker{
 display: flex;
 }
 
-.tools .clean, .text_option span{
+.clean, .text_option span{
 width: 95px;
 height: 20px;
 display: flex;
@@ -212,7 +213,6 @@ border: 1px solid #f5a84a;
 border-radius: 25px;
 background: #f5a84a;
 margin: 5px;
-margin-left: 43%;
 padding: 10px;
 }
 
