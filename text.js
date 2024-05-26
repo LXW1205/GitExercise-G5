@@ -72,7 +72,12 @@ text_btn.addEventListener("click", () => {
     ctx.font = `${text_size} Arial`;
     ctx.textBaseline = "middle";
     ctx.fillStyle = selected_color;
-    ctx.fillText(insert_text, text_x, text_y);
+
+    const lines = insert_text.split('\n');
+    const lineHeight = parseInt(text_size, 10);
+    for (let i = 0; i <= lines.length - 1; i++) {            	
+      ctx.fillText(lines[i], text_x, text_y + i * lineHeight);       
+    }   
   }
 
 function mousePosition(canvas, e) {
@@ -84,8 +89,9 @@ function mousePosition(canvas, e) {
 }
 
 function isInsideText(position) {
-  const text_width = ctx.measureText(insert_text).width;
-  const text_height = 24;
+  const lines = insert_text.split('\n');
+  const text_width = ctx.measureText(lines).width;
+  const text_height = lines.length * (i * (parseInt(text_size, 10)));
   return position.x >= text_x &&
          position.x <= text_x + text_width &&
          position.y >= text_y - text_height / 2 &&
