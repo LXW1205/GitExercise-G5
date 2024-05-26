@@ -16,6 +16,11 @@ async function flattenPDF() {
     const fileInput = document.getElementById('fileInput');
   
     const file = fileInput.files[0];
+    
+    if (!file) {
+      alert("Please select PDF file.");
+      return;
+    }
   
     const pdfData = await file.arrayBuffer();
   
