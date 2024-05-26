@@ -1,6 +1,7 @@
 let image_sel = document.getElementById("input-file");
 let tools_element = document.querySelector(".tools");
 let size = document.querySelector("#size");
+let font = document.querySelector("#fonts");
 let color_btn = document.querySelectorAll(".tools .option");
 let color_picker = document.querySelector("#color-picker");
 let text = document.getElementById("text");
@@ -12,7 +13,9 @@ const ctx = canvas.getContext("2d");
 //Global variables
 let uploaded_img = null;
 let images = new Image();
+let text_style = null;
 let text_size = "24px";
+let text_font = "Arial";
 let selected_color = "#000";
 let dragging = false;
 let drag_x = 0;
@@ -39,6 +42,11 @@ image_sel.addEventListener('change', () => {
 //Text Size
 size.addEventListener("change", () => {
   text_size = size.value + "px";
+})
+
+//Text Font
+font.addEventListener("change", () => {
+  text_font = font.value;
 })
 
 //Color Selection
@@ -69,7 +77,7 @@ text_btn.addEventListener("click", () => {
   function inputText() {
     ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
     ctx.borderStyle = "1px dashed black";
-    ctx.font = `${text_size} Arial`;
+    ctx.font = `${text_size} ${text_font}`;
     ctx.textBaseline = "middle";
     ctx.fillStyle = selected_color;
 
