@@ -19,6 +19,15 @@ async function setdataPDF() {
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
     const metadata = pdfDoc.getMetadata();
+
+    const orititle = pdfDoc.getTitle()
+    const oriauthor =pdfDoc.getAuthor()
+    const orisubject =pdfDoc.getSubject()
+    const orikeywords =pdfDoc.getCreator()
+    const oriproducer =pdfDoc.getKeywords()
+    const oricreator =pdfDoc.getProducer()
+    const oricreationdate =pdfDoc.getCreationDate()
+    const orimodificationdate =pdfDoc.getModificationDate()
     
     let title = document.getElementById('title').value || metadata?.title || "";
     let author = document.getElementById('author').value || metadata?.author || "";
