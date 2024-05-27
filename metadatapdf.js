@@ -1,12 +1,4 @@
-async function timer() {
-    document.getElementById('hide').classList.remove("hide");
-}
-
-async function removehide() {
-    setTimeout(timer, 1000);
-}
-
-async function setdataPDF() {
+async function readdataPDF() {
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
 
@@ -16,27 +8,60 @@ async function setdataPDF() {
     }
 
     const pdfData = await file.arrayBuffer();
-    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-
-    const metadata = pdfDoc.getMetadata();
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData, { 
+        updateMetadata: false 
+      })
 
     const orititle = pdfDoc.getTitle()
-    const oriauthor =pdfDoc.getAuthor()
-    const orisubject =pdfDoc.getSubject()
-    const orikeywords =pdfDoc.getCreator()
-    const oriproducer =pdfDoc.getKeywords()
-    const oricreator =pdfDoc.getProducer()
-    const oricreationdate =pdfDoc.getCreationDate()
-    const orimodificationdate =pdfDoc.getModificationDate()
-    
-    let title = document.getElementById('title').value || metadata?.title || "";
-    let author = document.getElementById('author').value || metadata?.author || "";
-    let subject = document.getElementById('subject').value || metadata?.subject || "";
-    let keywords = document.getElementById('keywords').value || metadata?.keywords || "";
-    let producer = document.getElementById('producer').value || metadata?.producer || "";
-    let creator = document.getElementById('creator').value || metadata?.creator || "";
-    let creationdate = document.getElementById('creationdate').value || metadata?.creationDate || new Date();
-    let modificationdate = document.getElementById('modificationdate').value || metadata?.modificationDate || new Date();
+    const oriauthor = pdfDoc.getAuthor()
+    const orisubject = pdfDoc.getSubject()
+    const oricreator = pdfDoc.getCreator()
+    const orikeywords = pdfDoc.getKeywords()
+    const oriproducer = pdfDoc.getProducer()
+    const oricreationdate = pdfDoc.getCreationDate()
+    const orimodificationdate = pdfDoc.getModificationDate()
+
+    document.getElementById('metadata-list').innerHTML = `
+        <li>Title: ${orititle}</li>
+        <li>Author: ${oriauthor}</li>
+        <li>Author: ${orisubject}</li>
+        <li>Creator: ${oricreator}</li>
+        <li>Keywords: ${orikeywords}</li>
+        <li>Producer: ${oriproducer}</li>
+        <li>Creation Date: ${oricreationdate.toISOString()}</li>
+        <li>Modification Date: ${orimodificationdate.toISOString()}</li>
+      
+
+        <h2>Enter or change the metadata of your PDF</h2>
+
+        <textarea id="title" rows="3" cols="35" placeholder=${orititle}></textarea>
+        <br></br>
+        <textarea id="author" rows="3" cols="35" placeholder=${oriauthor}></textarea>
+        <br></br>
+        <textarea id="subject" rows="3" cols="35" placeholder=${orisubject}></textarea>
+        <br></br>
+        <textarea id="creator" rows="3" cols="35" placeholder=${oricreator}></textarea>
+        <br></br>
+        <textarea id="keywords" rows="3" cols="35" placeholder=${orikeywords}></textarea>
+        <br></br>
+        <textarea id="producer" rows="3" cols="35" placeholder=${oriproducer}></textarea>
+        <br></br>
+        <textarea id="creationdate" rows="3" cols="35" placeholder=${oricreationdate.toISOString()}></textarea>
+        <br></br>
+        <textarea id="modificationdate" rows="3" cols="35" placeholder=${orimodificationdate.toISOString()}></textarea>
+                
+    `;
+}
+
+async function setdataPDF() {
+    let title = document.getElementById('title').value || orititle || "";
+    let author = document.getElementById('author').value || oriauthor || "";
+    let subject = document.getElementById('subject').value || orisubject || "";
+    let creator = document.getElementById('creator').value || oricreator || "";
+    let keywords = document.getElementById('keywords').value || orikeywords || "";
+    let producer = document.getElementById('producer').value || oriproducer || "";
+    let creationdate = document.getElementById('creationdate').value || oricreationdate || new Date();
+    let modificationdate = document.getElementById('modificationdate').value || orimodificationdate || new Date();
 
     pdfDoc.setTitle(title);
     pdfDoc.setAuthor(author);

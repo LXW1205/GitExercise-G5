@@ -65,7 +65,7 @@
         Flatten PDF
         </button>
 
-        <button type="button" onclick="location.href='flatteningpdf.html'" id="blocks">
+        <button type="button" onclick="location.href='metadatapdf.html'" id="blocks">
         <img id="icon" src="MixTooLz Images/Metadata.png">
         Metadata PDF
         </button>
@@ -84,23 +84,10 @@
                 <h2>Import your PDF to read or write metadata</h2>
 
                 <label class="button-87" for="fileInput">Import PDF</label>
-                <input type="file" id="fileInput" onclick="removehide()" accept=".pdf"><br>
+                <input type="file" id="fileInput" onclick="readdataPDF()" accept=".pdf"><br>
 
-                <div id="hide" class="hide">
-                <h2>Enter or change the metadata of your PDF</h2>
-
-                <textarea id="title" rows="4" cols="35" placeholder="title"></textarea>
-                <textarea id="author" rows="4" cols="35" placeholder="author"></textarea>
-                <textarea id="subject" rows="4" cols="35" placeholder="subject"></textarea>
-                <textarea id="keywords" rows="4" cols="35" placeholder="keywords"></textarea>
-                <textarea id="producer" rows="4" cols="35" placeholder="producer"></textarea>
-                <textarea id="creator" rows="4" cols="35" placeholder="creator"></textarea>
-                <textarea id="creationdate" rows="4" cols="35" placeholder="creationdate"></textarea>
-                <textarea id="modificationdate" rows="4" cols="35" placeholder="modificationdate"></textarea>
-                
+                <ul id="metadata-list"></ul>
                 <label class="button-87" onclick="setdataPDF()">Set data to PDF</label><br>
-                </div>
-
                 <a id="downloadLink" href="#" style="display:none">Download PDF</a>
               
             </div>
