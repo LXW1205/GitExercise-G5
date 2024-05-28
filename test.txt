@@ -37,122 +37,150 @@ git status
 
 
 
-
-
-
-
-
-
-
-
-
-
- 
-     <div class="wall" align="center">
-     <form action="/">
-      <div id="paper"></div>
-        <div class="poster">
-
-        
-        <!--Banner?-->
-        <center>
-        <div id="selectedBanner"></div>
-        <div class="form-group" align="center">
-          <h2>Convert file to PDF</h2>
-          <label for="pwd">Choose file</label>
-          <input type="file" class="form-control" accept="image/*" id="pwd">
-        </center>
-        </div>
-
-        
-
-      </form>
+//html
+<h2>Import an Image</h2>
+                <label class="button-87" for="input-file">Import Image</label>
+            <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+                <div id="image-container">
+                    <canvas id="canvas"></canvas>
+                </div>
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="brightness">Brightness</label>
+                        <input type="range" id="brightness" name="brightness" min="-100" max="100" value="0">
+                        <span id="brightness-value">0</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="contrast">Contrast</label>
+                        <input type="range" id="contrast" name="contrast" min="-100" max="100" value="0">
+                        <span id="contrast-value">0</span>
+                    </div>
+                    <button type="button" id="resetButton">Reset</button>
+                    <button type="button" id="downloadButton">Download</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    const fileInput = document.getElementById('container');
+const selectedBanner = document.getElementById('output');
 
+fileInput.addEventListener('change', () => {
+  const files = fileInput.files;
+  const filesArr = Array.prototype.slice.call(files);
+  filesArr.forEach(function (f) {
+    if (!f.type.match("image.*")) {
+      return;
+    }
+    storedFiles.push(f);
 
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var html =
+        '<img src="' +
+        e.target.result +
+        "\" data-file='" +
+        f.name +
+        "alt='Category Image' >";
+      selectedBanner.innerHTML = html;
+    };
+    reader.readAsDataURL(f);
+  });
+});
 
-
-
-
-    </script>
-
-    <script src="https://unpkg.com/react-image-crop/dist/index.umd.cjs"></script>
-    <script>
-      var selDiv = "";
-      var storedFiles = [];
-      $(document).ready(function () {
-        $("#pwd").on("change", handleFileSelect);
-        selDiv = $("#selectedBanner");
-      });
-
-      function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function (f) {
-          if (!f.type.match("image.*")) {
-            return;
-          }
-          storedFiles.push(f);
-
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              '<img src="' +
-              e.target.result +
-              "\" data-file='" +
-              f.name +
-              "alt='Category Image' >";
-            selDiv.html(html);
-          };
-          reader.readAsDataURL(f);
-        });
-      }
-    </script>
-    <script src="convertfile2pdf.js"></script>
-
-<!-- HTML !-->
-<button class="button-87" role="button">Button 87</button>
-
-/* CSS */
-.button-87 {
-  margin: 10px;
-  padding: 15px 30px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 10px;
-  display: block;
-  border: 0px;
-  font-weight: 700;
-  box-shadow: 0px 0px 14px -7px #f09819;
-  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+//js
+function displayImage(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          const output = document.getElementById('output');
+          output.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  }
 }
 
-.button-87:hover {
-  background-position: right center;
-  /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
+function convertToPDF() {
+  const { jsPDF } = window.jspdf;
+  const img = document.getElementById('output');
+  const pdf = new jsPDF();
+  if (img.src) {
+      pdf.addImage(img.src, 'JPEG', 15, 40, 180, 160);
+      pdf.save('download.pdf');
+  } else {
+      alert("Please upload an image first.");
+  }
 }
 
-.button-87:active {
-  transform: scale(0.95);
-}
+//imagetuning.javascript
 
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const uploadInput = document.getElementById('upload');
+    const brightnessInput = document.getElementById('brightness');
+    const contrastInput = document.getElementById('contrast');
+    const resetButton = document.getElementById('resetButton');
+    const downloadButton = document.getElementById('downloadButton');
 
+    const brightnessValue = document.getElementById('brightness-value');
+    const contrastValue = document.getElementById('contrast-value');
+    let originalImage = new Image();
+    let imageLoaded = false;
+
+    function applyFilters() {
+        if (!imageLoaded) return;
+
+        const brightness = parseInt(brightnessInput.value);
+        const contrast = parseInt(contrastInput.value);
+
+        ctx.filter = `
+            brightness(${brightness + 100}%)
+            contrast(${contrast + 100}%)
+        `;
+
+        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+        brightnessValue.textContent = brightness;
+        contrastValue.textContent = contrast;
+    }
+
+    uploadInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                originalImage.onload = function() {
+                    canvas.width = originalImage.width;
+                    canvas.height = originalImage.height;
+                    imageLoaded = true;
+                    applyFilters();
+                };
+                originalImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    brightnessInput.addEventListener('input', applyFilters);
+    contrastInput.addEventListener('input', applyFilters);
+
+    resetButton.addEventListener('click', () => {
+        brightnessInput.value = 0;
+        contrastInput.value = 0;
+        applyFilters();
+    });
+
+    downloadButton.addEventListener('click', () => {
+        if (!imageLoaded) return;
+
+        const link = document.createElement('a');
+        link.download = 'adjusted-image.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+});
 
 
 

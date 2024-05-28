@@ -158,7 +158,7 @@ font-weight: 600;
 color: #000;
 }
 
-.poster label, .form-group label, .btn-default{
+.poster .button-87, .poster .button-28, .form-group .button-87, .form-group .button-87, .btn-default{
 width: 150px;
 height: fit-content;
 display: block;
@@ -174,7 +174,7 @@ cursor: pointer;
 display: none;
 }
 
-.tools{
+.tools span{
   display: flex;
   flex-direction: row;
 }
