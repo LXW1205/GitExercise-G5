@@ -1,9 +1,12 @@
 let image_sel = document.getElementById("input-file");
 let tools_element = document.querySelector(".tools");
+let undo_btn = document.querySelector(".undo");
+let redo_btn = document.querySelector(".redo");
 let size = document.querySelector("#size");
 let font = document.querySelector("#fonts");
 let color_btn = document.querySelectorAll(".tools .option");
 let color_picker = document.querySelector("#color-picker");
+let clear = document.querySelector(".clean");
 let text = document.getElementById("text");
 let text_btn = document.getElementById("text-btn");
 let downloadButton = document.getElementById("download");
@@ -23,6 +26,8 @@ let drag_y = 0;
 let text_x = 0;
 let text_y = 0;
 let insert_text = null;
+let history = [];
+let historywork = 0;
 
 image_sel.addEventListener('change', () => {
     const reader = new FileReader()
@@ -32,12 +37,46 @@ image_sel.addEventListener('change', () => {
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
         uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        saveHistory();
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   })
+
+//Undo and Redo Function
+let state = {
+  position: history[0]
+}
+
+//Save Event History
+const saveHistory = () => {
+  history = history.slice(0, historywork + 1);
+  history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  historywork++;
+}
+
+//Undo
+undo_btn.addEventListener("click", () => {
+  if (historywork === 0) {
+    return;
+  } else {
+    historywork -= 1;
+    ctx.putImageData(history[historywork], 0, 0);
+  }
+  })
+
+//Redo
+redo_btn.addEventListener("click", () => {
+  if (historywork === history.length - 1) {
+    return;
+  } else{
+    historywork += 1;
+    ctx.putImageData(history[historywork], 0, 0);
+  }
+  })  
+
 
 //Text Size
 size.addEventListener("change", () => {
@@ -67,11 +106,19 @@ color_picker.addEventListener("change", () => {
   color_picker.parentElement.click();
 })
 
+//Clear Text
+clear.addEventListener("click", () => {
+  ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
+  download.classList.add("hide");
+  saveHistory();
+})
+
 text_btn.addEventListener("click", () => {
   insert_text = text.value;
   text_x = Math.floor((images.naturalWidth - ctx.measureText(insert_text).width) / 2); 
   text_y = Math.floor((images.naturalHeight + parseInt(ctx.font, 10)) / 2); 
   inputText();
+  saveHistory();
 })
 
   function inputText() {
@@ -127,6 +174,7 @@ canvas.addEventListener("mousemove", (e) => {
 
 canvas.addEventListener("mouseup", () => {
   dragging = false;
+  saveHistory();
 })
 
 //Download Edited Image
