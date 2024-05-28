@@ -1,4 +1,6 @@
   let image_sel = document.getElementById("input-file");
+  let undo_btn = document.querySelector(".undo");
+  let redo_btn = document.querySelector(".redo");
   let line_weight = document.querySelector("#size");
   let tools_element = document.querySelector(".tools");
   let shape_btn = document.querySelectorAll(".shape");
@@ -18,6 +20,8 @@
   let prevMouseX;
   let prevMouseY;
   let snapshot;
+  let history = [];
+  let historywork = 0;
   
   //Import or Upload Image
   image_sel.addEventListener('change', () => {
@@ -28,13 +32,46 @@
         canvas.width = images.width//Resizing
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);   
+        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        saveHistory();
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   })
+
+//Undo and Redo Function
+let state = {
+  position: history[0]
+}
+
+//Save Event History
+const saveHistory = () => {
+  history = history.slice(0, historywork + 1);
+  history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  historywork++;
+}
+
+//Undo
+undo_btn.addEventListener("click", () => {
+  if (historywork === 0) {
+    return;
+  } else {
+    historywork -= 1;
+    ctx.putImageData(history[historywork], 0, 0);
+  }
+  })
+
+//Redo
+redo_btn.addEventListener("click", () => {
+  if (historywork === history.length - 1) {
+    return;
+  } else {
+    historywork += 1;
+    ctx.putImageData(history[historywork], 0, 0);
+  }
+  })  
 
 //Tools Weight/Width
 line_weight.addEventListener("change", () => {
@@ -45,6 +82,7 @@ line_weight.addEventListener("change", () => {
 clear.addEventListener("click", () => {
   ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
   download.classList.add("hide");
+  saveHistory();
 })
 
 //Color Selection
@@ -128,6 +166,7 @@ shape_btn.forEach(btn => {
     //console.log('mousemove', e.clientX, e.clientY);
     drawing = false;
     ctx.closePath();
+    saveHistory();
   }
 
   //Download Edited Image
