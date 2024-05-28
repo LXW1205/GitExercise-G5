@@ -204,6 +204,10 @@ padding-left: 0%;
 display: flex;
 }
 
+.img_width, .img_height{
+  display: contents;
+}
+
 .clean, .text_option span{
 width: 95px;
 height: 20px;

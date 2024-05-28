@@ -36,8 +36,8 @@ image_sel.addEventListener('change', () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        saveHistory();
+        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        saveHistory()
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
