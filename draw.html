@@ -72,9 +72,16 @@
           </button>
 
           <button type="button" onclick="location.href='imagetuning.html'" id="blocks">
-          <img id="icon" src="">
+          <img id="icon" src="MixTooLz Images/tuning.png">
           Image Tuning
           </button>
+
+          <button type="button" onclick="location.href='resize.html'" id="blocks">
+          <img id="icon" src="MixTooLz Images/resize.png">
+          Resize
+          </button>
+
+
           
         </div>
         
@@ -95,8 +102,12 @@
           
           <div class="tools hide">
             <ul class="options">
-              <li class="undo">Undo</li>
-              <li class="redo">Redo</li>
+              <li class="undo">
+                <img src="MixTooLz Images/undo.png" id="icon">
+              </li>
+              <li class="redo">
+                <img src="MixTooLz Images/redo.png" id="icon">
+              </li>
             </ul>
             <span class="title">Line Width</span>
             <ul class="options">
@@ -107,16 +118,24 @@
             <span class="title">Shapes</span>
             <ul class="options">
               <li class="shape" id="free">
-                <span>Free</span>
+                <span>
+                  <img src="MixTooLz Images/Draw.png" id="icon">
+                </span>
               </li>
               <li class="shape" id="line">
-                <span>Line</span>
+                <span>
+                  <img src="MixTooLz Images/line.png" id="icon">
+                </span>
               </li>
               <li class="shape" id="rectangle">
-                <span>Rectangle</span>
+                <span>
+                  <img src="MixTooLz Images/rectangle.png" id="icon">
+                </span>
               </li>
               <li class="shape" id="circle">
-                <span>Circle</span>
+                <span>
+                  <img src="MixTooLz Images/circle.png" id="icon">
+                </span>
               </li>
             </ul>
             <span class="title">Colors</span>
@@ -137,16 +156,15 @@
             </li>
             </div>
             </div>
-          </div>
-
-          <textarea id="filename" class="hide" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+            <textarea id="filename" class="hide" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
           
-          <div class="btn">
-            <a href="" id="download" class="hide">Download</a>
-          </div>                                   
+            <div class="btn">
+              <a href="" id="download" class="hide">Download</a>
+            </div>                                   
+            </div>
           </div> 
-          </div>                                         
-        </div>
+        </div>                                         
+        
 
     <script src="MixToolz.js"></script>
     <script src="draw.js"></script>
