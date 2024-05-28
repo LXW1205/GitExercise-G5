@@ -1,59 +1,72 @@
 async function timer() {
-  hide.classList.remove("hide");
-}
-
+    hide.classList.remove("hide");
+  }
+  
 async function removehide() {
-  setTimeout(timer,1000);
-}
-
+    setTimeout(timer,1000);
+  }
+  
 async function separatePDF() {
-  let pages = document.getElementById('pages'); 
-  let pagesInput = pages.value; 
+    let pages = document.getElementById('pages'); 
+    let pagesInput = pages.value; 
+  
+    let filename1 = document.getElementById('filename1'); 
+    const Namefile1 = filename1.value.trim() || 'separated_pdf_1';
 
-  let filename = document.getElementById('filename'); 
-  let Filerename = filename;
-  const Namefile = Filerename.value.trim() || 'separated_pdf';
+    let filename2 = document.getElementById('filename2'); 
+    const Namefile2 = filename2.value.trim() || 'separated_pdf_2';
+  
+    const fileInput = document.getElementById('fileInput');
+  
+    const file = fileInput.files[0];
+  
+    if (!file) {
+      alert("Please select a PDF file.");
+      return;
+    }
+  
+    if (!pagesInput) {
+      alert("Please enter the pages you want to separate.");
+      return;
+    }
+  
+    const pdfData = await file.arrayBuffer();
+  
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
-  const fileInput = document.getElementById('fileInput');
-
-  const file = fileInput.files[0];
-
-  if (!file) {
-    alert("Please select PDF file.");
-    return;
-  }
-
-  if (!pagesInput) {
-    alert("Please enter the pages you want to extract.");
-    return;
-  }
-
-  const pdfData = await file.arrayBuffer();
-
-  const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-
-  const separatedPdf = await PDFLib.PDFDocument.create();
-
-  const selectedPages = pagesInput.split(',')
+    const separatedPdf1 = await PDFLib.PDFDocument.create();
+    const separatedPdf2 = await PDFLib.PDFDocument.create();
+  
+    const selectedPages = pagesInput.split(',')
     .map(page => parseInt(page.trim(), 10))
     .filter(page => !isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount());
 
-  if (selectedPages.length === 0) {
-    alert("No valid pages selected.");
-    return;
-  }
+    let Num1 = parseInt(selectedPages[0]);
+    let Num2 = parseInt(selectedPages[1]);
+  
+    for (const pageNum1 of Num1) {
+      const [copiedPage1] = await extractedPdf.copyPages(pdfDoc, [pageNum1 - 1]);
+      separatedPdf1.addPage(copiedPage1);
+    }
 
-  for (const pageNum of selectedPages) {
-    const [copiedPage] = await separatedPdf.copyPages(pdfDoc, [pageNum - 1]);
-    separatedPdf.addPage(copiedPage);
-  }
+    for (const pageNum2 of Num2) {
+      const [copiedPage2] = await extractedPdf.copyPages(pdfDoc, [pageNum2 - 1]);
+      separatedPdf2.addPage(copiedPage2);
+    }
 
-  const separatedPdfData = await separatedPdf.save();
-  const blob = new Blob([separatedPdfData], { type: 'application/pdf' });
-  const downloadLink = document.getElementById('downloadLink');
-
-  downloadLink.style.display = 'block';
-  downloadLink.href = URL.createObjectURL(blob);
-  downloadLink.download = `${Namefile}.pdf`;
-
-};
+    const separatedPdfData1 = await separatedPdf1.save();
+    const blob1 = new Blob([separatedPdfData1], { type: 'application/pdf' });
+    const downloadLink1 = document.getElementById('downloadLink1');
+  
+    const separatedPdfData2 = await separatedPdf2.save();
+    const blob2 = new Blob([separatedPdfData2], { type: 'application/pdf' });
+    const downloadLink2 = document.getElementById('downloadLink2');
+  
+    downloadLink1.style.display = 'block';
+    downloadLink1.href = URL.createObjectURL(blob1);
+    downloadLink1.download = `${Namefile1}.pdf`;
+  
+    downloadLink2.style.display = 'block';
+    downloadLink2.href = URL.createObjectURL(blob2);
+    downloadLink2.download = `${Namefile2}.pdf`;
+}
