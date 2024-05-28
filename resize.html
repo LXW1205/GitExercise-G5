@@ -5,9 +5,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themws/smoothness/jquery-ui.css" rel="stylesheet" type="text/css/">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <title>Draw</title>
         
       <link rel="stylesheet" type="text/css" href="MixToolz.css">
@@ -80,8 +77,6 @@
           <img id="icon" src="MixTooLz Images/resize.png">
           Resize
           </button>
-
-
           
         </div>
         
@@ -90,84 +85,37 @@
 <br></br>
 
         <div class="wall" align="center">
-          <div id="paper">
-          <div class="poster">
+            <div id="paper">
+            <div class="poster">
             <div>
-              <img id="image">
+                <img id="image">
             </div>
-          <h2>Import your image here</h2>
-          <label class="button-87" for="input-file">Import Image</label>
-          <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
-          <canvas id="canvas" width="0" height="0"></canvas>
-          
-          <div class="tools hide">
-            <ul class="options">
-              <li class="undo">
-                <img src="MixTooLz Images/undo.png" id="icon">
-              </li>
-              <li class="redo">
-                <img src="MixTooLz Images/redo.png" id="icon">
-              </li>
-            </ul>
-            <span class="title">Line Width</span>
-            <ul class="options">
-              <li class="slide">
-                <input type="range" id="size" min="1" max="30" value="5">
-              </li>
-            </ul>
-            <span class="title">Shapes</span>
-            <ul class="options">
-              <li class="shape" id="free">
-                <span>
-                  <img src="MixTooLz Images/Draw.png" id="icon">
-                </span>
-              </li>
-              <li class="shape" id="line">
-                <span>
-                  <img src="MixTooLz Images/line.png" id="icon">
-                </span>
-              </li>
-              <li class="shape" id="rectangle">
-                <span>
-                  <img src="MixTooLz Images/rectangle.png" id="icon">
-                </span>
-              </li>
-              <li class="shape" id="circle">
-                <span>
-                  <img src="MixTooLz Images/circle.png" id="icon">
-                </span>
-              </li>
-            </ul>
-            <span class="title">Colors</span>
-            <ul class="options">
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option"></li>
-              <li class="option">
-                <input type="color" id="color-picker" value="#4A98F7">
-              </li>
-            </ul>
-            <div>
-            <li class="clean">
-              <img src="MixTooLz Images/Clean.png" id="icon">
-              <span>Clear</span>
-            </li>
+            <h2>Import your image here</h2>
+            <label class="button-87" for="input-file">Import Image</label>
+            <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+            <canvas id="canvas" width="0" height="0"></canvas>
+
+            <div class="tools hide">
+                <ul class="options">
+                    <li class="img_width">
+                        <span id="width_span">Width</span>
+                        <textarea id="width_input" placeholder="Enter width" row="5" cols="10"></textarea>
+                    </li>
+                    <li class="img_height">
+                        <span id="height_span">Height</span>
+                        <textarea id="height_input" placeholder="Enter height" row="5" cols="10"></textarea>
+                    </li>
+                </ul>
             </div>
-            </div>
-            <textarea id="filename" class="hide" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
-          
             <div class="btn">
-              <a href="" id="download" class="hide">Download</a>
-            </div>                                   
+                <a href="" id="download" class="hide">Download</a>
             </div>
-          </div> 
-        </div>                                         
-        
+            </div>
+            </div>
+        </div>
 
     <script src="MixToolz.js"></script>
-    <script src="draw.js"></script>
+    <script src="resize.js"></script>
     
     </body>
     </head>

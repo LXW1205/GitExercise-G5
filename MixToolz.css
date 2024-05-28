@@ -179,7 +179,7 @@ display: none;
   flex-direction: row;
 }
 
-.options, .text_option{
+.options, .text_option, .selection{
   display: flex;
   list-style: none;
 }
@@ -191,8 +191,8 @@ padding-left: 0%;
 }
 
 .shape, .undo, .redo{
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   margin-left: 3px;
   border: 1px solid #f5a84a;
@@ -202,6 +202,10 @@ padding-left: 0%;
 
 #color-picker{
 display: flex;
+}
+
+.img_width, .img_height{
+  display: contents;
 }
 
 .clean, .text_option span{

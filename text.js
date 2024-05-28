@@ -9,6 +9,7 @@ let color_picker = document.querySelector("#color-picker");
 let clear = document.querySelector(".clean");
 let text = document.getElementById("text");
 let text_btn = document.getElementById("text-btn");
+let text_btn2 = document.getElementById("text-btn2");
 let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
@@ -36,8 +37,8 @@ image_sel.addEventListener('change', () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        saveHistory();
+        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        saveHistory()
       }      
       images.src = e.target.result;
       tools_element.classList.remove("hide");
@@ -77,7 +78,6 @@ redo_btn.addEventListener("click", () => {
   }
   })  
 
-
 //Text Size
 size.addEventListener("change", () => {
   text_size = size.value + "px";
@@ -108,7 +108,7 @@ color_picker.addEventListener("change", () => {
 
 //Clear Text
 clear.addEventListener("click", () => {
-  ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
+  ctx.putImageData(uploaded_img, 0, 0); //To clear the whole text
   download.classList.add("hide");
   saveHistory();
 })
