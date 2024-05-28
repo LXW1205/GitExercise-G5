@@ -174,7 +174,7 @@ cursor: pointer;
 display: none;
 }
 
-.tools span{
+.tools{
   display: flex;
   flex-direction: row;
 }
@@ -190,9 +190,9 @@ cursor: pointer;
 padding-left: 0%;
 }
 
-.shape{
-  width: 60px;
-  height: 60px;
+.shape, .undo, .redo{
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   margin-left: 3px;
   border: 1px solid #f5a84a;
