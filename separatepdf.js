@@ -37,20 +37,24 @@ async function separatePDF() {
     const separatedPdf1 = await PDFLib.PDFDocument.create();
     const separatedPdf2 = await PDFLib.PDFDocument.create();
 
-    if (pagesInput.length === 0) {
+    const selectedPages = pagesInput.split(',')
+    .map(page => parseInt(page.trim(), 10))
+    .filter(page => !isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount());
+
+    if (selectedPages.length === 0) {
     alert("No valid pages selected.");
     return;
     }
 
-    for (const pageNum of pagesInput) {
-    const [copiedPage1] = await separatedPdf1.copyPages(pdfDoc, [pageNum - 1]);
-    separatedPdf1.addPage(copiedPage1);
+    for (const pageNum of selectedPages) {
+    const [copiedPage] = await separatedPdf1.copyPages(pdfDoc, [pageNum - 1]);
+    separatedPdf1.addPage(copiedPage);
     }
 
-    for (const pageNum of pagesInput) {
-    const [copiedPage2] = await separatedPdf2.copyPages(pdfDoc, [pageNum - 1]);
-    separatedPdf2.addPage(copiedPage2);
-    }
+    for (const pageNum of selectedPages) {
+      const [copiedPage] = await separatedPdf2.copyPages(pdfDoc, [pageNum - 1]);
+      separatedPdf2.addPage(copiedPage);
+      }
 
     const separatedPdfData1 = await separatedPdf1.save();
     const blob1 = new Blob([separatedPdfData1], { type: 'application/pdf' });
