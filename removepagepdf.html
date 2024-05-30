@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<import js.pdf></import>
+<html lang="en">
+<html>
+  
+<head>
+
+<title>Remove pages from PDF</title>
+<link rel="stylesheet" type="text/css" href="MixToolz.css">
+
+</head>
+
+<body>
+  <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='MixToolz.html'">
+
+  <div align="right">
+    <button type="button" class="collapsible">
+      <img id="menubar" src="MixTooLz Images/Edit.png">&nbsp;Tools</button>
+    
+      <div class="content1">
+
+        <!--Adding buttons to the navigation bar in home page-->
+        <button type="button" onclick="location.href='MixToolz.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Home.png">
+        Home 
+        </button>
+
+        <button type="button" onclick="location.href='convertfile2pdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Convertpdf.png">
+        Convert PDF
+        </button>
+
+        <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Separate.png">
+        Separate PDF
+        </button>
+
+        <button type="button" onclick="location.href='removepagepdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Remove.png">
+        Remove PDF
+        </button>
+      
+        <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Separate.png">
+        Separate PDF
+        </button>
+
+        <button type="button" onclick="location.href='mergepdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Merge.png">
+        Merge PDF
+        </button>
+
+        <button type="button" onclick="location.href='draw.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Draw.png">
+        Draw
+        </button>
+
+        <button type="button" onclick="location.href='text.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Text.png">
+        Text
+        </button>
+
+        <button type="button" onclick="location.href='crop.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Crop.png">
+        Crop
+        </button>
+
+        <button type="button" onclick="location.href='imgConvert.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/img_converter.png">
+        Image Convert
+        </button>
+
+        <button type="button" onclick="location.href='flatteningpdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Flatten.png">
+        Flatten PDF
+        </button>
+
+        <button type="button" onclick="location.href='metadatapdf.html'" id="blocks">
+        <img id="icon" src="MixTooLz Images/Metadata.png">
+        Metadata PDF
+        </button>
+
+        <button type="button" onclick="location.href='imagetuning.html'" id="blocks">
+        <img id="icon" src="">
+        Image Tuning
+        </button>
+      
+    </div>
+  </div>
+
+  <br></br>
+  <br></br>
+  <br></br>
+  
+    <div class="wall" align="center">
+      <form action="/">
+          <div id="paper"></div>
+            <div class="poster">
+                <h2>Import your PDF to remove pages</h2>
+
+                <label class="button-87" for="fileInput">Import PDF</label>
+                <input type="file" id="fileInput" onclick="removehide()" accept=".pdf"><br>
+
+                <div id="hide" class="hide">
+                <h2>Enter Pages to Removet</h2>
+                <textarea id="pages" rows="4" cols="50" placeholder="Enter pages to be removed (e.g. 1,3,5)"></textarea>
+
+                <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+                
+                <label class="button-87" onclick="removePDF()">Remove pages</label><br>
+                </div>
+
+                <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+              
+            </div>
+          </div>
+  </body>
+
+<script src="MixToolz.js"></script>
+<script src="removepagepdf.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1"></script>
