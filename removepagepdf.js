@@ -32,25 +32,18 @@ async function timer() {
   
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
   
-    const removedPdf = await PDFLib.PDFDocument.create();
-  
-    const selectedPages = document.getElementById('pages').value.split(',').map(Number);
+    const totalPages = pdfDoc.getPageCount();
 
-    const pagesToKeep = [];
+    const selectedPages = pagesInput.split(',')
+      .map(page => parseInt(page.trim(), 10))
+      .filter(page => !isNaN(page) && page >= 1 && page <= totalPages)
+      .sort((a, b) => b - a);
 
-    for (let i = 0; i < totalPages; i++) {
-        if (!selectedPages.includes(i + 1)) {
-            pagesToKeep.push(i);
-        }
-    }
-  
-    if (selectedPages.length === 0) {
-      alert("No valid pages selected.");
-      return;
+    for (const page of selectedPages) {
+      pdfDoc.removePage(page - 1);
     }
 
-
-    const removedPdfData = await removedPdf.save();
+    const removedPdfData = await pdfDoc.save();
     const blob = new Blob([removedPdfData], { type: 'application/pdf' });
     const downloadLink = document.getElementById('downloadLink');
   

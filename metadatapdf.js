@@ -1,12 +1,24 @@
 async function readdataPDF() {
     const fileInput = document.getElementById('fileInput');
-  
+
     const file = fileInput.files[0];
   
-    const arrayBuffer = await file.arrayBuffer();
+    const pdfData = await file.arrayBuffer();
 
-    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-    
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData, { 
+        updateMetadata: false 
+      })
+
+    console.log('Title:', pdfDoc.getTitle())
+    console.log('Author:', pdfDoc.getAuthor())
+    console.log('Subject:', pdfDoc.getSubject())
+    console.log('Creator:', pdfDoc.getCreator())
+    console.log('Keywords:', pdfDoc.getKeywords())
+    console.log('Producer:', pdfDoc.getProducer())
+    console.log('Creation Date:', pdfDoc.getCreationDate())
+    console.log('Modification Date:', pdfDoc.getModificationDate())
+    }
+/*
     const orititle = pdfDoc.getTitle()
     const oriauthor = pdfDoc.getAuthor()
     const orisubject = pdfDoc.getSubject()
@@ -69,3 +81,4 @@ async function setdataPDF() {
     downloadLink.href = URL.createObjectURL(blob);
     downloadLink.download = `modified_PDF.pdf`;
 }
+*/
