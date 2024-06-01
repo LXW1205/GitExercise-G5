@@ -9,24 +9,14 @@ async function readdataPDF() {
         updateMetadata: false 
       })
 
-    console.log('Title:', pdfDoc.getTitle())
-    console.log('Author:', pdfDoc.getAuthor())
-    console.log('Subject:', pdfDoc.getSubject())
-    console.log('Creator:', pdfDoc.getCreator())
-    console.log('Keywords:', pdfDoc.getKeywords())
-    console.log('Producer:', pdfDoc.getProducer())
-    console.log('Creation Date:', pdfDoc.getCreationDate())
-    console.log('Modification Date:', pdfDoc.getModificationDate())
-    }
-/*
-    const orititle = pdfDoc.getTitle()
-    const oriauthor = pdfDoc.getAuthor()
-    const orisubject = pdfDoc.getSubject()
-    const oricreator = pdfDoc.getCreator()
-    const orikeywords = pdfDoc.getKeywords()
-    const oriproducer = pdfDoc.getProducer()
-    const oricreationdate = pdfDoc.getCreationDate()
-    const orimodificationdate = pdfDoc.getModificationDate()
+    orititle = pdfDoc.getTitle()
+    oriauthor = pdfDoc.getAuthor()
+    orisubject = pdfDoc.getSubject()
+    oricreator = pdfDoc.getCreator()
+    orikeywords = pdfDoc.getKeywords()
+    oriproducer = pdfDoc.getProducer()
+    oricreationdate = pdfDoc.getCreationDate()
+    orimodificationdate = pdfDoc.getModificationDate()
 
     document.getElementById('metadata-list').innerHTML = `
     
@@ -47,38 +37,34 @@ async function readdataPDF() {
         <textarea id="creationdate" rows="3" cols="35" placeholder=${oricreationdate.toISOString()}></textarea>
         <br></br>
         <textarea id="modificationdate" rows="3" cols="35" placeholder=${orimodificationdate.toISOString()}></textarea>
-                
-                
-        </div>
-                
+
     `;
+
+    async function setdataPDF() {
+        let title = document.getElementById('title').value || orititle || "";
+        let author = document.getElementById('author').value || oriauthor || "";
+        let subject = document.getElementById('subject').value || orisubject || "";
+        let creator = document.getElementById('creator').value || oricreator || "";
+        let keywords = document.getElementById('keywords').value || orikeywords || "";
+        let producer = document.getElementById('producer').value || oriproducer || "";
+        let creationdate = document.getElementById('creationdate').value || oricreationdate || new Date();
+        let modificationdate = document.getElementById('modificationdate').value || orimodificationdate || new Date();
+
+        pdfDoc.setTitle(title);
+        pdfDoc.setAuthor(author);
+        pdfDoc.setSubject(subject);
+        pdfDoc.setKeywords(keywords);
+        pdfDoc.setProducer(producer);
+        pdfDoc.setCreator(creator);
+        pdfDoc.setCreationDate(new Date(creationdate));
+        pdfDoc.setModificationDate(new Date(modificationdate));
+
+        const PdfData = await pdfDoc.save();
+        const blob = new Blob([PdfData], { type: 'application/pdf' });
+        const downloadLink = document.getElementById('downloadLink');
+
+        downloadLink.style.display = 'block';
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = `modified_PDF.pdf`;
+    }
 }
-
-async function setdataPDF() {
-    let title = document.getElementById('title').value || orititle || "";
-    let author = document.getElementById('author').value || oriauthor || "";
-    let subject = document.getElementById('subject').value || orisubject || "";
-    let creator = document.getElementById('creator').value || oricreator || "";
-    let keywords = document.getElementById('keywords').value || orikeywords || "";
-    let producer = document.getElementById('producer').value || oriproducer || "";
-    let creationdate = document.getElementById('creationdate').value || oricreationdate || new Date();
-    let modificationdate = document.getElementById('modificationdate').value || orimodificationdate || new Date();
-
-    pdfDoc.setTitle(title);
-    pdfDoc.setAuthor(author);
-    pdfDoc.setSubject(subject);
-    pdfDoc.setKeywords(keywords);
-    pdfDoc.setProducer(producer);
-    pdfDoc.setCreator(creator);
-    pdfDoc.setCreationDate(new Date(creationdate));
-    pdfDoc.setModificationDate(new Date(modificationdate));
-
-    const PdfData = await pdfDoc.save();
-    const blob = new Blob([PdfData], { type: 'application/pdf' });
-    const downloadLink = document.getElementById('downloadLink');
-
-    downloadLink.style.display = 'block';
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = `modified_PDF.pdf`;
-}
-*/

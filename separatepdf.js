@@ -56,13 +56,11 @@ async function separatePDF() {
     const secondPage = selectedPages[1] - 1;
 
     for (let i = 0; i <= firstPage; i++) {
-        console.log(`Copying page ${i + 1} to the first PDF`);
         const [page] = await separatedPdf1.copyPages(pdfDoc, [i]);
         separatedPdf1.addPage(page);
     }
 
     for (let i = secondPage; i < totalPages; i++) {
-        console.log(`Copying page ${i + 1} to the second PDF`);
         const [page] = await separatedPdf2.copyPages(pdfDoc, [i]);
         separatedPdf2.addPage(page);
     }
