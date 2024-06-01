@@ -24,7 +24,7 @@ async function timer() {
     }
   
     if (!pagesInput) {
-      alert("Please enter the pages you want to extract.");
+      alert("Please enter the pages you want to remove.");
       return;
     }
   

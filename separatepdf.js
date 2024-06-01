@@ -35,26 +35,37 @@ async function separatePDF() {
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
     const separatedPdf1 = await PDFLib.PDFDocument.create();
-    const separatedPdf2 = await PDFLib.PDFDocument.create();
+    const separatedPdf2 = await PDFLib.PDFDocument.create();    
+
+    const totalPages = pdfDoc.getPageCount();
 
     const selectedPages = pagesInput.split(',')
     .map(page => parseInt(page.trim(), 10))
     .filter(page => !isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount());
+    
+    const pageRanges = pagesInput.split(',')
+    .map(range => range.split('-').map(page => parseInt(page.trim(), 10)))
+    .filter(range => range.every(page => !isNaN(page) && page >= 1 && page <= totalPages));
 
-    if (selectedPages.length === 0) {
-    alert("No valid pages selected.");
-    return;
+    if (pageRanges.length < 2) {
+        alert("Please enter valid page ranges for both documents.");
+        return;
     }
 
-    for (const pageNum of selectedPages) {
-    const [copiedPage] = await separatedPdf1.copyPages(pdfDoc, [pageNum - 1]);
-    separatedPdf1.addPage(copiedPage);
+    const firstPage = selectedPages[0] - 1;
+    const secondPage = selectedPages[1] - 1;
+
+    for (let i = 0; i <= firstPage; i++) {
+        console.log(`Copying page ${i + 1} to the first PDF`);
+        const [page] = await separatedPdf1.copyPages(pdfDoc, [i]);
+        separatedPdf1.addPage(page);
     }
 
-    for (const pageNum of selectedPages) {
-      const [copiedPage] = await separatedPdf2.copyPages(pdfDoc, [pageNum - 1]);
-      separatedPdf2.addPage(copiedPage);
-      }
+    for (let i = secondPage; i < totalPages; i++) {
+        console.log(`Copying page ${i + 1} to the second PDF`);
+        const [page] = await separatedPdf2.copyPages(pdfDoc, [i]);
+        separatedPdf2.addPage(page);
+    }
 
     const separatedPdfData1 = await separatedPdf1.save();
     const blob1 = new Blob([separatedPdfData1], { type: 'application/pdf' });
