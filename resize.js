@@ -8,7 +8,7 @@ const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
 let uploaded_img = null;
-let new_width, new_height;
+let initial_ratio;
 
 //Import or Upload Image
 image_sel.addEventListener('change', () => {
@@ -21,6 +21,7 @@ image_sel.addEventListener('change', () => {
         canvas.height = images.height
         input_width.value = images.naturalWidth 
         input_height.value = images.naturalHeight
+        initial_ratio = images.naturalWidth / images.naturalHeight
         document.querySelector(".poster").classList.add("active")
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
       }      
@@ -30,18 +31,22 @@ image_sel.addEventListener('change', () => {
     reader.readAsDataURL(image_sel.files[0])
   })
 
-  input_width.addEventListener("input", () => {
-    new_width = Math.floor(input_width.value);
-    canvas.width = new_width;
+  input_width.addEventListener("keyup", () => {
+    const new_height = input_width.value / initial_ratio;
+    input_height.value = Math.floor(new_height);    
+    canvas.width = input_width.value;
+    canvas.height = input_height.value;
     if (uploaded_img) {
       ctx.drawImage(uploaded_img, 0, 0, canvas.width, canvas.height);
     }
     downloadAppear();
   })
 
-  input_height.addEventListener("input", () => {
-    new_height = Math.floor(input_height.value);
-    canvas.height = new_height;
+  input_height.addEventListener("keyup", () => {
+    const new_width = input_height.value * initial_ratio;
+    input_width.value = Math.floor(new_width);
+    canvas.width = input_width.value;
+    canvas.height = input_height.value;
     if (uploaded_img) {
       ctx.drawImage(uploaded_img, 0, 0, canvas.width, canvas.height);
     }
@@ -54,13 +59,17 @@ image_sel.addEventListener('change', () => {
   }
   
   //Download Edited Image
-  canvas.addEventListener("click", (e) => {
+  downloadButton.addEventListener("click", (e) => {
     e.preventDefault();
     let imgSrc = canvas.toDataURL();    
     const fileName = "resized_image";
-    downloadButton.download = `${fileName}.png`;
-    downloadButton.setAttribute("href", imgSrc);
-  })
+    const a = document.createElement("a");
+    a.href = imgSrc;
+    a.download = `${fileName}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    })
 
   window.onload = () => {
     downloadButton.classList.add("hide");
