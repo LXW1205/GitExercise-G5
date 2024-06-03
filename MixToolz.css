@@ -170,7 +170,7 @@ background-color: #f5a84a;
 cursor: pointer;
 }
 
-.poster input, .form-group input{
+.poster #input-file, .form-group input{
 display: none;
 }
 
@@ -179,7 +179,7 @@ display: none;
   flex-direction: row;
 }
 
-.options, .text_option, .selection{
+.options, .text_option, .selection, .checkbox{
   display: flex;
   list-style: none;
 }

@@ -1,4 +1,5 @@
-let file_input = document.getElementById("file");
+  //Global variables
+  let file_input = document.getElementById("input-file");
   let image = document.getElementById("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");

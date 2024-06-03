@@ -7,6 +7,7 @@ let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
+//Global variables set as default
 let uploaded_img = null;
 let initial_ratio;
 

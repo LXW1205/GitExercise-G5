@@ -1,3 +1,4 @@
+  //Global variables
   let image_sel = document.getElementById("input-file");
   let undo_btn = document.querySelector(".undo");
   let redo_btn = document.querySelector(".redo");
@@ -11,7 +12,7 @@
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
   
-  //Global variables
+  //Global variables set as default
   let draw_weight = 5;
   let selected_color = "#000";
   let uploaded_img = null;

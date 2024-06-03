@@ -1,8 +1,12 @@
+//Global variables
 let image_sel = document.getElementById("input-file");
 let tools_element = document.querySelector(".tools");
 let undo_btn = document.querySelector(".undo");
 let redo_btn = document.querySelector(".redo");
 let size = document.querySelector("#size");
+let style = document.querySelector(".checkbox");
+let bold_style = document.querySelector("#bold");
+let italic_style = document.querySelector("#italic");
 let font = document.querySelector("#fonts");
 let color_btn = document.querySelectorAll(".tools .option");
 let color_picker = document.querySelector("#color-picker");
@@ -14,10 +18,11 @@ let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-//Global variables
+//Global variables set as default
 let uploaded_img = null;
 let images = new Image();
-let text_style = null;
+let text_style = "";
+let style_status = [];
 let text_size = "24px";
 let text_font = "Arial";
 let selected_color = "#000";
@@ -85,11 +90,24 @@ redo_btn.addEventListener("click", () => {
 //Text Size
 size.addEventListener("change", () => {
   text_size = size.value + "px";
+  inputText();
+  saveHistory();
+})
+
+//Text Style
+style.addEventListener("change", () => {
+  const text_style1 = bold_style.checked ? "bold" : "";
+  const text_style2 = italic_style.checked ? "italic" : "";
+  text_style = `${text_style1} ${text_style2}`.trim();
+  inputText();
+  saveHistory();
 })
 
 //Text Font
 font.addEventListener("change", () => {
   text_font = font.value;
+  inputText();
+  saveHistory();
 })
 
 //Color Selection
@@ -101,6 +119,8 @@ color_btn.forEach(btn => {
       }
     btn.classList.add("selected");
     selected_color = window.getComputedStyle(btn).getPropertyValue("background-color");
+    inputText();
+    saveHistory();
   })
 })
 
@@ -108,6 +128,8 @@ color_btn.forEach(btn => {
 color_picker.addEventListener("change", () => {
   color_picker.parentElement.style.background = color_picker.value;
   color_picker.parentElement.click();
+  inputText();
+  saveHistory();
 })
 
 //Clear Text
@@ -127,8 +149,7 @@ text_btn.addEventListener("click", () => {
 
   function inputText() {
     ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
-    ctx.borderStyle = "1px dashed black";
-    ctx.font = `${text_size} ${text_font}`;
+    ctx.font = `${text_style} ${text_size} ${text_font}`;
     ctx.textBaseline = "middle";
     ctx.fillStyle = selected_color;
 
