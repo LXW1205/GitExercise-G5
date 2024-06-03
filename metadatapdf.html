@@ -106,11 +106,11 @@
                 <label class="button-87" for="fileInput">Import PDF</label>
                 <input type="file" id="fileInput" accept=".pdf"><br>
 
-                <label class="button-87" for="fileInput" onclick="readdataPDF()">Read (or write) Metadata</label>
+                <label class="button-87" id="loadPDFButton" onclick="readdataPDF()">Read (or write) Metadata</label>
                 
                 <ul id="metadata-list"></ul>
                 
-                <label class="button-87" onclick="readdataPDF(setdataPDF())">Set data to PDF</label><br>
+                <label class="button-87" id="savePDFButton" style="display: none;">Set data to PDF</label><br>
                 <a id="downloadLink" href="#" style="display:none">Download PDF</a>
               
             </div>
