@@ -54,7 +54,7 @@ let state = {
 //Save Event History
 const saveHistory = () => {
   history = history.slice(0, historywork + 1);
-  history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  history.push({image : ctx.getImageData(0, 0, canvas.width, canvas.height), text_x : text_x, text_y : text_y});
   historywork++;
 }
 
@@ -64,7 +64,9 @@ undo_btn.addEventListener("click", () => {
     return;
   } else {
     historywork -= 1;
-    ctx.putImageData(history[historywork], 0, 0);
+    ctx.putImageData(history[historywork].image, 0, 0);
+    text_x = history[historywork].text_x;
+    text_y = history[historywork].text_y;
   }
   })
 
@@ -74,7 +76,9 @@ redo_btn.addEventListener("click", () => {
     return;
   } else{
     historywork += 1;
-    ctx.putImageData(history[historywork], 0, 0);
+    ctx.putImageData(history[historywork].image, 0, 0);
+    text_x = history[historywork].text_x;
+    text_y = history[historywork].text_y;
   }
   })  
 
