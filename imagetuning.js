@@ -33,6 +33,29 @@ function updateImageFilter() {
   img.style.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
 }
 
+function download() {
+  // Get the image element
+  const img = document.querySelector('#output');
+
+  // Create a canvas and a context
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Set the canvas dimensions
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  // Draw the image on the canvas with the filter
+  ctx.filter = img.style.filter;
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  // Create the download link
+  const link = document.createElement('a');
+  link.download = 'adjusted-image.png';
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
 // Add event listeners to the input elements
 document.getElementById('brightness').addEventListener('input', updateImageFilter);
 document.getElementById('contrast').addEventListener('input', updateImageFilter);

@@ -99,13 +99,22 @@
                 <input type="file" id="input-file" accept="image/*" onchange="displayImage(event)">
                 <label class="button-87" for="input-file">Select file</label>
                 <div  style="margin-top: 20px;">
-                    <img id="output" style="max-width: 400px; max-height: 400px;" />
-                </div>
-                <div class="hide">
-          <input type="range" id="brightness" min="0" max="200" value="100">
-<input type="range" id="contrast" min="0" max="200" value="100">
-<img id="output" accept="image/*">
-            </div></div>
+                <img id="output" style="max-width: 400px; max-height: 400px;" />
+            </div>
+                
+        <div class="hide"></div>
+            <h4>Brightness
+            <input type="range" id="brightness" min="0" max="200" value="100">
+            </h4>
+
+            <h4>Contrast
+            <input type="range" id="contrast" min="0" max="200" value="100">
+            </h4>  
+            <button class="button-87" onclick=download()> Download </button>
+       
+        </div>
+        
+        
           
     </body>
 
