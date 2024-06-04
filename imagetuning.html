@@ -94,26 +94,19 @@
         
         <div id="paper"></div>
         <div class="poster">
-            <h2>Convert Image Format</h2>
-        <div class="upload-img">
-          <input type="file" id="container" accept="image/*" onchange="container(event)">
-          <img id="output" width="400" height="400" />
-
-          <div class="upload-img">
-            <input type="file" id="imageUpload" accept="image/*" onchange="displayImage(event)">
-            <label class="button-87" for="imageUpload">Import file</label>
-            <div id="imageContainer" style="margin-top: 20px;">
-                <img id="output" style="max-width: 400px; max-height: 400px;" />
-            </div>
-            
+            <h2>Adjust Image Brightness & Contrast</h2>
+            <div>
+                <input type="file" id="input-file" accept="image/*" onchange="displayImage(event)">
+                <label class="button-87" for="input-file">Select file</label>
+                <div  style="margin-top: 20px;">
+                    <img id="output" style="max-width: 400px; max-height: 400px;" />
+                </div>
+                <div class="hide">
+          <input type="range" id="brightness" min="0" max="200" value="100">
+<input type="range" id="contrast" min="0" max="200" value="100">
+<img id="output" accept="image/*">
+            </div></div>
           
-
-
-
-          
-      
-          
-
     </body>
 
     <script src="MixToolz.js"></script>
