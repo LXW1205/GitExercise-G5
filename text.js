@@ -64,6 +64,7 @@ function importImage() {
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
   });
+  
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;

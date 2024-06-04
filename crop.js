@@ -49,6 +49,7 @@
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
   });
+  
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     file_input.files = e.dataTransfer.files;

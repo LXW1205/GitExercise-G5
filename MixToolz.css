@@ -174,8 +174,10 @@ cursor: pointer;
 display: none;
 }
 
-.drop_area{
-  width: 250px;
+.poster .drop_area{
+  width: 350px;
+  height: 125px;
+  margin: 10px auto;
   padding: 5px;
   border: 1px dashed #f5b624;
   border-radius: 10px;
@@ -189,6 +191,7 @@ display: none;
 .options, .text_option, .selection, .checkbox{
   display: flex;
   list-style: none;
+  margin: 10px auto;
 }
 
 #size{

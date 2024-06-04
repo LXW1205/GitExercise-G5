@@ -1,6 +1,6 @@
-function displayImage(event) {
-  const file = event.target.files[0];
-  if (file) {
+let image_sel = document.getElementById("input-file");
+image_sel.addEventListener('change', displayImage);
+function displayImage() {
     const reader = new FileReader();
     reader.onload = function(e) {
       const poster = document.querySelector('.poster img');
@@ -17,9 +17,20 @@ function displayImage(event) {
       updateImageFilter();
       displayhide.classList.remove('hide');
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(image_sel.files[0]);
   }
-}
+
+//Drag and Drop to Import Image
+let drop_area = document.querySelector(".drop_area");
+drop_area.addEventListener("dragover", function(e){
+  e.preventDefault();
+});
+
+drop_area.addEventListener("drop", function(e){
+  e.preventDefault();
+  image_sel.files = e.dataTransfer.files;
+  displayImage();
+});
 
 function updateImageFilter() {
   // Get the image element
