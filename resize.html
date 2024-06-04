@@ -101,13 +101,12 @@
                 <img id="image">
             </div>
             <h2>Import your image to resize</h2>
+                <div class="drop_area">
+                    <h4>Drop your image here</h4>
+                </div>
             <label class="button-87" for="input-file">Import Image</label>
             <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
             <canvas id="canvas" width="0" height="0"></canvas>
-            <div class="drop_area">
-                <img id="image">
-                <h4>Drop your image here</h4>
-            </div>
 
             <div class="tools hide">
                 <ul class="options">
@@ -118,6 +117,10 @@
                     <li class="img_height">
                         <span id="height_span">Height</span>
                         <textarea id="height_input" placeholder="Enter height" row="5" cols="10"></textarea>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="lockAspectRatio" id="lockRatio">
+                        <label for="lockRatio">Lock Aspect Ratio</label>
                     </li>
                 </ul>
             </div>
