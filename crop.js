@@ -1,6 +1,7 @@
   //Global variables
   let file_input = document.getElementById("input-file");
-  let image = document.getElementById("img");
+  let drop_area = document.querySelector("#drop_area");
+  let image = document.querySelector("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");
   let option = document.querySelector(".aspect-ratio");
@@ -11,12 +12,14 @@
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
 
-
+  //Import or Upload Image
+  file_input.addEventListener('change', importImage);
+  function importImage() {
   file_input.onchange = () => {
     previewImage.src = "";
     downloadButton.classList.add("hide");
 
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(file_input.files[0]);
     reader.onload = () => {
       image.setAttribute("src", reader.result);
@@ -29,7 +32,16 @@
       previewButton.classList.remove("hide");
     };
     fileName = file_input.files[0].name.split(".")[0];
-  };
+  }};
+
+  drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+  drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    file_input.files = e.dataTransfer.files;
+    importImage();
+  })
 
   aspectRatio.forEach((element) => {
     element.addEventListener("click", () => {

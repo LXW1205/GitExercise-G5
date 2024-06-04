@@ -1,5 +1,6 @@
 //Globbal Variables
 let image_sel = document.getElementById("input-file");
+let drop_area = document.querySelector("#drop_area");
 let tools_element = document.querySelector(".tools");
 let input_width = document.querySelector("#width_input");
 let input_height = document.querySelector("#height_input");
@@ -12,7 +13,8 @@ let uploaded_img = null;
 let initial_ratio;
 
 //Import or Upload Image
-image_sel.addEventListener('change', () => {
+image_sel.addEventListener('change', importImage);
+function importImage() {
     const reader = new FileReader()
     reader.onload = (e) => {
       const images = new Image()
@@ -30,6 +32,15 @@ image_sel.addEventListener('change', () => {
       tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
+  }
+
+  drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+  drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    image_sel.files = e.dataTransfer.files;
+    importImage();
   })
 
   input_width.addEventListener("keyup", () => {

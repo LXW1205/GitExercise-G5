@@ -1,5 +1,6 @@
 //Global variables
 let image_sel = document.getElementById("input-file");
+let drop_area = document.querySelector("#drop_area");
 let tools_element = document.querySelector(".tools");
 let undo_btn = document.querySelector(".undo");
 let redo_btn = document.querySelector(".redo");
@@ -35,7 +36,9 @@ let insert_text = null;
 let history = [];
 let historywork = 0;
 
-image_sel.addEventListener('change', () => {
+//Import or Upload Image
+image_sel.addEventListener('change', importImage);
+function importImage() {
     const reader = new FileReader()
     reader.onload = (e) => {      
       images.onload = () => {
@@ -49,6 +52,15 @@ image_sel.addEventListener('change', () => {
       tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
+  }
+
+  drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+  drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    image_sel.files = e.dataTransfer.files;
+    importImage();
   })
 
 //Undo and Redo Function

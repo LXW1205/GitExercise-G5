@@ -102,13 +102,14 @@
         <div class="wall" align="center">
           <div id="paper">
           <div class="poster">
-            <div>
+            <h2>Import your image to draw</h2>                   
+            <label class="button-87" for="input-file">Import Image</label>
+            <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+            <canvas id="canvas" width="0" height="0"></canvas>
+            <div id="drop_area">
               <img id="image">
+              <h4>Drop your image here</h4>
             </div>
-          <h2>Import your image to draw</h2>
-          <label class="button-87" for="input-file">Import Image</label>
-          <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
-          <canvas id="canvas" width="0" height="0"></canvas>
           
           <div class="tools hide">
             <ul class="options">
