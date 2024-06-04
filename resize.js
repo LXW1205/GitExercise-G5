@@ -1,6 +1,6 @@
 //Globbal Variables
 let image_sel = document.getElementById("input-file");
-let drop_area = document.querySelector("#drop_area");
+let drop_area = document.querySelector(".drop_area");
 let tools_element = document.querySelector(".tools");
 let input_width = document.querySelector("#width_input");
 let input_height = document.querySelector("#height_input");

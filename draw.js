@@ -1,6 +1,6 @@
   //Global variables
   let image_sel = document.getElementById("input-file");
-  let drop_area = document.querySelector("#drop_area");
+  let drop_area = document.querySelector(".drop_area");
   let undo_btn = document.querySelector(".undo");
   let redo_btn = document.querySelector(".redo");
   let line_weight = document.querySelector("#size");
