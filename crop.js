@@ -28,7 +28,7 @@
       reader.onload = () => {    
           image.setAttribute("src", reader.result);
           if (image.naturalWidth <= 80 || image.naturalHeight <= 30){
-            alert("Sorry, you can't crop the image smaller than 80px X 30px (width X height). ")
+            alert("Please upload the image smaller than 80px X 30px (width X height).")
           } else {
           
         if (cropper) {

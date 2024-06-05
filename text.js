@@ -45,9 +45,9 @@ function importImage() {
         canvas.width = images.width//Resizing
         canvas.height = images.height
         if (images.naturalWidth <= 80 || images.naturalHeight <= 30){
-          alert("Sorry, you can't import the image smaller than 80px X 30px (width X height). ")
+          alert("Please import the image smaller than 80px X 30px (width X height). ")
         } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
-          alert("Sorry, you can't import the image larger than 1050px X 950px (width X height). ")
+          alert("Please import the image larger than 1050px X 950px (width X height). ")
         } else {
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
         tools_element.classList.remove("hide");
