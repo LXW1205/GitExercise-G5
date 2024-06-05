@@ -1,11 +1,10 @@
-async function timer() {
-    hide.classList.remove("hide");
+const fileInput = document.getElementById('input-file');
+
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
+    hide.classList.remove("hide");  
   }
-  
-async function removehide() {
-    setTimeout(timer,1000);
-  }
-  
+
 async function separatePDF() {
     let pages = document.getElementById('pages'); 
     let pagesInput = pages.value.trim(); 
@@ -19,7 +18,7 @@ async function separatePDF() {
     const fileInput = document.getElementById('input-file');
 
     const file = fileInput.files[0];
-  
+    
     if (!file) {
         alert("Please select a PDF file.");
         return;
@@ -33,27 +32,15 @@ async function separatePDF() {
     const pdfData = await file.arrayBuffer();
 
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+    
+    const totalPages = pdfDoc.getPageCount();
 
     const separatedPdf1 = await PDFLib.PDFDocument.create();
     const separatedPdf2 = await PDFLib.PDFDocument.create();    
 
-    const totalPages = pdfDoc.getPageCount();
+    const firstPage = pagesInput[0] - 2;
 
-    const selectedPages = pagesInput.split(',')
-    .map(page => parseInt(page.trim(), 10))
-    .filter(page => !isNaN(page) && page >= 1 && page <= pdfDoc.getPageCount());
-    
-    const pageRanges = pagesInput.split(',')
-    .map(range => range.split('-').map(page => parseInt(page.trim(), 10)))
-    .filter(range => range.every(page => !isNaN(page) && page >= 1 && page <= totalPages));
-
-    if (pageRanges.length < 2) {
-        alert("Please enter valid page ranges for both documents.");
-        return;
-    }
-
-    const firstPage = selectedPages[0] - 1;
-    const secondPage = selectedPages[1] - 1;
+    const secondPage = pagesInput[0] - 1 ;
 
     for (let i = 0; i <= firstPage; i++) {
         const [page] = await separatedPdf1.copyPages(pdfDoc, [i]);

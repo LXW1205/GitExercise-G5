@@ -1,14 +1,13 @@
-async function timer() {
-  hide.classList.remove("hide");
-}
+const fileInput = document.getElementById('input-file');
 
-async function removehide() {
-  setTimeout(timer,1000);
-}
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
+    hide.classList.remove("hide");  
+  }
 
 async function mergePDFs() {
-    const fileInput1 = document.getElementById('file1');
-    const fileInput2 = document.getElementById('file2');
+    const fileInput1 = document.getElementById('input-file');
+    const fileInput2 = document.getElementById('input-file2');
   
     const file1 = fileInput1.files[0];
     const file2 = fileInput2.files[0];

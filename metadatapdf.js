@@ -1,11 +1,10 @@
-async function readdataPDF() {
-    const fileInput = document.getElementById('input-file');
-    const file = fileInput.files[0];
+const fileInput = document.getElementById('input-file');
 
-    if (!file) {
-        alert("Please select a PDF file.");
-        return;
-    }
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
+    hide.classList.remove("hide");  
+
+    const file = fileInput.files[0];
 
     const pdfData = await file.arrayBuffer();
     pdfDoc = await PDFLib.PDFDocument.load(pdfData, { updateMetadata: false });
@@ -21,7 +20,8 @@ async function readdataPDF() {
 
     document.getElementById('metadata-list').innerHTML = `
         <h2>Enter or change the metadata of your PDF</h2>
-        <h3>Title:</h3><textarea id="title" rows="3" cols="35" placeholder="${orititle}"></textarea><br>
+        <h3>Title:</h3>
+        <textarea id="title" rows="3" cols="35" placeholder="${orititle}"></textarea><br>
         <h3>Author:</h3>
         <textarea id="author" rows="3" cols="35" placeholder="${oriauthor}"></textarea><br>
         <h3>Subject:</h3>

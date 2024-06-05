@@ -1,10 +1,9 @@
-async function timer() {
-  hide.classList.remove("hide");
-}
+const fileInput = document.getElementById('input-file');
 
-async function removehide() {
-  setTimeout(timer,1000);
-}
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
+    hide.classList.remove("hide");  
+  }
 
 async function extractPDF() {
   let pages = document.getElementById('pages'); 
