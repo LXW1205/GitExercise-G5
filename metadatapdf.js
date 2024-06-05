@@ -21,13 +21,20 @@ async function readdataPDF() {
 
     document.getElementById('metadata-list').innerHTML = `
         <h2>Enter or change the metadata of your PDF</h2>
-        <textarea id="title" rows="3" cols="35" placeholder="${orititle}"></textarea><br>
+        <h3>Title:</h3><textarea id="title" rows="3" cols="35" placeholder="${orititle}"></textarea><br>
+        <h3>Author:</h3>
         <textarea id="author" rows="3" cols="35" placeholder="${oriauthor}"></textarea><br>
+        <h3>Subject:</h3>
         <textarea id="subject" rows="3" cols="35" placeholder="${orisubject}"></textarea><br>
+        <h3>Creator:</h3>
         <textarea id="creator" rows="3" cols="35" placeholder="${oricreator}"></textarea><br>
+        <h3>Keywords:</h3>
         <textarea id="keywords" rows="3" cols="35" placeholder="${orikeywords}"></textarea><br>
+        <h3>Producer:</h3>
         <textarea id="producer" rows="3" cols="35" placeholder="${oriproducer}"></textarea><br>
+        <h3>Creation Date:</h3>
         <textarea id="creationdate" rows="3" cols="35" placeholder="${oricreationdate.toISOString()}"></textarea><br>
+        <h3>Modification Date:</h3>
         <textarea id="modificationdate" rows="3" cols="35" placeholder="${orimodificationdate.toISOString()}"></textarea>
     `;
 
