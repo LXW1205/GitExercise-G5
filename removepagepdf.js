@@ -14,7 +14,7 @@ async function timer() {
     let Filerename = filename;
     const Namefile = Filerename.value.trim() || 'Changed_pdf';
   
-    const fileInput = document.getElementById('fileInput');
+    const fileInput = document.getElementById('input-file');
   
     const file = fileInput.files[0];
   

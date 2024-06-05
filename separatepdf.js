@@ -16,7 +16,7 @@ async function separatePDF() {
     let filename2 = document.getElementById('filename2'); 
     const Namefile2 = filename2.value.trim() || 'separated_pdf_2';
   
-    const fileInput = document.getElementById('fileInput');
+    const fileInput = document.getElementById('input-file');
 
     const file = fileInput.files[0];
   

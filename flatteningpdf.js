@@ -1,11 +1,3 @@
-async function timer() {
-  hide.classList.remove("hide");
-}
-
-async function removehide() {
-  setTimeout(timer,1000);
-}
-
 async function flattenPDF() {
 
     let filename = document.getElementById('filename'); 
@@ -13,7 +5,7 @@ async function flattenPDF() {
 
     const Namefile = Filerename.value.trim() || 'flattened_pdf';
   
-    const fileInput = document.getElementById('fileInput');
+    const fileInput = document.getElementById('input-file');
   
     const file = fileInput.files[0];
     
@@ -25,27 +17,43 @@ async function flattenPDF() {
     const pdfData = await file.arrayBuffer();
   
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-  
-    const flattenedPdf = await PDFLib.PDFDocument.create();
 
-    const form = pdfDoc.getForm();
+    const pages = pdfDoc.getPages();
 
-    form.flatten();
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
 
-  const pages = pdfDoc.getPages();
-  
-  for (let i = 0; i < pages.length; i++) {
-    const [copiedPage] = await flattenedPdf.copyPages(pdfDoc, [i]);
-    flattenedPdf.addPage(copiedPage);
-  }
+    for (let i = 0; i < pages.length; i++) {
+        const page = pages[i];
+        const { width, height } = page.getSize();
+
+        // Create a canvas for each page
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const context = canvas.getContext('2d');
+
+        // Render PDF page to canvas
+        const renderContext = {
+            canvasContext: context,
+            viewport: {
+                width: width,
+                height: height
+            }
+        };
+
+        await page.render(renderContext).promise;
+        const imgData = canvas.toDataURL('image/png');
+
+        if (i > 0) {
+            pdf.addPage([width, height]);
+        }
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+    }
+
+    // Save the new flattened PDF
+    pdf.save('flattened.pdf');
   
     const flattenedPdfData = await flattenedPdf.save();
-    
-    const blob = new Blob([flattenedPdfData], { type: 'application/pdf' });
-    const downloadLink = document.getElementById('downloadLink');
-  
-    downloadLink.style.display = 'block';
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = `${Namefile}.pdf`;
   
   };

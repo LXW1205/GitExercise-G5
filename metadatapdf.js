@@ -1,5 +1,5 @@
 async function readdataPDF() {
-    const fileInput = document.getElementById('fileInput');
+    const fileInput = document.getElementById('input-file');
     const file = fileInput.files[0];
 
     if (!file) {
@@ -44,7 +44,7 @@ async function setdataPDF() {
     let creationdate = document.getElementById('creationdate').value || (await pdfDoc.getCreationDate()).toISOString() || "";
     let modificationdate = document.getElementById('modificationdate').value || (await pdfDoc.getModificationDate()).toISOString() || "";
 
-    // Convert keywords string to an array
+    // keywords from string to an array got otherwise error
     keywords = keywords.split(',').map(keyword => keyword.trim());
 
     pdfDoc.setTitle(title);
