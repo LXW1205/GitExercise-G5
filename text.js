@@ -44,19 +44,27 @@ function importImage() {
       images.onload = () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
+        if (images.naturalWidth <= 80 || images.naturalHeight <= 30){
+          alert("Sorry, you can't import the image smaller than 80px X 30px (width X height). ")
+        } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
+          alert("Sorry, you can't import the image larger than 1050px X 950px (width X height). ")
+        } else {
+        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
+        tools_element.classList.remove("hide");
         uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
         saveHistory()
+        }
       }      
       images.src = e.target.result;
-      tools_element.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   }
 
+  //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
   });
+  
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;

@@ -99,7 +99,10 @@
         <div class="wall" align="center">
                 <div id="paper">
                 <div class="poster">                    
-                <center><h2>Import your image to crop</h2></center>                
+                <center><h2>Import your image to crop</h2></center> 
+                    <div class="drop_area">                    
+                        <h4>Drop your image here</h4>
+                    </div>               
                 <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
                 <label class="button-87"for="input-file">Import Image</label>
                 <div class="volume">
@@ -110,19 +113,16 @@
                         <img id="preview-image">
                     </div>
                 </div>
-                <div class="drop_area">                    
-                    <h4>Drop your image here</h4>
-                </div>
 
-                <div class="zoom">
+                <div class="zoom hide" align="left">
                     <span>Rotate</span>
-                    <li id="zoom_in">Zoom In</li>
-                    <li id="zoom_out">Zoom Out</li>
+                    <li>Zoom In</li>
+                    <li>Zoom Out</li>
                 </div>
-                <div class="rotate">
+                <div class="rotate hide" align="left">
                     <span>Rotate</span>
-                    <li id="rotate_left">clockwise</li>
-                    <li id="rotate_right">counter-clockwise</li>
+                    <li>clockwise</li>
+                    <li>counter-clockwise</li>
                 </div>
                 <div class="aspect-ratio hide" align="left">
                     <span>Aspect Ratio</span>

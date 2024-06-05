@@ -4,10 +4,10 @@
   let image = document.getElementById("img");
   let downloadButton = document.getElementById("download");
   let aspectRatio = document.querySelectorAll(".aspect-ratio li");
-  let zoom_in = document.querySelector("#zoom_in");
-  let zoom_out = document.querySelector("#zoom_out");
-  let rotate_left = document.querySelector("#rotate_left");
-  let rotate_right = document.querySelector("#rotate_right");
+  let zoom = document.querySelectorAll(".zoom li");
+  let zoom_option = document.querySelector(".zoom");
+  let rotate = document.querySelectorAll(".rotate li");
+  let rotate_option = document.querySelector(".rotate");
   let option = document.querySelector(".aspect-ratio");
   const previewButton = document.getElementById("preview");
   const previewImage = document.getElementById("preview-image");
@@ -22,25 +22,34 @@
       previewImage.src = "";
       downloadButton.classList.add("hide");
 
+      
       const reader = new FileReader();
       reader.readAsDataURL(file_input.files[0]);
-      reader.onload = () => {
-        image.setAttribute("src", reader.result);
+      reader.onload = () => {    
+          image.setAttribute("src", reader.result);
+          if (image.naturalWidth <= 80 || image.naturalHeight <= 30){
+            alert("Sorry, you can't crop the image smaller than 80px X 30px (width X height). ")
+          } else {
+          
         if (cropper) {
           cropper.destroy();
         }
-
-        cropper = new Cropper(image);
-        option.classList.remove("hide");
-        previewButton.classList.remove("hide");
-    };
-    fileName = file_input.files[0].name.split(".")[0];
-    }
+                    
+          cropper = new Cropper(image);
+          zoom_option.classList.remove("hide");
+          rotate_option.classList.remove("hide");
+          option.classList.remove("hide");
+          previewButton.classList.remove("hide");  
+      }          
+      };
+      fileName = file_input.files[0].name.split(".")[0];
+      }
   
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
   });
+  
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     file_input.files = e.dataTransfer.files;
@@ -48,12 +57,12 @@
   })
 
   //Zoom In or Out Image
-  zoom_in.onclick = () => cropper.zoom(0.1);
-  zoom_out.onclick = () => cropper.zoom(-0.1);
+  zoom[0].onclick = () => cropper.zoom(0.1);
+  zoom[1].onclick = () => cropper.zoom(-0.1);
 
   //Rotate Image
-  rotate_left.onclick = () => cropper.rotate(45);
-  rotate_right.onclick = () => cropper.rotate(-45);
+  rotate[0].onclick = () => cropper.rotate(45);
+  rotate[1].onclick = () => cropper.rotate(-45);
 
   //Aspect Ratio
   aspectRatio.forEach((element) => {
