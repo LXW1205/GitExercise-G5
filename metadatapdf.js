@@ -10,14 +10,14 @@ async function readdataPDF() {
     const pdfData = await file.arrayBuffer();
     pdfDoc = await PDFLib.PDFDocument.load(pdfData, { updateMetadata: false });
 
-    const orititle = await pdfDoc.getTitle() || "";
-    const oriauthor = await pdfDoc.getAuthor() || "";
-    const orisubject = await pdfDoc.getSubject() || "";
-    const oricreator = await pdfDoc.getCreator() || "";
-    const orikeywords = await pdfDoc.getKeywords() || "";
-    const oriproducer = await pdfDoc.getProducer() || "";
-    const oricreationdate = await pdfDoc.getCreationDate() || new Date();
-    const orimodificationdate = await pdfDoc.getModificationDate() || new Date();
+    const orititle = pdfDoc.getTitle()
+    const oriauthor = pdfDoc.getAuthor()
+    const orisubject = pdfDoc.getSubject()
+    const oricreator = pdfDoc.getCreator()
+    const orikeywords = pdfDoc.getKeywords()
+    const oriproducer = pdfDoc.getProducer()
+    const oricreationdate = pdfDoc.getCreationDate()
+    const orimodificationdate = pdfDoc.getModificationDate()
 
     document.getElementById('metadata-list').innerHTML = `
         <h2>Enter or change the metadata of your PDF</h2>
@@ -39,7 +39,7 @@ async function setdataPDF() {
     let author = document.getElementById('author').value || (await pdfDoc.getAuthor()) || "";
     let subject = document.getElementById('subject').value || (await pdfDoc.getSubject()) || "";
     let creator = document.getElementById('creator').value || (await pdfDoc.getCreator()) || "";
-    let keywords = document.getElementById('keywords').value || (await pdfDoc.getKeywords()).join(', ') || "";
+    let keywords = document.getElementById('keywords').value || (await pdfDoc.getKeywords()) || "";
     let producer = document.getElementById('producer').value || (await pdfDoc.getProducer()) || "";
     let creationdate = document.getElementById('creationdate').value || (await pdfDoc.getCreationDate()).toISOString() || "";
     let modificationdate = document.getElementById('modificationdate').value || (await pdfDoc.getModificationDate()).toISOString() || "";
