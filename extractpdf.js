@@ -3,9 +3,20 @@ const fileInput = document.getElementById('input-file');
 fileInput.addEventListener('change', importpdf);
   async function importpdf() {
     hide.classList.remove("hide");  
+
+    const file = fileInput.files[0];
+    const pdfData = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf1').src = pdfDataUri;
+
   }
 
 async function extractPDF() {
+  pdf1.classList.add("hide");
+  pdf2.classList.remove("hide");
+
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
 
@@ -50,6 +61,9 @@ async function extractPDF() {
   const extractedPdfData = await extractedPdf.save();
   const blob = new Blob([extractedPdfData], { type: 'application/pdf' });
   const downloadLink = document.getElementById('downloadLink');
+
+  const pdfDataUri = await extractedPdf.saveAsBase64({ dataUri: true });
+  document.getElementById('pdf2').src = pdfDataUri;
 
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);

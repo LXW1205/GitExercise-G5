@@ -1,13 +1,31 @@
-const fileInput = document.getElementById('input-file');
+const fileInput1 = document.getElementById('input-file');
+const fileInput2 = document.getElementById('input-file2');
 
-fileInput.addEventListener('change', importpdf);
+fileInput2.addEventListener('change', importpdf);
   async function importpdf() {
     hide.classList.remove("hide");  
+
+  const file1 = fileInput1.files[0];
+  const file2 = fileInput2.files[0];
+
+  const pdfData1 = await file1.arrayBuffer();
+  const pdfData2 = await file2.arrayBuffer();
+
+  const pdfDoc1 = await PDFLib.PDFDocument.load(pdfData1);
+  const pdfDoc2 = await PDFLib.PDFDocument.load(pdfData2);
+
+  const pdfDataUri1 = await pdfDoc1.saveAsBase64({ dataUri: true });
+  document.getElementById('pdf1').src = pdfDataUri1;
+
+  const pdfDataUri2 = await pdfDoc2.saveAsBase64({ dataUri: true });
+  document.getElementById('pdf2').src = pdfDataUri2;
+
   }
 
 async function mergePDFs() {
-    const fileInput1 = document.getElementById('input-file');
-    const fileInput2 = document.getElementById('input-file2');
+    pdf1.classList.add("hide");
+    pdf2.classList.add("hide");
+    pdf3.classList.remove("hide");
   
     const file1 = fileInput1.files[0];
     const file2 = fileInput2.files[0];
@@ -45,6 +63,9 @@ async function mergePDFs() {
   const mergedPdfData = await mergedPdf.save();
   const blob = new Blob([mergedPdfData], { type: 'application/pdf' });
   const downloadLink = document.getElementById('downloadLink');
+
+  const pdfDataUri = await mergedPdf.saveAsBase64({ dataUri: true });
+  document.getElementById('pdf3').src = pdfDataUri;
 
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);

@@ -3,9 +3,21 @@ const fileInput = document.getElementById('input-file');
 fileInput.addEventListener('change', importpdf);
   async function importpdf() {
     hide.classList.remove("hide");  
+
+    const file = fileInput.files[0];
+    const pdfData = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf1').src = pdfDataUri;
+
   }
 
 async function separatePDF() {
+    pdf1.classList.add("hide");
+    pdf2.classList.remove("hide");
+    pdf3.classList.remove("hide");
+
     let pages = document.getElementById('pages'); 
     let pagesInput = pages.value.trim(); 
   
@@ -56,9 +68,15 @@ async function separatePDF() {
     const blob1 = new Blob([separatedPdfData1], { type: 'application/pdf' });
     const downloadLink1 = document.getElementById('downloadLink1');
 
+    const pdfDataUri1 = await separatedPdf1.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf2').src = pdfDataUri1;
+
     const separatedPdfData2 = await separatedPdf2.save();
     const blob2 = new Blob([separatedPdfData2], { type: 'application/pdf' });
     const downloadLink2 = document.getElementById('downloadLink2');
+
+    const pdfDataUri2 = await separatedPdf2.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf3').src = pdfDataUri2;
 
     downloadLink1.style.display = 'block';
     downloadLink1.href = URL.createObjectURL(blob1);

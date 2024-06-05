@@ -1,16 +1,10 @@
-const fileInput = document.getElementById('input-file');
+const fileInput1 = document.getElementById('input-file');
 
-fileInput.addEventListener('change', importpdf);
+const fileInput2 = document.getElementById('input-file2');
+
+fileInput1.addEventListener('change', importpdf);
   async function importpdf() {
-    hide.classList.remove("hide"); 
-
-    const file = fileInput.files[0];
-    const pdfData = await file.arrayBuffer();
-    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-
-    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-    document.getElementById('pdf').src = pdfDataUri;
-
+    hide.classList.remove("hide");  
   }
 
 async function removePDF() {
@@ -46,9 +40,6 @@ async function removePDF() {
   const removedPdfData = await pdfDoc.save();
   const blob = new Blob([removedPdfData], { type: 'application/pdf' });
   const downloadLink = document.getElementById('downloadLink');
-
-  const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-  document.getElementById('pdf').src = pdfDataUri;
   
   downloadLink.style.display = 'block';
   downloadLink.href = URL.createObjectURL(blob);
