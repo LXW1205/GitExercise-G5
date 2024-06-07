@@ -90,4 +90,5 @@ function importImage() {
 
   window.onload = () => {
     downloadButton.classList.add("hide");
+    tools_element.classList.add("hide");
   };
