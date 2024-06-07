@@ -26,24 +26,27 @@
       const reader = new FileReader();
       reader.readAsDataURL(file_input.files[0]);
       reader.onload = () => {    
-          image.setAttribute("src", reader.result);
-          if (image.naturalWidth <= 80 || image.naturalHeight <= 30){
-            alert("Please upload the image smaller than 80px X 30px (width X height).")
-          } else {
-          
+        image.setAttribute("src", reader.result);
+        image.onload = () => {
+        if (image.naturalWidth <= 80 || image.naturalHeight <= 30){
+          alert("Please upload an image larger than 80px X 30px (width X height).");
+          image.src = "";
+          return;
+        }
+
         if (cropper) {
           cropper.destroy();
         }
                     
-          cropper = new Cropper(image);
-          zoom_option.classList.remove("hide");
-          rotate_option.classList.remove("hide");
-          option.classList.remove("hide");
-          previewButton.classList.remove("hide");  
-      }          
-      };
-      fileName = file_input.files[0].name.split(".")[0];
+        cropper = new Cropper(image);
+        zoom_option.classList.remove("hide");
+        rotate_option.classList.remove("hide");
+        option.classList.remove("hide");
+        previewButton.classList.remove("hide");  
       }
+    };
+    fileName = file_input.files[0].name.split(".")[0];
+  }
   
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
@@ -56,7 +59,7 @@
     importImage();
   })
 
-  //Zoom In or Out Image
+  //Zoom In or Zoom Out Image
   zoom[0].onclick = () => cropper.zoom(0.1);
   zoom[1].onclick = () => cropper.zoom(-0.1);
 
@@ -75,7 +78,7 @@
     });
   });
 
-  //Download Editied Image
+  //Download Cropped Image
   previewButton.addEventListener("click", (e) => {
     e.preventDefault();
     filename.classList.remove("hide");

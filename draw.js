@@ -35,9 +35,9 @@
         canvas.width = images.width//Resizing
         canvas.height = images.height
         if (images.naturalWidth <= 80 || images.naturalHeight <= 30){
-          alert("Please import the image smaller than 80px X 30px (width X height). ")
+          alert("Please import an image larger than 80px X 30px (width X height).")
         } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
-          alert("Please import the image larger than 1050px X 950px (width X height). ")
+          alert("Please import an image smaller than 1050px X 950px (width X height).")
         } else {      
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
         uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
@@ -205,4 +205,5 @@ shape_btn.forEach(btn => {
 
   window.onload = () => {
     download.classList.add("hide");
+    tools_element.classList.add("hide");
   }
