@@ -101,28 +101,31 @@
       <form action="/">
           <div id="paper"></div>
             <div class="poster">
-                <h2>Import your PDF to remove pages</h2>
+                <h2>Convert your PDF into images</h2>
 
                 <label class="button-87" for="input-file">Import PDF</label>
                 <input type="file" id="input-file" accept=".pdf"><br>
 
                 <div id="hide" class="hide">
-                <h2>Enter Pages to Remove</h2>
-                <textarea id="pages" rows="4" cols="50" placeholder="Enter pages to be removed (e.g. 1,3,5)"></textarea>
-
-                <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
                 
-                <label class="button-87" onclick="removePDF()">Remove pages</label><br>
+                <label class="button-87" onclick="convertPDF()">Convert to images</label><br>
 
-                <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+                <a id="downloadLink" href="#" style="display:none">Download Images</a>
 
                 <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
+
+                <canvas id="pdf-canvas" style="display:none;"></canvas>
+
+                <div id="images"></div>
+
                 </div>
-              
+              </div>
             </div>
           </div>
   </body>
 
 <script src="index.js"></script>
-<script src="removepagepdf.js"></script>
+<script src="pdftoimg.js"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
