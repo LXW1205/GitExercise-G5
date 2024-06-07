@@ -3,7 +3,7 @@ const fileInput = document.getElementById('input-file');
 fileInput.addEventListener('change', importpdf);
   async function importpdf() {
     hide.classList.remove("hide"); 
-
+    
     const file = fileInput.files[0];
     const pdfData = await file.arrayBuffer();
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
@@ -14,7 +14,10 @@ fileInput.addEventListener('change', importpdf);
   }
 
 async function convertPDF() {
-  pdf.classList.add("hide"); 
+  pdf.classList.add("hide");
+  zipbutton.classList.remove("hide"); 
+
+  const imageUrls = [];
   
   const file = fileInput.files[0];
   
@@ -26,7 +29,7 @@ async function convertPDF() {
   
   for (let i = 1; i <= pdfDoc.numPages; i++) {
     const page = await pdfDoc.getPage(i);
-    const viewport = page.getViewport({ scale: 1.5 });
+    const viewport = page.getViewport({ scale: 1.0 });
     
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -50,7 +53,17 @@ async function convertPDF() {
       downloadImage(img.src, `page-${i}.png`);
     };
     imagesDiv.appendChild(downloadButton);
+
+    imageUrls.push({ src: img.src, name: `page-${i}.png` });
   }
+
+  const downloadAllButton = document.getElementById('download-all');
+  downloadAllButton.onclick = (event) => {
+    event.preventDefault();
+    downloadAllImagesAsZip(imageUrls);
+  };
+  downloadAllButton.style.display = 'block';
+
   };
 
   function downloadImage(dataUrl, filename) {
@@ -60,4 +73,24 @@ async function convertPDF() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  async function downloadAllImagesAsZip(imageUrls) {
+    const zip = new JSZip();
+    const imgFolder = zip.folder("images");
+  
+    for (const image of imageUrls) {
+      const response = await fetch(image.src);
+      const blob = await response.blob();
+      imgFolder.file(image.name, blob);
+    }
+  
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'images.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   }
