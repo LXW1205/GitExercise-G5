@@ -110,9 +110,16 @@
             <div id="imageContainer" style="margin-top: 20px;">
                 <img id="output" style="max-width: 400px; max-height: 400px;" />
             </div>
+            
+            <div class="hide">
             <center>
-                <button class="button-87" type="button" id="imageUpload" onclick="convertToPng()">Convert to PNG</button>
+                <button class="button-87 hide" type="button" id="imageUpload" onclick="convertToPng()">Convert to PNG</button>
             </center>
+            <center>
+              <button class="button-87 hide" type="button" id="imageUpload" onclick="convertToJpg()">Convert to JPG</button>
+            </center>
+          </div>
+
             <br><br>
     <a id="downloadLink" style="display: none;">Download PNG</a>
     <br>
