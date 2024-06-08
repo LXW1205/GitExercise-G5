@@ -44,16 +44,6 @@ async function convertPDF() {
     const img = document.createElement('img');
     img.src = canvas.toDataURL('image/png');
     imagesDiv.appendChild(img);
-
-    const downloadButton = document.createElement('button');
-    downloadButton.classList.add('button-87');
-    downloadButton.textContent = 'Download img ' + i;
-    downloadButton.onclick = (event) => {
-      event.preventDefault();
-      downloadImage(img.src, `page-${i}.png`);
-    };
-    imagesDiv.appendChild(downloadButton);
-
     imageUrls.push({ src: img.src, name: `page-${i}.png` });
   }
 
