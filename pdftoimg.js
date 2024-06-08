@@ -42,6 +42,15 @@ async function convertPDF() {
     img.src = canvas.toDataURL('image/png');
     imagesDiv.appendChild(img);
 
+    const draw_btn = document.createElement('checkbox');
+    draw_btn.classList.add('button-87');
+    draw_btn.textContent = 'draw img ' + i;
+    draw_btn.onclick = () => {
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'draw.html';
+    };
+    imagesDiv.appendChild(draw_btn);
+
     const downloadButton = document.createElement('button');
     downloadButton.classList.add('button-87');
     downloadButton.textContent = 'Download img ' + i;
