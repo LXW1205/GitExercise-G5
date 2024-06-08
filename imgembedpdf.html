@@ -116,18 +116,25 @@
                 <label class="button-87" for="input-file">Import PDF</label>
                 <input type="file" id="input-file" accept=".pdf"><br>
 
-                <label class="button-87" for="input-file2">Import image</label>
+                <label class="button-87" for="input-file2">Import Image</label>
                 <input type="file" id="input-file2" accept="image/*"><br>
 
+                <div id="hide" class="hide">
                 <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
-                
 
-                <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+                <label class="button-87" onclick="embedimg()">Embed image</label><br>
               
+                <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+
+                <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
+
+                <canvas id="canvas" width="0" height="0"></canvas>
+
+                </div>
             </div>
           </div>
   </body>
 
 <script src="index.js"></script>
-<script src="removepagepdf.js"></script>
+<script src="imgembedpdf.js"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1"></script>
