@@ -5,7 +5,7 @@
   
 <head>
 
-<title>Remove pages from PDF</title>
+<title>PDF to Image</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
@@ -31,7 +31,7 @@
         </button>
 
         <button type="button" onclick="location.href='pdftoimg.html'" id="blocks">
-        <img id="icon" src="">
+        <img id="icon" src="Images\pdftoimg.png">
         PDF to Image
         </button>
 
@@ -42,7 +42,7 @@
 
         <button type="button" onclick="location.href='imgembedpdf.html'" id="blocks">
         <img id="icon" src="">
-        Add Image
+        Embed Image
         </button>
 
         <button type="button" onclick="location.href='removepagepdf.html'" id="blocks">
@@ -120,7 +120,7 @@
                 
                 <label class="button-87" onclick="convertPDF()">Convert to images</label><br>
 
-                <a id="downloadLink" href="#" style="display:none">Download Images</a>
+                  <div id="zipbutton" class="hide"><label class="button-87" id="download-all" class="download-button">Download All Images as ZIP</label></div>
 
                 <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
 
@@ -139,3 +139,4 @@
 <script src="https://unpkg.com/pdf-lib@1.17.1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>

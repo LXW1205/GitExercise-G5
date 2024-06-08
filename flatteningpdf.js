@@ -1,59 +1,93 @@
+const fileInput = document.getElementById('input-file');
+
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
+    hide.classList.remove("hide"); 
+
+    const file = fileInput.files[0];
+    const pdfData = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf').src = pdfDataUri;
+
+  }
+
 async function flattenPDF() {
+    pdf.classList.add("hide");
+    downloadflattenbutton.classList.remove("hide");
 
-    let filename = document.getElementById('filename'); 
-    let Filerename = filename;
-
-    const Namefile = Filerename.value.trim() || 'flattened_pdf';
-  
-    const fileInput = document.getElementById('input-file');
+    const imageUrls = [];
   
     const file = fileInput.files[0];
-    
-    if (!file) {
-      alert("Please select PDF file.");
-      return;
-    }
   
     const pdfData = await file.arrayBuffer();
   
-    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-
-    const pages = pdfDoc.getPages();
-
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF();
-
-    for (let i = 0; i < pages.length; i++) {
-        const page = pages[i];
-        const { width, height } = page.getSize();
-
-        // Create a canvas for each page
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const context = canvas.getContext('2d');
-
-        // Render PDF page to canvas
-        const renderContext = {
-            canvasContext: context,
-            viewport: {
-                width: width,
-                height: height
-            }
-        };
-
-        await page.render(renderContext).promise;
-        const imgData = canvas.toDataURL('image/png');
-
-        if (i > 0) {
-            pdf.addPage([width, height]);
-        }
-        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+    const pdfDoc = await pdfjsLib.getDocument({ data: pdfData }).promise;
+    const imagesDiv = document.getElementById('images');
+    imagesDiv.innerHTML = '';
+    
+    for (let i = 1; i <= pdfDoc.numPages; i++) {
+      const page = await pdfDoc.getPage(i);
+      const viewport = page.getViewport({ scale: 1.0 });
+      
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      
+      await page.render({
+        canvasContext: context,
+        viewport: viewport
+      }).promise;
+      
+      const img = document.createElement('img');
+      img.src = canvas.toDataURL('image/png');
+      imagesDiv.appendChild(img);
+  
+      imageUrls.push({ src: img.src, name: `page-${i}.png` });
+    }
+  
+    const downloadPdfButton = document.getElementById('download-pdf');
+    downloadPdfButton.onclick = (event) => {
+      event.preventDefault();
+      downloadImagesAsPdf(imageUrls);
+    };
+    downloadPdfButton.style.display = 'block';
+  
+    };
+  
+    function downloadImage(dataUrl, filename) {
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
-    // Save the new flattened PDF
-    pdf.save('flattened.pdf');
-  
-    const flattenedPdfData = await flattenedPdf.save();
-  
-  };
+    async function downloadImagesAsPdf(imageUrls) {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+    
+      for (let i = 0; i < imageUrls.length; i++) {
+        if (i > 0) {
+          pdf.addPage();
+        }
+        const response = await fetch(imageUrls[i].src);
+        const blob = await response.blob();
+        const img = await blobToBase64(blob);
+        pdf.addImage(img, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+      }
+    
+      pdf.save('document.pdf');
+    }
+    
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
