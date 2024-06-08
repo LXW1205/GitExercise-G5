@@ -6,87 +6,97 @@
 <head>
 
 <title>Flattening PDF</title>
-<link rel="stylesheet" type="text/css" href="MixToolz.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
 
 <body>
-  <img id="logo" src= "MixTooLz Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='MixToolz.html'">
+  <img id="logo" src= "Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='index.html'">
 
   <div align="right">
     <button type="button" class="collapsible">
-      <img id="menubar" src="MixTooLz Images/Edit.png">&nbsp;Tools</button>
+      <img id="menubar" src="Images/Edit.png">&nbsp;Tools</button>
     
       <div class="content1">
 
         <!--Adding buttons to the navigation bar in home page-->
-        <button type="button" onclick="location.href='MixToolz.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Home.png">
+        <button type="button" onclick="location.href='index.html'" id="blocks">
+        <img id="icon" src="Images/Home.png">
         Home 
         </button>
 
         <button type="button" onclick="location.href='convertfile2pdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Convertpdf.png">
-        Convert PDF
+        <img id="icon" src="Images/Convertpdf.png">
+        Image to PDF
+        </button>
+
+        <button type="button" onclick="location.href='pdftoimg.html'" id="blocks">
+        <img id="icon" src="Images\pdftoimg.png">
+        PDF to Image
         </button>
 
         <button type="button" onclick="location.href='extractpdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Extract.png">
+        <img id="icon" src="Images/Extract.png">
         Extract PDF
         </button>
 
+        <button type="button" onclick="location.href='imgembedpdf.html'" id="blocks">
+        <img id="icon" src="">
+        Embed Image
+        </button>
+
         <button type="button" onclick="location.href='removepagepdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Remove.png">
+        <img id="icon" src="Images/Remove.png">
         Remove PDF
         </button>
 
         <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Separate.png">
+        <img id="icon" src="Images/Separate.png">
         Separate PDF
         </button>
 
         <button type="button" onclick="location.href='mergepdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Merge.png">
+        <img id="icon" src="Images/Merge.png">
         Merge PDF
         </button>
 
         <button type="button" onclick="location.href='draw.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Draw.png">
+        <img id="icon" src="Images/Draw.png">
         Draw
         </button>
 
         <button type="button" onclick="location.href='text.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Text.png">
+        <img id="icon" src="Images/Text.png">
         Text
         </button>
 
         <button type="button" onclick="location.href='crop.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Crop.png">
+        <img id="icon" src="Images/Crop.png">
         Crop
         </button>
 
         <button type="button" onclick="location.href='imgConvert.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/img_converter.png">
+        <img id="icon" src="Images/img_converter.png">
         Image Convert
         </button>
 
         <button type="button" onclick="location.href='flatteningpdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Flatten.png">
+        <img id="icon" src="Images/Flatten.png">
         Flatten PDF
         </button>
 
         <button type="button" onclick="location.href='metadatapdf.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/Metadata.png">
+        <img id="icon" src="Images/Metadata.png">
         Metadata PDF
         </button>
 
         <button type="button" onclick="location.href='imagetuning.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/tuning.png">
+        <img id="icon" src="Images/tuning.png">
         Image Tuning
         </button>
 
         <button type="button" onclick="location.href='resize.html'" id="blocks">
-        <img id="icon" src="MixTooLz Images/resize.png">
+        <img id="icon" src="Images/resize.png">
         Resize
         </button>
       
@@ -104,19 +114,28 @@
                 <h2>Import PDF to flatten</h2>
 
                 <label for="input-file" class="button-87">Import PDF</label>
-                <input type="file" id="input-file" onclick="removehide()" accept=".pdf"><br>
+                <input type="file" id="input-file" accept=".pdf"><br>
                   
                 <div id="hide" class="hide">
                 <textarea id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+
                 <label class="button-87" onclick="flattenPDF()">Flatten PDF</label><br>
+                
+                  <div id="downloadflattenbutton" class="hide"><label class="button-87" id="download-pdf" class="download-button">Download Flattened PDF</label></div>
+
+                <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
+
+                <canvas id="pdf-canvas" style="display:none;"></canvas>
+
+                <div id="images"></div>
+
                 </div>
-
-                <a id="downloadLink" href="#" style="display:none">Download flattened PDF</a>
-
             </div>
           </div>
   </body>
 
-<script src="MixToolz.js"></script>
+<script src="index.js"></script>
 <script src="flatteningpdf.js"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>

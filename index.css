@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('MixTooLz\ Images/Bg2.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Images/Bg2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
