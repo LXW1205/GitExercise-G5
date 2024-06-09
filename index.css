@@ -7,6 +7,15 @@ body{
   background-attachment: fixed;
 }
 
+footer{
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(382deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(246deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(227deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(268deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(107deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(128deg, rgb(77, 249, 52),rgb(153, 163, 31)); background-blend-mode:overlay,overlay,overlay,overlay,overlay,normal;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 #logo{
   width:30%;
   height: 20%;
@@ -14,9 +23,15 @@ body{
   padding: 0px;
 }
 
-p{
+#logo2{
+  width:60%;
+  height: 40%;
+  margin: auto;
+  padding: 0px;
+}
+
+#desc{
   position: center;
-  color: rgb(234, 144, 1);
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   font-size: 25px;
@@ -27,7 +42,7 @@ p{
   margin-left: 20px;
   margin-right: 20px;
   max-width: 70%;
-  background-color: rgb(250, 244, 117);
+  background-color: rgb(255, 221, 149);
   box-shadow: 10px 20px 10px lemonchiffon inset;
 }
 
@@ -42,6 +57,7 @@ p{
 #icon{
   width: 30px;
   height: 30px;
+  padding-right: 1px;
 }
 
 /*Replace id="pdf" to blocks because of id clashing */
@@ -56,6 +72,7 @@ p{
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 16px;
   font-weight: 500;
+  font-style: italic;
   justify-content: center;
   display: inline-flex; 
 }
@@ -423,4 +440,124 @@ p{
   width: 50px;
   height: 50px;
   float: left;
+}
+
+.footer-distributed{
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+  font-weight:400;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  lightseagreen;
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
 }
