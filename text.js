@@ -36,6 +36,23 @@ let insert_text = null;
 let history = [];
 let historywork = 0;
 
+const imageData = localStorage.getItem("imageData");
+  if (imageData) {
+    console.log("Image data found in localStorage");
+    const images = new Image();
+    images.src = imageData;
+    images.onload = () => {
+      console.log("Image loaded successfully");
+      canvas.width = images.width;
+      canvas.height = images.height;
+      ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
+      uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      tools_element.classList.remove("hide");
+      saveHistory();
+      console.log("Image data removed from localStorage");
+    }
+  }
+
 //Import or Upload Image
 image_sel.addEventListener('change', importImage);
 function importImage() {
@@ -168,14 +185,15 @@ clear.addEventListener("click", () => {
 
 text_btn.addEventListener("click", () => {
   insert_text = text.value;
-  text_x = Math.floor((images.naturalWidth - ctx.measureText(insert_text).width) / 2); 
-  text_y = Math.floor((images.naturalHeight + parseInt(ctx.font, 10)) / 2); 
+  text_x = Math.floor((canvas.width - ctx.measureText(insert_text).width) / 2); 
+  text_y = Math.floor((canvas.height + parseInt(text_size, 10)) / 2); 
+  downloadButton.classList.remove("hide"); 
   inputText();
   saveHistory();
 })
 
   function inputText() {
-    ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
+    ctx.putImageData(uploaded_img, 0, 0);
     ctx.font = `${text_style} ${text_size} ${text_font}`;
     ctx.textBaseline = "middle";
     ctx.fillStyle = selected_color;
@@ -230,16 +248,14 @@ canvas.addEventListener("mouseup", () => {
 })
 
 //Download Edited Image
-canvas.addEventListener("click", (e) => {
-  e.preventDefault();
-  downloadButton.classList.remove("hide"); 
-  let imgSrc = canvas.toDataURL();
+downloadButton.addEventListener("click", () => {
+  const imgSrc = canvas.toDataURL();
   const fileName = "edited_image";
   downloadButton.download = `${fileName}.png`;
   downloadButton.setAttribute("href", imgSrc);
 })
 
 window.onload = () => {
+  localStorage.removeItem("imageData");
   download.classList.add("hide");
-  tools_element.classList.add("hide");
 }

@@ -16,12 +16,30 @@
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
 
+  const imageData = localStorage.getItem("imageData");
+  if (imageData) {
+    console.log("Image data found in localStorage");
+    const images = new Image();
+    images.src = imageData;
+    images.onload = () => {
+      image.src = images.src;
+      if (cropper) {
+        cropper.destroy();
+      }
+                  
+      cropper = new Cropper(image);
+      zoom_option.classList.remove("hide");
+      rotate_option.classList.remove("hide");
+      option.classList.remove("hide");
+      previewButton.classList.remove("hide");  
+    }
+  }
+
   //Import or Upload Image
   file_input.addEventListener('change', importImage);
   function importImage() {
       previewImage.src = "";
       downloadButton.classList.add("hide");
-
       
       const reader = new FileReader();
       reader.readAsDataURL(file_input.files[0]);
@@ -100,7 +118,6 @@
   });
 
   window.onload = () => {
+    localStorage.removeItem("imageData");
     download.classList.add("hide");
-    option.classList.add("hide");
-    previewButton.classList.add("hide");
   }

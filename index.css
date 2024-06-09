@@ -220,7 +220,7 @@ p{
   display: contents;
 }
 
-.clean, .text_option span{
+.clean, #text-btn{
   width: 95px;
   height: 20px;
   display: flex;
