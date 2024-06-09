@@ -31,6 +31,32 @@ fileInput1.addEventListener('change', importpdf1);
 
   }
 
+//Drag and Drop to Import PDF 1
+let drop_area1 = document.querySelector(".drop_area");
+
+  drop_area1.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+
+  drop_area1.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput1.files = e.dataTransfer.files;
+    importpdf1();
+  })
+
+//Drag and Drop to Import PDF 2
+let drop_area2 = document.querySelector(".drop_area2");
+
+  drop_area2.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+
+  drop_area2.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput2.files = e.dataTransfer.files;
+    importpdf2();
+  })
+
 async function mergePDFs() {
     pdf1.classList.add("hide");
     pdf2.classList.add("hide");

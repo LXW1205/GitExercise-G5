@@ -13,6 +13,19 @@ fileInput.addEventListener('change', importpdf);
 
   }
 
+//Drag and Drop to Import PDF
+let drop_area = document.querySelector(".drop_area");
+
+  drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+
+  drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    importpdf();
+  })
+
 async function extractPDF() {
   pdf1.classList.add("hide");
   pdf2.classList.remove("hide");

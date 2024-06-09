@@ -113,9 +113,9 @@
                         <img id="image">
                     </div>
                     <h2>Import your image to text</h2>
-                        <div class="drop_area">
-                            <h4>Drag & Drop your image here</h4>
-                        </div>
+                    <div class="drop_area">
+                        <h4>Drag & Drop your image here</h4>
+                    </div>
                     <label class="button-87" for="input-file">Import Image</label>
                     <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
                     <canvas id="canvas" width="0" height="0"></canvas>
@@ -131,23 +131,25 @@
                         </ul>
                         <ul class="options">
                             <li class="text_option">
-                                <span id="text-btn">Add/Update Text</span>
+                                <div id="text-btn">Add/Update Text</div>
                                 <textarea id="text" placeholder="Enter text to add" row="5" cols="40"></textarea>
                             </li>
                         </ul>
-                        <span class="title">Text Size</span>
+                        <div class="title">Text Size</div>
                         <ul class="options">
                         <li class="slide">
                             <input type="range" id="size" min="5" max="128" value="5">
                         </li>
                         </ul class="options">
                         <ul>
+                        <div class="title">Text Style</div>
                         <li class="checkbox">
                             <input type="checkbox" value="bold" id="bold">
                             <label for="bold">Bold</label>
                             <input type="checkbox" value="italic" id="italic">
                             <label for="italic">Italic</label>
                         </li>
+                        <div class="title">Text Font</div>
                         <li class="selection">
                             <select name="fonts" id="fonts">
                                 <option value="Arial">Arial</option>
@@ -158,6 +160,7 @@
                             </select>
                         </li>
                         </ul>
+                        <div class="title">Colors</div>
                         <ul class="options">
                             <li class="option"></li>
                             <li class="option"></li>
@@ -171,7 +174,7 @@
                         <div>
                             <li class="clean">
                             <img src="Images/Delete.png" id="icon">
-                            <span>Clear</span>
+                            <div id="clear1">Clear</div>
                             </li>
                         </div>
                     </div>

@@ -113,9 +113,9 @@
           <div id="paper">
             <div class="poster">
               <h2>Import your image to draw</h2>
-                <div class="drop_area">
-                  <h4>Drag & Drop your image here</h4>
-                </div>                 
+              <div class="drop_area">
+                <h4>Drag & Drop your image here</h4>
+              </div>                 
               <label class="button-87" for="input-file">Import Image</label>
               <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
               <canvas id="canvas" width="0" height="0"></canvas>
@@ -129,36 +129,36 @@
                     <img src="Images/redo.png" id="icon">
                   </li>
                 </ul>
-                <span class="title">Line Width</span>
+                <div class="title">Line Width</div>
                 <ul class="options">
                   <li class="slide">
                     <input type="range" id="size" min="1" max="30" value="5">
                   </li>
                 </ul>
-                <span class="title">Shapes</span>
+                <div class="title">Shapes</div>
                 <ul class="options">
                   <li class="shape" id="free">
-                    <span>
+                    <div>
                       <img src="Images/Draw.png" id="icon">
-                    </span>
+                    </div>
                   </li>
                   <li class="shape" id="line">
-                    <span>
+                    <div>
                       <img src="Images/line.png" id="icon">
-                    </span>
+                    </div>
                   </li>
                   <li class="shape" id="rectangle">
-                    <span>
+                    <div>
                       <img src="Images/rectangle.png" id="icon">
-                    </span>
+                    </div>
                   </li>
                   <li class="shape" id="circle">
-                    <span>
+                    <div>
                       <img src="Images/circle.png" id="icon">
-                    </span>
+                    </div>
                   </li>
                 </ul>
-                <span class="title">Colors</span>
+                <div class="title">Colors</div>
                 <ul class="options">
                   <li class="option"></li>
                   <li class="option"></li>
@@ -172,16 +172,15 @@
                 <div>
                 <li class="clean">
                   <img src="Images/Clean.png" id="icon">
-                  <span>Clear</span>
+                  <div id="clear1">Clear</div>
                 </li>
                 </div>
-                </div>
                 <textarea id="filename" class="hide" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+              </div>
               
-                <div class="btn">
-                  <a href="" id="download" class="hide">Download</a>
-                </div>
-              </div>                                   
+              <div class="btn">
+                <a href="" id="download" class="hide">Download</a>
+              </div>                                                 
             </div>
           </div> 
         </div>                                         

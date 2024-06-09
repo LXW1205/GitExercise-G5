@@ -177,7 +177,7 @@ p{
   display: none;
 }
 
-.poster .drop_area{
+.poster .drop_area, .drop_area2{
   width: 350px;
   height: 125px;
   margin: 10px auto;
