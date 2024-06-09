@@ -1,48 +1,30 @@
 const fileInput = document.getElementById('input-file');
 const fileInput2 = document.getElementById('input-file2');
 
-fileInput.addEventListener('change', importpdf1);
-  async function importpdf1() {
+fileInput.addEventListener('change', importpdf);
+  async function importpdf() {
     hide.classList.remove("hide");  
 
-  const file = fileInput.files[0];
+    const file = fileInput.files[0];
+    const pdfData = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
-  const pdfData = await file.arrayBuffer();
-
-  const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
-
-  const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-  document.getElementById('pdf').src = pdfDataUri;
-
+    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+    document.getElementById('pdf').src = pdfDataUri;
   }
 
-  fileInput2.addEventListener('change', importimg);
-  async function importimg() {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      const images = new Image()
-      images.onload = () => {
-        uploaded_img = images
-        canvas.width = images.width
-        canvas.height = images.height
-        input_width.value = images.naturalWidth 
-        input_height.value = images.naturalHeight
-        initial_ratio = images.naturalWidth / images.naturalHeight
-        document.querySelector(".poster").classList.add("active")
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
-      }      
-      images.src = e.target.result;
-      tools_element.classList.remove("hide");
+fileInput2.addEventListener('change', importImage);
+  async function importImage() {
+    
+
     }
-    reader.readAsDataURL(fileInput2.files[0])
-  }
 
 async function embedimg() {
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
   const Namefile = Filerename.value.trim() || 'embeded_pdf';
   
-  const file = fileInput1.files[0];
+  const file = fileInput.files[0];
   
   const pdfData = await file.arrayBuffer();
   
