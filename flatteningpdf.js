@@ -18,13 +18,20 @@ let drop_area = document.querySelector(".drop_area");
 
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area.innerText = "Release your PDF to upload";
   });
 
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput.files = e.dataTransfer.files;
+    drop_area.innerText = "Drag & Drop your PDF here";
     importpdf();
   })
+
+  drop_area.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Drag & Drop your PDF here";
+  });
 
 async function flattenPDF() {
     pdf.classList.add("hide");
