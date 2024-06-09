@@ -65,14 +65,35 @@ async function convertPDF() {
     img.src = canvas.toDataURL('image/png');
     imagesDiv.appendChild(img);
 
+    const crop_btn = document.createElement('button');
+    crop_btn.classList.add('button-87');
+    crop_btn.textContent = 'Crop img ' + i;
+    crop_btn.onclick = (event) => {
+      event.preventDefault();
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'crop.html';
+    };
+    imagesDiv.appendChild(crop_btn);
+
     const draw_btn = document.createElement('button');
     draw_btn.classList.add('button-87');
-    draw_btn.textContent = 'draw img ' + i;
-    draw_btn.onclick = () => {
+    draw_btn.textContent = 'Draw img ' + i;
+    draw_btn.onclick = (event) => {
+      event.preventDefault();
       localStorage.setItem('imageData', img.src);
       window.location.href = 'draw.html';
     };
     imagesDiv.appendChild(draw_btn);
+
+    const text_btn = document.createElement('button');
+    text_btn.classList.add('button-87');
+    text_btn.textContent = 'Text to img ' + i;
+    text_btn.onclick = (event) => {
+      event.preventDefault();
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'text.html';
+    };
+    imagesDiv.appendChild(text_btn);
 
     const downloadButton = document.createElement('button');
     downloadButton.classList.add('button-87');

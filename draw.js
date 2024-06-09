@@ -60,6 +60,7 @@
           uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
           tools_element.classList.remove("hide");
           saveHistory();
+          localStorage.removeItem("imageData");
         }
       }      
       images.src = e.target.result;
