@@ -36,26 +36,40 @@ let drop_area1 = document.querySelector(".drop_area");
 
   drop_area1.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area1.innerText = "Release your PDF 1 to upload";
   });
 
   drop_area1.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput1.files = e.dataTransfer.files;
+    drop_area1.innerText = "Drag & Drop your PDF 1 here";
     importpdf1();
   })
+
+  drop_area1.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area1.innerText = "Drag & Drop your PDF 1 here";
+  });
 
 //Drag and Drop to Import PDF 2
 let drop_area2 = document.querySelector(".drop_area2");
 
   drop_area2.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area2.innerText = "Release your PDF 2 to upload";
   });
 
   drop_area2.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput2.files = e.dataTransfer.files;
+    drop_area2.innerText = "Drag & Drop your PDF 2 here";
     importpdf2();
   })
+
+  drop_area2.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area2.innerText = "Drag & Drop your PDF 2 here";
+  });
 
 async function mergePDFs() {
     pdf1.classList.add("hide");

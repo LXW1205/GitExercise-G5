@@ -63,13 +63,20 @@ function importImage() {
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area.innerText = "Release your image to upload";
   });
   
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;
     importImage();
+    drop_area.innerText = "Drag & Drop your image here";
   })
+
+  drop_area.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Drag & Drop your image here";
+  });
 
 //Undo and Redo Function
 let state = {
