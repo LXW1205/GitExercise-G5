@@ -41,6 +41,19 @@ fileInput.addEventListener('change', importpdf);
     document.getElementById('savePDFButton').style.display = 'block';
 }
 
+//Drag and Drop to Import PDF 
+let drop_area = document.querySelector(".drop_area");
+
+    drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+    });
+
+    drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    importpdf();
+    })
+
 async function setdataPDF() {
     let title = document.getElementById('title').value || (await pdfDoc.getTitle()) || "";
     let author = document.getElementById('author').value || (await pdfDoc.getAuthor()) || "";

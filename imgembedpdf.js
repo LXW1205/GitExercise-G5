@@ -13,11 +13,49 @@ fileInput.addEventListener('change', importpdf);
     document.getElementById('pdf').src = pdfDataUri;
   }
 
-fileInput2.addEventListener('change', importImage);
-  async function importImage() {
-    
+  fileInput2.addEventListener('change', importimg);
+  async function importimg() {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const images = new Image()
+      images.onload = () => {
+        const canvas = document.querySelector("#canvas");
+        const context = canvas.getContext("2d");
+        canvas.width = images.width
+        canvas.height = images.height
 
+        context.drawImage(images, 0, 0, canvas.width, canvas.height)
+      }      
+      images.src = e.target.result;
     }
+    reader.readAsDataURL(fileInput2.files[0])
+  }
+
+//Drag and Drop to Import PDF 
+let drop_area1 = document.querySelector(".drop_area");
+
+  drop_area1.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+
+  drop_area1.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    importpdf1();
+  })
+
+//Drag and Drop to Import Image
+let drop_area2 = document.querySelector(".drop_area2");
+
+  drop_area2.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+
+  drop_area2.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput2.files = e.dataTransfer.files;
+    importimg();
+  })
 
 async function embedimg() {
   let filename = document.getElementById('filename'); 

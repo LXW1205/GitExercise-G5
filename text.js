@@ -44,15 +44,15 @@ function importImage() {
       images.onload = () => {
         canvas.width = images.width//Resizing
         canvas.height = images.height
-        if (images.naturalWidth <= 80 || images.naturalHeight <= 30){
+        if (images.naturalWidth <= 80 || images.naturalHeight <= 30) {
           alert("Please import an image larger than 80px X 30px (width X height). ")
-        } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
+        } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950) {
           alert("Please import an image smaller than 1050px X 950px (width X height). ")
         } else {
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
-        tools_element.classList.remove("hide");
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
-        saveHistory()
+          ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
+          tools_element.classList.remove("hide");
+          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+          saveHistory()
         }
       }      
       images.src = e.target.result;
@@ -134,7 +134,7 @@ font.addEventListener("change", () => {
 color_btn.forEach(btn => {
   btn.addEventListener("click", () => {
     const select = document.querySelector(".tools .option .selected")
-      if (select){
+      if (select) {
         select.classList.remove("selected");
       }
     btn.classList.add("selected");

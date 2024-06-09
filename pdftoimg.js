@@ -13,6 +13,19 @@ fileInput.addEventListener('change', importpdf);
 
   }
 
+//Drag and Drop to Import PDF
+let drop_area = document.querySelector(".drop_area");
+  
+drop_area.addEventListener("dragover", function(e){
+  e.preventDefault();
+});
+ 
+drop_area.addEventListener("drop", function(e){
+  e.preventDefault();
+  fileInput.files = e.dataTransfer.files;
+  importpdf();
+})
+
 async function convertPDF() {
   pdf.classList.add("hide");
   zipbutton.classList.remove("hide"); 
@@ -44,6 +57,15 @@ async function convertPDF() {
     const img = document.createElement('img');
     img.src = canvas.toDataURL('image/png');
     imagesDiv.appendChild(img);
+
+    const draw_btn = document.createElement('button');
+    draw_btn.classList.add('button-87');
+    draw_btn.textContent = 'draw img ' + i;
+    draw_btn.onclick = () => {
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'draw.html';
+    };
+    imagesDiv.appendChild(draw_btn);
 
     const downloadButton = document.createElement('button');
     downloadButton.classList.add('button-87');
