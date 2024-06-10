@@ -426,3 +426,14 @@ transform: scale(0.95);
   height: 50px;
   float: left;
   }
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  min-height: 100vh;
+  } 
+input[type="file"]{
+ display: none;
+}

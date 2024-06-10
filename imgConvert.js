@@ -1,8 +1,5 @@
 const fileInput = document.getElementById('container');
 const selectedBanner = document.getElementById('output');
-const png_btn = document.getElementById('#png_btn');
-const jpg_btn = document.getElementById('#jpg_btn');
-var downloadLink = document.getElementById('downloadLink');
 
 fileInput.addEventListener('change', () => {
   const files = fileInput.files;
@@ -44,70 +41,43 @@ function displayImage(event) {
 
 function convertToPng() {
     var fileInput = document.getElementById('imageUpload');
-    var file = pngInput.files[0];
+    var file = fileInput.files[0];
 
-    if (file != "\.png") {
-        var allowedExtensions = /(\.jpg|\.jpeg)$/i;
+    if (file) {
         var pngExtension = /(\.png)$/i;
 
-        jpg_btn.classList.remove(".hide");
-
         downloadLink.style.display = 'none';
 
         if (pngExtension.exec(file.name)) {
-            jpg_btnw.classList.add(".hide");
-        } 
-       exportImage()
-      } else if (file) {
-        var allowedExtensions = /(\.png|\.jpeg)$/i;
-        var pngExtension = /(\.jpg)$/i;
-
-        downloadLink.style.display = 'none';
-
-        if (pngExtension.exec(file.name)) {
-            alert('The image you chosen is already in JPG format.');
+            alert('The image you chosen is already in PNG format.');
             fileInput.value = '';
             return false;
         }
-        exportImage()
-      }
-}
 
-    function exportImage() {
-    var reader = new FileReader();
+        var reader = new FileReader();
         
-    reader.onload = function(event) {
-        var img = new Image();
-        img.onload = function() {
-            
-            var canvas = document.getElementById('canvas');
-            var ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            
-            // convert img to png
-            var pngDataUrl = canvas.toDataURL('image/png');
-            
-            
-            downloadLink.href = pngDataUrl;
-            downloadLink.download = 'converted-image.png';
-            downloadLink.style.display = 'block';
-            downloadLink.textContent = 'Download PNG';
+        reader.onload = function(event) {
+            var img = new Image();
+            img.onload = function() {
+                
+                var canvas = document.getElementById('canvas');
+                var ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // convert img to png
+                var pngDataUrl = canvas.toDataURL('image/png');
+                
+                var downloadLink = document.getElementById('downloadLink');
+                downloadLink.href = pngDataUrl;
+                downloadLink.download = 'converted-image.png';
+                downloadLink.style.display = 'block';
+                downloadLink.textContent = 'Download PNG';
+            }
+            img.src = event.target.result;
         }
-        img.src = event.target.result;
-    }
-    
-    reader.readAsDataURL(file)
+        
+        reader.readAsDataURL(file)
+    }
 }
-
-
-
-    
-
-
-  
-
-  
-
-    
