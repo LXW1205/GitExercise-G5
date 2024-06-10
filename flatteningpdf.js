@@ -13,6 +13,26 @@ fileInput.addEventListener('change', importpdf);
 
   }
 
+//Drag and Drop to Import PDF
+let drop_area = document.querySelector(".drop_area");
+
+  drop_area.addEventListener("dragover", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Release your PDF to upload";
+  });
+
+  drop_area.addEventListener("drop", function(e){
+    e.preventDefault();
+    fileInput.files = e.dataTransfer.files;
+    drop_area.innerText = "Drag & Drop your PDF here";
+    importpdf();
+  })
+
+  drop_area.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Drag & Drop your PDF here";
+  });
+
 async function flattenPDF() {
     pdf.classList.add("hide");
     downloadflattenbutton.classList.remove("hide");
@@ -29,7 +49,7 @@ async function flattenPDF() {
     
     for (let i = 1; i <= pdfDoc.numPages; i++) {
       const page = await pdfDoc.getPage(i);
-      const viewport = page.getViewport({ scale: 1.0 });
+      const viewport = page.getViewport({ scale: 0.8});
       
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');

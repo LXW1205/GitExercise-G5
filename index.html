@@ -4,21 +4,18 @@
 <html>
   
 <head>
-
 <title>MixTooLz</title>
 <link rel="stylesheet" type="text/css" href="index.css">
-
-
 </head>
 
-<body>
+<header>
   <img id="logo" src= "Images\MixTooLz Logo.png" align="left" margin="0px" onclick="location.href='index.html'">
 
   <div align="right">
     <button type="button" class="collapsible">
-      <img id="menubar" src="Images/Edit.png">&nbsp;Tools</button>
+      <img id="menubar" src="Images/Edit.png">&nbsp;<b><i>Tools</i></b></button>
     
-      <div class="content1">
+      <div class="content1" align="center">
 
         <!--Adding buttons to the navigation bar in home page-->
         <button type="button" onclick="location.href='index.html'" id="blocks">
@@ -42,7 +39,7 @@
         </button>
 
         <button type="button" onclick="location.href='imgembedpdf.html'" id="blocks">
-        <img id="icon" src="">
+        <img id="icon" src="Images\Embed.png">
         Embed Image
         </button>
 
@@ -103,49 +100,42 @@
   
       </div>
   </div>
+</header>
 
 <br></br>
 <br></br>
 
-<div align="middle">
+<body>
 
- <p class="button-87">
-  Set of useful tools that processes PDF documents or edit images on your own browser.
+  <div align="middle" id="desc"><i>Set of useful tools that processes, edits <b>PDF documents</b> or <b>images</b> on your own browser.</i></div>
 
-  <br>
-  <br>
-
-</div>
-
-<br></br>
-
-<div class="squarebox">
-   <button onclick="location.href='imgConvert.html'">
-    <table class="toolTable">
-    <thead>
-    <th><img class="iconz" src="Images/img_converter.png" ></th>
-    <th>Convert PNG</th>  
-      <tr>
-      <td>Turn JPG and JPEG images to PNG</td>           
-      </tr>
-    </thead>
-    </table>
-  </button>
-</div>
-
-<div class="squarebox">
-  <button onclick="location.href='crop.html'">
-    <table class="toolTable">
-    <thead>
-    <th><img class="iconz" src="Images/Crop.png" ></th>
-    <th>Crop Image</th>  
+  <div class="squarebox">
+    <button onclick="location.href='imgConvert.html'">
+      <table class="toolTable">
+      <thead>
+      <th><img class="iconz" src="Images/img_converter.png" ></th>
+      <th>Convert PNG</th>  
         <tr>
-        <td>Crop JPG, JPEG or PNG images</td>
+        <td>Turn JPG and JPEG images to PNG</td>           
         </tr>
-    </thead>
-    </table>
-  </button>
-</div>
+      </thead>
+      </table>
+    </button>
+  </div>
+
+  <div class="squarebox">
+    <button onclick="location.href='crop.html'">
+      <table class="toolTable">
+      <thead>
+      <th><img class="iconz" src="Images/Crop.png" ></th>
+      <th>Crop Image</th>  
+          <tr>
+          <td>Crop JPG, JPEG or PNG images</td>
+          </tr>
+      </thead>
+      </table>
+    </button>
+  </div>
 
   <div class="squarebox">
     <button onclick="location.href='separatepdf.html'">
@@ -278,4 +268,25 @@
 <script src="index.js"></script>
 
 </body>
+
+<br></br>
+<br></br>
+
+<footer class="footer-distributed">
+  
+  <div class="footer-left">
+    <img id="logo2" src= "Images\MixTooLz Logo.png" align="left" margin="0px">
+  </div>
+
+  <div class="footer-center">
+    <h3>Checkout our socials:</h3>
+  </div>
+
+  <div class="footer-right">
+    <h3>Some useful libraries we used:
+    </h3>
+  </div>
+
+</footer>
+
 </html>

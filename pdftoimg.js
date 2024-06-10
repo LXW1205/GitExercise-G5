@@ -13,6 +13,26 @@ fileInput.addEventListener('change', importpdf);
 
   }
 
+//Drag and Drop to Import PDF
+let drop_area = document.querySelector(".drop_area");
+  
+drop_area.addEventListener("dragover", function(e){
+  e.preventDefault();
+  drop_area.innerText = "Release your PDF to upload";
+});
+ 
+drop_area.addEventListener("drop", function(e){
+  e.preventDefault();
+  fileInput.files = e.dataTransfer.files;
+  drop_area.innerText = "Drag & Drop your PDF here";
+  importpdf();
+})
+
+drop_area.addEventListener("dragleave", function(e){
+  e.preventDefault();
+  drop_area.innerText = "Drag & Drop your PDF here";
+});
+
 async function convertPDF() {
   pdf.classList.add("hide");
   zipbutton.classList.remove("hide"); 
@@ -29,7 +49,7 @@ async function convertPDF() {
   
   for (let i = 1; i <= pdfDoc.numPages; i++) {
     const page = await pdfDoc.getPage(i);
-    const viewport = page.getViewport({ scale: 1.0 });
+    const viewport = page.getViewport({ scale: 0.8});
     
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -44,6 +64,36 @@ async function convertPDF() {
     const img = document.createElement('img');
     img.src = canvas.toDataURL('image/png');
     imagesDiv.appendChild(img);
+
+    const crop_btn = document.createElement('button');
+    crop_btn.classList.add('button-87');
+    crop_btn.textContent = 'Crop img ' + i;
+    crop_btn.onclick = (event) => {
+      event.preventDefault();
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'crop.html';
+    };
+    imagesDiv.appendChild(crop_btn);
+
+    const draw_btn = document.createElement('button');
+    draw_btn.classList.add('button-87');
+    draw_btn.textContent = 'Draw img ' + i;
+    draw_btn.onclick = (event) => {
+      event.preventDefault();
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'draw.html';
+    };
+    imagesDiv.appendChild(draw_btn);
+
+    const text_btn = document.createElement('button');
+    text_btn.classList.add('button-87');
+    text_btn.textContent = 'Text to img ' + i;
+    text_btn.onclick = (event) => {
+      event.preventDefault();
+      localStorage.setItem('imageData', img.src);
+      window.location.href = 'text.html';
+    };
+    imagesDiv.appendChild(text_btn);
 
     const downloadButton = document.createElement('button');
     downloadButton.classList.add('button-87');

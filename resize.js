@@ -26,7 +26,6 @@ function importImage() {
         input_width.value = images.naturalWidth 
         input_height.value = images.naturalHeight
         initial_ratio = images.naturalWidth / images.naturalHeight
-        document.querySelector(".poster").classList.add("active")
         ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
       }      
       images.src = e.target.result;
@@ -38,13 +37,20 @@ function importImage() {
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area.innerText = "Release your image to upload";
   });
   
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;
+    drop_area.innerText = "Drag & Drop your image here";
     importImage();
   })
+
+  drop_area.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Drag & Drop your image here";
+  });
 
   //Image Width Resize
   input_width.addEventListener("keyup", () => {

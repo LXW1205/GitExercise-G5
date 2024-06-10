@@ -25,6 +25,23 @@
   let history = [];
   let historywork = 0;
   
+  const imageData = localStorage.getItem("imageData");
+  if (imageData) {
+    console.log("Image data found in localStorage");
+    const images = new Image();
+    images.src = imageData;
+    images.onload = () => {
+      console.log("Image loaded successfully");
+      canvas.width = images.width;
+      canvas.height = images.height;
+      ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
+      uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      tools_element.classList.remove("hide");
+      saveHistory();
+      console.log("Image data removed from localStorage");
+    }
+  }
+
   //Import or Upload Image
   image_sel.addEventListener('change', importImage);
   function importImage() {
@@ -39,10 +56,11 @@
         } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
           alert("Please import an image smaller than 1050px X 950px (width X height).")
         } else {      
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-        uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
-        tools_element.classList.remove("hide");
-        saveHistory();
+          ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
+          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+          tools_element.classList.remove("hide");
+          saveHistory();
+          localStorage.removeItem("imageData");
         }
       }      
       images.src = e.target.result;
@@ -53,13 +71,20 @@
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area.innerText = "Release your image to upload";
   });
   
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;
+    drop_area.innerText = "Drag & Drop your image here";
     importImage();
   })
+
+  drop_area.addEventListener("dragleave", function(e){
+    e.preventDefault();
+    drop_area.innerText = "Drag & Drop your image here";
+  });
 
 //Undo and Redo Function
 let state = {
@@ -145,7 +170,7 @@ const drawCircle = (e) => {
 }
 
 shape_btn.forEach(btn => {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", () => {
     selected_shape = btn.id;
   })
 })
@@ -204,6 +229,6 @@ shape_btn.forEach(btn => {
   })
 
   window.onload = () => {
+    localStorage.removeItem("imageData");
     download.classList.add("hide");
-    tools_element.classList.add("hide");
   }
