@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(405deg, rgb(210, 210, 210),rgb(0, 0, 0)),linear-gradient(67.5deg, rgba(78, 215, 231,0.5) 0%, rgba(78, 215, 231,0.5) 3%,rgba(80, 186, 233,0.5) 3%, rgba(80, 186, 233,0.5) 17%,rgba(82, 157, 236,0.5) 17%, rgba(82, 157, 236,0.5) 21%,rgba(84, 127, 238,0.5) 21%, rgba(84, 127, 238,0.5) 42%,rgba(86, 98, 241,0.5) 42%, rgba(86, 98, 241,0.5) 74%,rgba(88, 69, 243,0.5) 74%, rgba(88, 69, 243,0.5) 100%),linear-gradient(315deg, rgb(78, 215, 231) 0%, rgb(78, 215, 231) 3%,rgb(80, 186, 233) 3%, rgb(80, 186, 233) 17%,rgb(82, 157, 236) 17%, rgb(82, 157, 236) 21%,rgb(84, 127, 238) 21%, rgb(84, 127, 238) 42%,rgb(86, 98, 241) 42%, rgb(86, 98, 241) 74%,rgb(88, 69, 243) 74%, rgb(88, 69, 243) 100%); background-blend-mode:overlay, overlay, normal;
+  background-image: linear-gradient(0deg, rgb(82, 82, 82),rgb(99, 99, 99)),linear-gradient(45deg, rgb(12, 3, 124) 0%, rgb(12, 3, 124) 63%,rgb(16, 35, 140) 63%, rgb(16, 35, 140) 68%,rgb(19, 67, 156) 68%, rgb(19, 67, 156) 77%,rgb(23, 100, 171) 77%, rgb(23, 100, 171) 86%,rgb(26, 132, 187) 86%, rgb(26, 132, 187) 92%,rgb(30, 164, 203) 92%, rgb(30, 164, 203) 100%),linear-gradient(135deg, rgb(12, 3, 124) 0%, rgb(12, 3, 124) 63%,rgb(16, 35, 140) 63%, rgb(16, 35, 140) 68%,rgb(19, 67, 156) 68%, rgb(19, 67, 156) 77%,rgb(23, 100, 171) 77%, rgb(23, 100, 171) 86%,rgb(26, 132, 187) 86%, rgb(26, 132, 187) 92%,rgb(30, 164, 203) 92%, rgb(30, 164, 203) 100%); background-blend-mode:overlay,overlay,normal;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -10,7 +10,7 @@ body{
 footer{
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(382deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(246deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(227deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(268deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(107deg, rgb(197, 160, 165) 0%, rgb(197, 160, 165) 20%,rgb(206, 134, 161) 20%, rgb(206, 134, 161) 38%,rgb(215, 108, 156) 38%, rgb(215, 108, 156) 68%,rgb(225, 82, 152) 68%, rgb(225, 82, 152) 78%,rgb(234, 55, 148) 78%, rgb(234, 55, 148) 80%,rgb(243, 29, 143) 80%, rgb(243, 29, 143) 96%,rgb(252, 3, 139) 96%, rgb(252, 3, 139) 100%),linear-gradient(128deg, rgb(77, 249, 52),rgb(153, 163, 31)); background-blend-mode:overlay,overlay,overlay,overlay,overlay,normal;
+  background-color: #252626e5;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -62,7 +62,7 @@ footer{
 
 /*Replace id="pdf" to blocks because of id clashing */
 #blocks{
-  width: 135px;
+  width: 112px;
   height: 55px;
   border-radius: 10px;
   padding-top: 10px;
@@ -446,8 +446,10 @@ footer{
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: bold 16px sans-serif;
 	padding: 55px 50px;
+  color:#f1f1f1;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 13px;
 }
 
 .footer-distributed .footer-left,
