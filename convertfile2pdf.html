@@ -36,8 +36,8 @@
           PDF to Image
           </button>
 
-          <button type="button" onclick="location.href='separatepdf.html'" id="blocks">
-          <img id="icon" src="Images/Separate.png">
+          <button type="button" onclick="location.href='extractpdf.html'" id="blocks">
+          <img id="icon" src="Images/Extract.png">
           Extract PDF
           </button>
 
@@ -112,22 +112,20 @@
           <div id="paper"></div>
             <div class="poster">
               <h2>Convert an Image to PDF</h2>
-              <div>
-                <input type="file" id="container"  accept="image/*">
-                <img id="output" width="400" height="400" />
-                <div>
-                  <input type="file" id="input-file" accept="image/*" onchange="displayImage(event)">
-                  <label class="button-87" for="input-file">Select file</label>
-                  <div  style="margin-top: 20px;">
-                      <img id="output" style="max-width: 400px; max-height: 400px;" />
-                  </div>
-                  
-                  <center>
-                    <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
-                  </center>
-                </div>
+          <div>
+            <input type="file" id="container"  accept="image/*">
+           
+  
+            <div>
+              <input type="file" id="input-file" accept="image/*" onchange="displayImage(event)">
+              <label class="button-87" for="input-file">Select file</label>
+              <div  style="margin-top: 20px;">
+                  <img id="output" style="max-width: 1000px; max-height: 3000px;" />
               </div>
-            </div>
+              
+              <center>
+                <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
+              </center>
           </div>
     </div>
           

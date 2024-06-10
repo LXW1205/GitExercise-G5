@@ -44,7 +44,6 @@ function convertToPng() {
     var file = fileInput.files[0];
 
     if (file) {
-        var allowedExtensions = /(\.jpg|\.jpeg)$/i;
         var pngExtension = /(\.png)$/i;
 
         downloadLink.style.display = 'none';
@@ -80,13 +79,5 @@ function convertToPng() {
         }
         
         reader.readAsDataURL(file)
-    }
+    }
 }
-    
-
-
-  
-
-  
-
-    
