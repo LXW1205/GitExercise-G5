@@ -32,7 +32,8 @@ footer{
 
 #desc{
   position: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 80px;
   font-weight: 600;
   font-size: 25px;
   border: 1px solid gold;
@@ -41,7 +42,7 @@ footer{
   margin-top: 50px;
   margin-left: 20px;
   margin-right: 20px;
-  max-width: 70%;
+  width: fit-content;
   background-color: rgb(255, 221, 149);
   box-shadow: 10px 20px 10px lemonchiffon inset;
 }
