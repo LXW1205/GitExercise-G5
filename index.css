@@ -421,26 +421,104 @@ footer{
   transform: scale(0.95);
 }
 
-.grid-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-gap: 10px;
-  margin: 100px 40px;
-}
-
-.squarebox {
+.description{
+  width: 90%;
+  max-height: fit-content;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 40px auto;
 }
 
-.toolTable{
-  height: 250px;
+.squarebox button{
+  width: 210px;
+  height: 265px;
+  border: none;
+  border-radius: 20px;
+  margin: 5px;
+  cursor: pointer;
+  animation: none;
+}
+
+.squarebox h3, .squarebox .iconz{
+  transform: translateY(20px);
+  margin: auto;
+}
+
+.squarebox h3{
+  font-size: 24px;
 }
 
 .iconz{
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
+  transition: width 1.2s, height 1.2s;
+}
+
+.squarebox p{
+  font-size: 14px;
+  opacity: 0;
+}
+
+.squarebox:hover .iconz{
+  animation: imgSize 1.2s both;
+  animation: slideUp 1.2s both;
+}
+
+.squarebox:hover h3{
+  animation: titleSize 1.2s both;
+  animation: slideUp 1.2s both;
+}
+
+.squarebox:hover p{
+  animation: showDes 1.2s both;
+}
+
+@keyframes imgSize{
+  from{
+    width: 80px;
+    height: 80px;
+  }
+
+  to{
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@keyframes titleSize{
+  from{
+    font-size: 24px;
+  }
+
+  to{
+    font-size: 14px;
+  }
+}
+
+@keyframes slideUp{
+  0%{
+    transform-origin: 0 0;
+    transform: translateY(0%);
+  }
+
+  100%{
+    transform-origin: 0 0;
+    transform: translateY(-30%);
+    i: 60px;
+  }
+}
+
+@keyframes showDes{
+  from{
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .footer-distributed{
