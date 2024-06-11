@@ -9,6 +9,7 @@
   let rotate = document.querySelectorAll(".rotate li");
   let rotate_option = document.querySelector(".rotate");
   let option = document.querySelector(".aspect-ratio");
+  let rename = document.querySelector(".rename");
   const previewButton = document.getElementById("preview");
   const previewImage = document.getElementById("preview-image");
   let cropper = "";
@@ -31,6 +32,7 @@
       zoom_option.classList.remove("hide");
       rotate_option.classList.remove("hide");
       option.classList.remove("hide");
+      rename.classList.remove("hide");
       previewButton.classList.remove("hide");  
     }
   }
@@ -60,6 +62,7 @@
         zoom_option.classList.remove("hide");
         rotate_option.classList.remove("hide");
         option.classList.remove("hide");
+        rename.classList.remove("hide");
         previewButton.classList.remove("hide");  
       }
     };

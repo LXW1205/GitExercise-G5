@@ -46,56 +46,73 @@
                     <canvas id="canvas" width="0" height="0"></canvas>
 
                     <div class="tools hide">
-                        <ul class="options">
-                            <li class="undo">
-                                <img src="Images/Undo.png" id="icon">
-                            </li>
-                            <li class="redo">
-                                <img src="Images/Redo.png" id="icon">
-                            </li>
-                        </ul>
-                        <ul class="options">
-                            <li class="text_option">
-                                <div id="text-btn">Add/Update Text</div>
-                                <textarea id="text" placeholder="Enter text to add" row="5" cols="40"></textarea>
-                            </li>
-                        </ul>
-                        <div class="title">Text Size</div>
-                        <ul class="options">
-                        <li class="slide">
-                            <input type="range" id="size" min="5" max="128" value="5">
-                        </li>
-                        </ul class="options">
-                        <ul>
-                        <div class="title">Text Style</div>
-                        <li class="checkbox">
-                            <input type="checkbox" value="bold" id="bold">
-                            <label for="bold">Bold</label>
-                            <input type="checkbox" value="italic" id="italic">
-                            <label for="italic">Italic</label>
-                        </li>
-                        <div class="title">Text Font</div>
-                        <li class="selection">
-                            <select name="fonts" id="fonts">
-                                <option value="Arial">Arial</option>
-                                <option value="Agency FB">Agency FB</option>                        
-                                <option value="Calibri">Calibri</option>
-                                <option value="Cambria">Cambria</option>
-                                <option value="Times New Roman">Times New Roman</option>
-                            </select>
-                        </li>
-                        </ul>
-                        <div class="title">Colors</div>
-                        <ul class="options">
-                            <li class="option"></li>
-                            <li class="option"></li>
-                            <li class="option"></li>
-                            <li class="option"></li>
-                            <li class="option"></li>
-                            <li class="option">
-                            <input type="color" id="color-picker" value="#4A98F7">
-                            </li>
-                        </ul>
+                        <div class="title">
+                            <ul class="options">
+                                <li class="undo">
+                                    <img src="Images/Undo.png" id="icon">
+                                </li>
+                                <li class="redo">
+                                    <img src="Images/Redo.png" id="icon">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <ul class="options">
+                                <li class="text_option">
+                                    <div id="text-btn">
+                                        <img src="Images/Text.png" id="icon">
+                                        Add/Update Text
+                                    </div>
+                                    <textarea id="text" placeholder="Enter text to add" row="5" cols="35"></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <ul class="options"></ul>
+                            <h4>Text Size</h4>                            
+                                <li class="slide">
+                                    <input type="range" id="size" min="5" max="128" value="5">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <ul>
+                            <h4>Text Style</h4>
+                                <li class="checkbox">
+                                    <input type="checkbox" value="bold" id="bold">
+                                    <label for="bold">Bold</label>
+                                    <input type="checkbox" value="italic" id="italic">
+                                    <label for="italic">Italic</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <h4>Text Font</h4>
+                            <ul>
+                                <li class="selection">
+                                    <select name="fonts" id="fonts">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Agency FB">Agency FB</option>                        
+                                        <option value="Calibri">Calibri</option>
+                                        <option value="Cambria">Cambria</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <h4>Colors</h4>
+                            <ul class="options">
+                                <li class="option"></li>
+                                <li class="option"></li>
+                                <li class="option"></li>
+                                <li class="option"></li>
+                                <li class="option"></li>
+                                <li class="option">
+                                <input type="color" id="color-picker" value="#4A98F7">
+                                </li>
+                            </ul>
+                        </div>
                         <div>
                             <li class="clean">
                             <img src="Images/Delete.png" id="icon">
