@@ -45,6 +45,14 @@ class SpecialHeader extends HTMLElement {
             <img id="icon" src="Images/Separate.png" alt="Separate PDF"> Separate PDF
         </button>
 
+        <button type="button" onclick="location.href='flatteningpdf.html'" id="blocks">
+            <img id="icon" src="Images/Flatten.png" alt="Flatten PDF"> Flatten PDF
+        </button>
+
+        <button type="button" onclick="location.href='metadatapdf.html'" id="blocks">
+            <img id="icon" src="Images/Metadata.png" alt="Metadata PDF"> Metadata PDF
+        </button>        
+
         <button type="button" onclick="location.href='mergepdf.html'" id="blocks">
             <img id="icon" src="Images/Merge.png" alt="Merge PDF"> Merge PDF
         </button>
@@ -63,14 +71,6 @@ class SpecialHeader extends HTMLElement {
 
         <button type="button" onclick="location.href='imgConvert.html'" id="blocks">
             <img id="icon" src="Images/img_converter.png" alt="Image Convert"> Image Convert
-        </button>
-
-        <button type="button" onclick="location.href='flatteningpdf.html'" id="blocks">
-            <img id="icon" src="Images/Flatten.png" alt="Flatten PDF"> Flatten PDF
-        </button>
-
-        <button type="button" onclick="location.href='metadatapdf.html'" id="blocks">
-            <img id="icon" src="Images/Metadata.png" alt="Metadata PDF"> Metadata PDF
         </button>
 
         <button type="button" onclick="location.href='imagetuning.html'" id="blocks">

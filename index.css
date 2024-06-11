@@ -85,6 +85,7 @@ footer{
 /*Collapsible Menu*/
 .collapsible {
   background-color: rgb(255, 221, 149);
+  background-image: linear-gradient(90deg, #d1a017 0%, #ebdc12 35%, #d8dd96 100%);
   color: rgb(0, 0, 0);
   cursor: pointer;
   margin: auto;
@@ -120,7 +121,7 @@ footer{
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: rgb(255, 152, 67);
+  background-image: linear-gradient(0deg, rgb(171, 157, 39) 0%, rgb(171, 157, 39) 38%,rgb(180, 138, 30) 38%, rgb(180, 138, 30) 43%,rgb(190, 118, 22) 43%, rgb(190, 118, 22) 64%,rgb(199, 99, 13) 64%, rgb(199, 99, 13) 75%,rgb(208, 79, 4) 75%, rgb(208, 79, 4) 100%),linear-gradient(90deg, rgb(171, 157, 39) 0%, rgb(171, 157, 39) 38%,rgb(180, 138, 30) 38%, rgb(180, 138, 30) 43%,rgb(190, 118, 22) 43%, rgb(190, 118, 22) 64%,rgb(199, 99, 13) 64%, rgb(199, 99, 13) 75%,rgb(208, 79, 4) 75%, rgb(208, 79, 4) 100%),linear-gradient(45deg, rgb(171, 157, 39) 0%, rgb(171, 157, 39) 38%,rgb(180, 138, 30) 38%, rgb(180, 138, 30) 43%,rgb(190, 118, 22) 43%, rgb(190, 118, 22) 64%,rgb(199, 99, 13) 64%, rgb(199, 99, 13) 75%,rgb(208, 79, 4) 75%, rgb(208, 79, 4) 100%),linear-gradient(90deg, rgb(100, 72, 100),rgb(159, 233, 2)); background-blend-mode:overlay,overlay,overlay,normal;
 }
 
 .content button{
