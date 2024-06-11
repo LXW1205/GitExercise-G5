@@ -212,42 +212,37 @@ footer{
 
 .tools{
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
 }
 
-.options, .text_option, .selection, .checkbox{
-  display: flex;
+.title, .text_option, .selection, .checkbox{
   list-style: none;
-  margin: 10px auto;
 }
 
-#size{
-  display: inline;
-  cursor: pointer;
-  padding-left: 0%;
+.options li{
+  display: inline-flex;
 }
 
 .shape, .undo, .redo{
   width: 50px;
   height: 50px;
   cursor: pointer;
-  margin-left: 3px;
   border: 1px solid #f5a84a;
   border-radius: 50%;
   background: #f5a84a;
-}
-
-#color-picker{
-  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img_width, .img_height{
   display: contents;
 }
 
-.clean, .text_option span{
-  width: 95px;
-  height: 20px;
+.clean, #text-btn{
+  width: 110px;
+  height: 25px;
   display: flex;
   cursor: pointer;
   border: 1px solid #f5a84a;
@@ -255,18 +250,11 @@ footer{
   background: #f5a84a;
   margin: 5px;
   padding: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.preview-volume img{
-  display: block;
-  max-width: 100%;
-}
-
-.image-volume{
-  width: 60%;
-  margin: 0 auto;
-}
-
+/*//////////////////////////////*/
 .tools .option{
   width: 20px;
   height: 20px;
@@ -321,25 +309,35 @@ footer{
 }
 
 .option #color-picker{
+  display: flex;
   opacity: 0;
   cursor: pointer;
 }
-
-.aspect-ratio, .rotate, .zoom{
-  margin-left: 20%;
+/*//////////////////////////////*/
+.working{
+  display: flex;
+  justify-content: space-between;
 }
 
-.aspect-ratio span{
+.preview-volume img{
+  display: inline-block;
+  max-width: 100%;
+  margin: 10px auto;
+}
+
+.image-volume{
+  width: fit-content;
+  margin: 0 auto;
+}
+
+#aspect-ratio1{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
-  padding-left: 20px;
 }
 
 .aspect-ratio li, .rotate li, .zoom li{
-  display: inline-block;
+  display: inline-flex;
   padding: 10px;
-  margin-left: 15px;
-  margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid transparent;
   background-color: #fde360;
@@ -428,6 +426,7 @@ footer{
   transform: scale(0.95);
 }
 
+/*Home Screen Button Layout*/
 .description{
   width: 90%;
   max-height: fit-content;
@@ -444,7 +443,6 @@ footer{
   border-radius: 20px;
   margin: 5px;
   cursor: pointer;
-  animation: none;
 }
 
 .squarebox h3, .squarebox .iconz{
@@ -459,7 +457,6 @@ footer{
 .iconz{
   width: 80px;
   height: 80px;
-  transition: width 1.2s, height 1.2s;
 }
 
 .squarebox p{
@@ -468,13 +465,11 @@ footer{
 }
 
 .squarebox:hover .iconz{
-  animation: imgSize 1.2s both;
-  animation: slideUp 1.2s both;
+  animation: imgSize 1.2s both, slideUp 1.2s both;
 }
 
 .squarebox:hover h3{
-  animation: titleSize 1.2s both;
-  animation: slideUp 1.2s both;
+  animation: titleSize 1.2s both, slideUp 1.2s both;
 }
 
 .squarebox:hover p{
@@ -499,7 +494,7 @@ footer{
   }
 
   to{
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -512,7 +507,6 @@ footer{
   100%{
     transform-origin: 0 0;
     transform: translateY(-30%);
-    i: 60px;
   }
 }
 
