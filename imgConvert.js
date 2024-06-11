@@ -79,5 +79,5 @@ function convertToPng() {
         }
         
         reader.readAsDataURL(file)
-    }
+  }
 }
