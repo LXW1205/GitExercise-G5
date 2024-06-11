@@ -96,6 +96,7 @@ class SpecialFooter extends HTMLElement {
       <br></br>
       <br></br>
       <br></br>
+      <br></br>
       <h2>by <i style="color:yellow;">TT1L Group 5</i> for <b style="color:orange;">MINI IT PROJECT</b>~</h2>
     </div>
 
