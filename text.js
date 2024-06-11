@@ -38,18 +38,18 @@ let historywork = 0;
 
 const imageData = localStorage.getItem("imageData");
   if (imageData) {
-    console.log("Image data found in localStorage");
+    //console.log("Image data found in localStorage");
     const images = new Image();
     images.src = imageData;
     images.onload = () => {
-      console.log("Image loaded successfully");
+      //console.log("Image loaded successfully");
       canvas.width = images.width;
       canvas.height = images.height;
       ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
       uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
       tools_element.classList.remove("hide");
       saveHistory();
-      console.log("Image data removed from localStorage");
+      //console.log("Image data removed from localStorage");
     }
   }
 

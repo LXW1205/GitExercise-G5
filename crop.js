@@ -19,7 +19,7 @@
 
   const imageData = localStorage.getItem("imageData");
   if (imageData) {
-    console.log("Image data found in localStorage");
+    //console.log("Image data found in localStorage");
     const images = new Image();
     images.src = imageData;
     images.onload = () => {

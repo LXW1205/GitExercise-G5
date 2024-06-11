@@ -204,10 +204,10 @@ footer{
 .poster .drop_area, .drop_area2{
   width: 350px;
   height: 125px;
-  margin: 10px auto;
-  padding: 5px;
-  border: 1px dashed #f5b624;
+  margin: 20px auto;
+  border: 2px dashed #f5b624;
   border-radius: 10px;
+  align-content: center;
 }
 
 .tools{
@@ -443,6 +443,13 @@ footer{
   border-radius: 20px;
   margin: 5px;
   cursor: pointer;
+  background-image: linear-gradient(60deg, #abecd6, #fbed96 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &:hover{
+    color: transparent;
+    text-shadow: 0 0 .1em #4355a2, 0 0 .3em rgba(85, 109, 161, 0.864);
+  }
 }
 
 .squarebox h3, .squarebox .iconz{
