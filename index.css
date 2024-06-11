@@ -61,6 +61,12 @@ footer{
   padding-right: 1px;
 }
 
+#social_icon{
+  width: 40px;
+  height: 40px;
+}
+
+
 /*Replace id="pdf" to blocks because of id clashing */
 #blocks{
   width: 112px;
