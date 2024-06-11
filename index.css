@@ -421,20 +421,17 @@ footer{
   transform: scale(0.95);
 }
 
-#squarebox{
-  width: 300px;
-  height: 250px;
-  border: none;
-  border-radius: 10px;
-  padding-top: 10px;
-  margin: 5px;
-  background: #f88533;
-  color:#f1f1f1;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  justify-content: center;
-  display: inline-flex; 
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 10px;
+  margin: 100px 40px;
+}
+
+.squarebox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .iconz{
@@ -564,8 +561,6 @@ footer{
 	margin-bottom: 5px;
 }
 
-  float: left;
-  }
 
 main{
   display: flex;
