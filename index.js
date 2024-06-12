@@ -101,35 +101,35 @@ class SpecialFooter extends HTMLElement {
     </div>
 
     <div class="footer-center">
-      <h2>Checkout our socials:</h2>
+      <h3>Checkout our socials:</h3>
         <div>
         <img id="social_icon" src= "Images/insta.png" align="left" margin="0px">
-        <h3><a style="color:white;" href="https://www.instagram.com/xiuwei05?igsh=MXFzdzRqM2R2OHBucg==">&nbsp;&nbsp;&nbsp;Xiu Wei</a></h3>
+        <h4><a style="color:white;" href="https://www.instagram.com/xiuwei05?igsh=MXFzdzRqM2R2OHBucg==">&nbsp;&nbsp;&nbsp;Xiu Wei</a></h4>
         </div>
         <br></br>
         <div>
         <img id="social_icon" src= "Images/insta.png" align="left" margin="0px">
-        <h3><a style="color:white;" href="https://www.instagram.com/jiekit_2005?igsh=YmJmdWtiMHZoMWkw">&nbsp;&nbsp;&nbsp;Jie Kit</a></h3>
+        <h4><a style="color:white;" href="https://www.instagram.com/jiekit_2005?igsh=YmJmdWtiMHZoMWkw">&nbsp;&nbsp;&nbsp;Jie Kit</a></h4>
         </div>
         <br></br>
         <div>
         <img id="social_icon" src= "Images/face.png" align="left" margin="0px">
-        <h3><a style="color:white;" href="https://www.facebook.com/minghein.teng?mibextid=JRoKGi">&nbsp;&nbsp;&nbsp;Ming Hein</a></h3>
+        <h4><a style="color:white;" href="https://www.facebook.com/minghein.teng?mibextid=JRoKGi">&nbsp;&nbsp;&nbsp;Ming Hein</a></h4>
         </div>
     </div>
 
     <div class="footer-right">
-      <h2>Some useful libraries we used:</h2>
+      <h3>Some useful libraries we used:</h3>
 
-      <h3><a style="color:red;" href="https://pdf-lib.js.org/">PDF-LIB</a></h3>
+      <h4><a style="color:red;" href="https://pdf-lib.js.org/">PDF-LIB</a></h4>
       
-      <h3><a style="color:rgb(75, 179, 66);" href="https://html2canvas.hertzen.com/">html2canvas</a></h3>
+      <h4><a style="color:rgb(75, 179, 66);" href="https://html2canvas.hertzen.com/">html2canvas</a></h4>
 
-      <h3><a style="color:lightskyblue;" href="https://jquery.com/">jQuery</a></h3>
+      <h4><a style="color:lightskyblue;" href="https://jquery.com/">jQuery</a></h3>
 
-      <h3><a style="color:pink;" href="https://fengyuanchen.github.io/cropperjs/">Cropper.js</a></h3>
+      <h4><a style="color:pink;" href="https://fengyuanchen.github.io/cropperjs/">Cropper.js</a></h4>
 
-      <h3><a style="color:purple;" href="https://parall.ax/products/jspdf">jsPDF</a></h3>
+      <h4><a style="color:purple;" href="https://parall.ax/products/jspdf">jsPDF</a></h4>
 
     </div>
     </div>
