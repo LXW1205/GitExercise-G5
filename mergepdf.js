@@ -79,10 +79,10 @@ async function mergePDFs() {
     const file1 = fileInput1.files[0];
     const file2 = fileInput2.files[0];
 
-    uploadedFileName = fileInput1.files[0].name.split('.')[0];
     let filename = document.getElementById('filename'); 
     let Filerename = filename;
-    const Namefile = Filerename.value.trim() || uploadedFileName;
+
+    const Namefile = Filerename.value.trim() || 'merged_pdf';
   
     if (!file1 || !file2) {
       alert("Please select two PDF files.");
