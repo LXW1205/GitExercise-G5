@@ -102,20 +102,20 @@ class SpecialFooter extends HTMLElement {
 
     <div class="footer-center">
       <h3>Checkout our socials:</h3>
-        <div>
-        <img id="social_icon" src= "Images/insta.png" align="left" margin="0px">
-        <h4><a style="color:white;" href="https://www.instagram.com/xiuwei05?igsh=MXFzdzRqM2R2OHBucg==">&nbsp;&nbsp;&nbsp;Xiu Wei</a></h4>
-        </div>
+
+        <h4><img id="social_icon" src= "Images/insta.png" align="left" margin="0px">&nbsp;&nbsp;&nbsp;
+        <a style="color:white;" href="https://www.instagram.com/xiuwei05?igsh=MXFzdzRqM2R2OHBucg==">Xiu Wei</a></h4>
+
         <br></br>
-        <div>
-        <img id="social_icon" src= "Images/insta.png" align="left" margin="0px">
-        <h4><a style="color:white;" href="https://www.instagram.com/jiekit_2005?igsh=YmJmdWtiMHZoMWkw">&nbsp;&nbsp;&nbsp;Jie Kit</a></h4>
-        </div>
+
+        <h4><img id="social_icon" src= "Images/insta.png" align="left" margin="0px">&nbsp;&nbsp;&nbsp;
+        <a style="color:white;" href="https://www.instagram.com/jiekit_2005?igsh=YmJmdWtiMHZoMWkw">Jie Kit</a></h4>
+
         <br></br>
-        <div>
-        <img id="social_icon" src= "Images/face.png" align="left" margin="0px">
-        <h4><a style="color:white;" href="https://www.facebook.com/minghein.teng?mibextid=JRoKGi">&nbsp;&nbsp;&nbsp;Ming Hein</a></h4>
-        </div>
+
+        <h4><img id="social_icon" src= "Images/face.png" align="left" margin="0px">&nbsp;&nbsp;&nbsp;
+        <a style="color:white;" href="https://www.facebook.com/minghein.teng?mibextid=JRoKGi">Ming Hein</a></h4>
+
     </div>
 
     <div class="footer-right">
