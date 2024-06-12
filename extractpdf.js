@@ -40,9 +40,10 @@ async function extractPDF() {
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
 
+  uploadedFileName = fileInput.files[0].name.split('.')[0];
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
-  const Namefile = Filerename.value.trim() || 'extracted_pdf';
+  const Namefile = Filerename.value.trim() || uploadedFileName;
 
   const fileInput = document.getElementById('input-file');
 

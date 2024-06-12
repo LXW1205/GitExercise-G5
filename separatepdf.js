@@ -41,11 +41,15 @@ async function separatePDF() {
     let pages = document.getElementById('pages'); 
     let pagesInput = pages.value.trim(); 
   
+    uploadedFileName1 = fileInput.files[0].name.split('.')[0];
     let filename1 = document.getElementById('filename1'); 
-    const Namefile1 = filename1.value.trim() || 'separated_pdf_1';
+    let Filerename1 = filename1;
+    const Namefile1 = Filerename1.value.trim() || uploadedFileName1;
 
+    uploadedFileName2 = fileInput.files[0].name.split('.')[0];
     let filename2 = document.getElementById('filename2'); 
-    const Namefile2 = filename2.value.trim() || 'separated_pdf_2';
+    let Filerename2 = filename2;
+    const Namefile2 = Filerename2.value.trim() || uploadedFileName2;
   
     const fileInput = document.getElementById('input-file');
 

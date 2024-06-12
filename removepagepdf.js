@@ -37,10 +37,11 @@ async function removePDF() {
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
   
+  uploadedFileName = fileInput.files[0].name.split('.')[0];
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
-  const Namefile = Filerename.value.trim() || 'edited_pdf';
-  
+  const Namefile = Filerename.value.trim() || uploadedFileName;
+
   const file = fileInput.files[0];
   
   if (!pagesInput) {
