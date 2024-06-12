@@ -2,7 +2,7 @@ let fileInput = document.getElementById('container');
 let selectedBanner = document.getElementById('output');
 let reader = new FileReader();
 
-fileInput.addEventListener('change', () => {
+function runImage() {
   let files = fileInput.files;
   let filesArr = Array.prototype.slice.call(files);
   filesArr.forEach(function (f) {
@@ -24,9 +24,10 @@ fileInput.addEventListener('change', () => {
     };
     reader.readAsDataURL(f);
   });
-});
+};
 
-
+let img_upload = document.getElementById('imageUpload');
+img_upload.addEventListener('change', displayImage);
 //display img in the border
 function displayImage(event) {
     const file = event.target.files[0];
@@ -39,6 +40,25 @@ function displayImage(event) {
             reader.readAsDataURL(file);
     }
 }
+
+//Drag and Drop to Import Image
+let drop_area = document.querySelector(".drop_area");
+drop_area.addEventListener("dragover", function(e){
+  e.preventDefault();
+  drop_area.innerText = "Release your image to upload";
+});
+
+drop_area.addEventListener("drop", function(e){
+  e.preventDefault();
+  img_upload.files = e.dataTransfer.files;
+  drop_area.innerText = "Drag & Drop your image here";
+  displayImage({ target: img_upload });
+});
+
+drop_area.addEventListener("dragleave", function(e){
+  e.preventDefault();
+  drop_area.innerText = "Drag & Drop your image here";
+});
 
   function convertTo(format) {
     let canvas = document.getElementById('canvas');
