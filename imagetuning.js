@@ -12,8 +12,7 @@ function displayImage() {
       const displayhide = document.querySelector('.hide');
       brightnessInput.value = 100;
       contrastInput.value = 100;
-
-      updateImageFilter();
+      
       displayhide.classList.remove('hide');
     };
     reader.readAsDataURL(image_sel.files[0]);
