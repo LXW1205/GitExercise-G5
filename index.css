@@ -181,7 +181,7 @@ footer{
   color: #000;
 }
 
-.poster .button-87, .poster .button-28, .form-group .button-87, .form-group .button-87, .btn-default{
+.poster .button-87, .form-group .button-87, .form-group .button-87, .btn-default{
   width: 150px;
   height: fit-content;
   display: block;
@@ -193,21 +193,19 @@ footer{
   cursor: pointer;
 }
 
-.poster #input-file, .form-group input{
-  display: none;
-}
-
-.poster #input-file2, .form-group input{
+.poster #input-file, .poster #input-file2, .form-group input{
   display: none;
 }
 
 .poster .drop_area, .drop_area2{
   width: 350px;
   height: 125px;
+  display: flex;
   margin: 20px auto;
   border: 2px dashed #f5b624;
   border-radius: 10px;
-  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .tools{
@@ -314,11 +312,6 @@ footer{
   cursor: pointer;
 }
 /*//////////////////////////////*/
-.working{
-  display: flex;
-  justify-content: space-between;
-}
-
 .preview-volume img{
   display: inline-block;
   max-width: 100%;

@@ -49,6 +49,7 @@ const imageData = localStorage.getItem("imageData");
       uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
       tools_element.classList.remove("hide");
       saveHistory();
+      localStorage.removeItem("imageData");
       //console.log("Image data removed from localStorage");
     }
   }
