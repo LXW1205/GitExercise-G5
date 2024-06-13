@@ -34,7 +34,7 @@ drop_area.addEventListener("dragleave", function(e){
 
 function convertToPDF() {
   const { jsPDF } = window.jspdf;
-  const img = document.getElementById('output');
+  const img = document.querySelector('.poster img');
   const pdf = new jsPDF();
   if (img.src) {
       pdf.addImage(img.src, 'image/*', 15, 40, 180, 160);
