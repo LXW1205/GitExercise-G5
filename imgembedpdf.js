@@ -72,6 +72,19 @@ let drop_area2 = document.querySelector(".drop_area2");
   });
 
 async function embedimg() {
+
+  let pages = document.getElementById('pages'); 
+  let pagesInput = pages.value; 
+
+  let scale = document.getElementById('scale'); 
+  let Imgscale = scale.value; 
+
+  let xcor = document.getElementById('x-cor'); 
+  let x_cord = xcor.value; 
+
+  let ycor = document.getElementById('y-cor'); 
+  let y_cord = ycor.value; 
+
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
   const Namefile = Filerename.value.trim() || 'embeded_pdf';
@@ -82,31 +95,42 @@ async function embedimg() {
   
   const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
-  const jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer())
-  const jpgImage = await pdfDoc.embedJpg(jpgImageBytes)
-  const jpgDims = jpgImage.scale(0.5)
+  const embedPdf = await PDFLib.PDFDocument.create();
 
-  const pngImageBytes = await fetch(pngUrl).then((res) => res.arrayBuffer())
-  const pngImage = await pdfDoc.embedPng(pngImageBytes)
-  const pngDims = pngImage.scale(0.5)
+  const [copiedPage] = await embedPdf.copyPages(pdfDoc, [pagesInput - 1]);
+  embedPdf.addPage(copiedPage);
 
-  const page = pdfDoc.addPage()
+  if (fileInput2.type === 'image/jpeg') {
+    const jpgImageBytes = await fetch(fileInput2).then((res) => res.arrayBuffer())
 
-  page.drawImage(jpgImage, {
-    x: page.getWidth() / 2 - jpgDims.width / 2,
-    y: page.getHeight() / 2 - jpgDims.height / 2 + 250,
+    const jpgImage = await embedPdf.embedJpg(jpgImageBytes)
+    const jpgDims = jpgImage.scale(Imgscale)
+
+    embedPdf.drawImage(jpgImage, {
+    x: x_cord,
+    y: y_cord,
     width: jpgDims.width,
-    height: jpgDims.height,
-  })
+    height: jpgDims.height,})
+    } 
 
-  page.drawImage(pngImage, {
-    x: page.getWidth() / 2 - pngDims.width / 2 + 75,
-    y: page.getHeight() / 2 - pngDims.height + 250,
+  else if (fileInput2.type === 'image/png') {
+    const pngImageBytes = await fetch(fileInput2).then((res) => res.arrayBuffer())
+
+    const pngImage = await embedPdf.embedPng(pngImageBytes)
+    const pngDims = pngImage.scale(Imgscale)
+
+    embedPdf.drawImage(pngImage, {
+    x: x_cord,
+    y: y_cord,
     width: pngDims.width,
-    height: pngDims.height,
-  })
+    height: pngDims.height,})
+    } 
 
-  const embededPdfData = await pdfDoc.save();
+  else {
+      alert("Unable to embed Image because of the file format");
+      }
+
+  const embededPdfData = await embedPdf.save();
   const blob = new Blob([embededPdfData], { type: 'application/pdf' });
   const downloadLink = document.getElementById('downloadLink');
   
@@ -114,4 +138,4 @@ async function embedimg() {
   downloadLink.href = URL.createObjectURL(blob);
   downloadLink.download = `${Namefile}.pdf`;
   
-  };
+};
