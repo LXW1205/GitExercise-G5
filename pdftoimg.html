@@ -4,10 +4,8 @@
 <html>
   
 <head>
-
 <title>PDF to Image</title>
 <link rel="stylesheet" type="text/css" href="index.css">
-
 </head>
 
 <header>
@@ -24,47 +22,38 @@
     </div>
 </header>
 
-  <br></br>
-  <br></br>
-  <br></br>
+<br></br>
+<br></br>
+<br></br>
   
 <body>
   <div class="wall" align="center">
-      <form action="/">
-          <div id="paper"></div>
-            <div class="poster">
-                <h2>Convert your PDF into images</h2>
+    <div id="paper"></div>
+      <div class="poster">
+        <h2>Convert your PDF into images</h2>
 
-                <div class="drop_area">
-                  <h4>Drag & Drop your PDF here</h4>
-                </div>
+        <div class="drop_area">
+          <h4>Drag & Drop your PDF here</h4>
+        </div>
 
-                <label class="button-87" for="input-file">Import PDF</label>
-                <input type="file" id="input-file" accept=".pdf"><br>
+        <label class="button-87" for="input-file">Import PDF</label>
+        <input type="file" id="input-file" accept=".pdf"><br>
 
-                <div id="hide" class="hide">
+        <div id="hide" class="hide">
                 
-                <label class="button-87" onclick="convertPDF()">Convert to images</label><br>
+        <label class="button-87" onclick="convertPDF()">Convert to images</label><br>
 
-                  <div id="zipbutton" class="hide"><label class="button-87" id="download-all" class="download-button">Download All Images as ZIP</label></div>
+          <div id="zipbutton" class="hide"><label class="button-87" id="download-all" class="download-button">Download All Images as ZIP</label></div>
 
-                <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
+        <iframe id="pdf" style="width: 45%; height: 700px;"></iframe>
 
-                <canvas id="pdf-canvas" style="display:none;"></canvas>
+        <canvas id="pdf-canvas" style="display:none;"></canvas>
 
-                <div id="images"></div>
+        <div id="images"></div>
 
-              </div>
-            </div>
-          </div>
-      </form>
+      </div>
     </div>
-</body>
-
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<footer>
-    <special-footer></special-footer>
-</footer>
+  </div>
 
 <script src="index.js"></script>
 <script src="pdftoimg.js"></script>
@@ -72,3 +61,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+</body>
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+<footer>
+    <special-footer></special-footer>
+</footer>
+
+</html>
