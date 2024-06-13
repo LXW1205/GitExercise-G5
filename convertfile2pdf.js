@@ -1,5 +1,6 @@
 let uploadedFileName = "";
 let file = document.getElementById("input-file");
+let pdf_btn = document.querySelector(".hide");
 
 file.addEventListener('change', displayImage);
   function displayImage() {
@@ -8,6 +9,7 @@ file.addEventListener('change', displayImage);
       const poster = document.querySelector('.poster img');
       poster.src = e.target.result;
       uploadedFileName = file.files[0].name.split('.')[0];
+      pdf_btn.classList.remove("hide");
       };
       reader.readAsDataURL(file.files[0]);
   }
