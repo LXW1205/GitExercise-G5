@@ -74,7 +74,7 @@ class SpecialHeader extends HTMLElement {
         </button>
 
         <button type="button" onclick="location.href='imagetuning.html'" id="blocks">
-            <img id="icon" src="Images/Tuning.png" alt="Image Tuning"> Image Tuning
+            <img id="icon" src="Images/tuning.png" alt="Image Tuning"> Image Tuning
         </button>
 
         <button type="button" onclick="location.href='resize.html'" id="blocks">
