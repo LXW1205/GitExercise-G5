@@ -33,9 +33,9 @@ fileInput.addEventListener('change', importpdf);
         <h3>Producer:</h3>
         <textarea id="producer" rows="3" cols="35" placeholder="${oriproducer}"></textarea><br>
         <h3>Creation Date:</h3>
-        <textarea id="creationdate" rows="3" cols="35" placeholder="${oricreationdate.toISOString()}"></textarea><br>
+        <textarea id="creationdate" rows="3" cols="35" placeholder="${oricreationdate}"></textarea><br>
         <h3>Modification Date:</h3>
-        <textarea id="modificationdate" rows="3" cols="35" placeholder="${orimodificationdate.toISOString()}"></textarea>
+        <textarea id="modificationdate" rows="3" cols="35" placeholder="${orimodificationdate}"></textarea>
     `;
 
     document.getElementById('savePDFButton').style.display = 'block';
@@ -68,8 +68,8 @@ async function setdataPDF() {
     let creator = document.getElementById('creator').value || (await pdfDoc.getCreator()) || "";
     let keywords = document.getElementById('keywords').value || (await pdfDoc.getKeywords()) || "";
     let producer = document.getElementById('producer').value || (await pdfDoc.getProducer()) || "";
-    let creationdate = document.getElementById('creationdate').value || (await pdfDoc.getCreationDate()).toISOString() || "";
-    let modificationdate = document.getElementById('modificationdate').value || (await pdfDoc.getModificationDate()).toISOString() || "";
+    let creationdate = document.getElementById('creationdate').value || (await pdfDoc.getCreationDate()) || "";
+    let modificationdate = document.getElementById('modificationdate').value || (await pdfDoc.getModificationDate()) || "";
 
     // keywords from string to an array got otherwise error
     keywords = keywords.split(',').map(keyword => keyword.trim());

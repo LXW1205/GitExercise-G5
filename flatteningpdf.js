@@ -99,8 +99,12 @@ async function flattenPDF() {
         const img = await blobToBase64(blob);
         pdf.addImage(img, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
       }
+
+      let filename = document.getElementById('filename'); 
+      let Filerename = filename;
+      const Namefile = Filerename.value.trim() || 'flattened_pdf';
     
-      pdf.save('document.pdf');
+      pdf.save(`${Namefile}.pdf`);
     }
     
     function blobToBase64(blob) {
