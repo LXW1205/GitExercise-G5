@@ -8,10 +8,14 @@
   let shape_btn = document.querySelectorAll(".shape");
   let color_btn = document.querySelectorAll(".tools .option");
   let color_picker = document.querySelector("#color-picker");
+  let rename = document.querySelector(".rename");
   let downloadButton = document.getElementById("download");
   let clear = document.querySelector(".clean");
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
+
+  let filename = document.getElementById('filename'); 
+  let Filerename = filename;
   
   //Global variables set as default
   let draw_weight = 5;
@@ -37,6 +41,7 @@
       ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
       uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
       tools_element.classList.remove("hide");
+      rename.classList.remove("hide");
       saveHistory();
       localStorage.removeItem("imageData");
       //console.log("Image data removed from localStorage");
@@ -60,10 +65,12 @@
           ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
           uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
           tools_element.classList.remove("hide");
+          rename.classList.remove("hide");
           saveHistory();
         }
       }      
       images.src = e.target.result;
+      fileName = image_sel.files[0].name.split(".")[0];
     }
     reader.readAsDataURL(image_sel.files[0])
   }
@@ -127,6 +134,7 @@ line_weight.addEventListener("change", () => {
 clear.addEventListener("click", () => {
   ctx.putImageData(uploaded_img, 0, 0); //To clear the whole drawing
   download.classList.add("hide");
+  downloadButton.classList.remove('button-87');
   saveHistory();
 })
 
@@ -218,10 +226,9 @@ shape_btn.forEach(btn => {
   canvas.addEventListener("click", (e) => {
     e.preventDefault();
     downloadButton.classList.remove("hide");
+    downloadButton.classList.add('button-87');
     let imgSrc = canvas.toDataURL();
 
-    let filename = document.getElementById('filename'); 
-    let Filerename = filename;
     const Namefile = Filerename.value.trim() || 'drawed_image';
 
     downloadButton.download = `${Namefile}.png`;
@@ -230,5 +237,5 @@ shape_btn.forEach(btn => {
 
   window.onload = () => {
     localStorage.removeItem("imageData");
-    download.classList.add("hide");
+    downloadButton.classList.add("hide");
   }
