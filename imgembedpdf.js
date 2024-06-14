@@ -36,18 +36,21 @@ let drop_area1 = document.querySelector(".drop_area");
 
   drop_area1.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area1.style = "border: 2px dashed #19DC02";
     drop_area1.innerText = "Release your PDF to upload";
   });
 
   drop_area1.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput.files = e.dataTransfer.files;
+    drop_area1.style = "border: 2px dashed #f7673b";
     drop_area1.innerText = "Drag & Drop your PDF here";
-    importpdf1();
+    importpdf();
   })
 
   drop_area1.addEventListener("dragleave", function(e){
     e.preventDefault();
+    drop_area1.style = "border: 2px dashed #f7673b";
     drop_area1.innerText = "Drag & Drop your PDF here";
   });
 
@@ -56,18 +59,21 @@ let drop_area2 = document.querySelector(".drop_area2");
 
   drop_area2.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area2.style = "border: 2px dashed #19DC02";
     drop_area2.innerText = "Release your image to upload";
   });
 
   drop_area2.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput2.files = e.dataTransfer.files;
+    drop_area2.style = "border: 2px dashed #f7673b";
     drop_area2.innerText = "Drag & Drop your image here";
     importimg();
   })
 
   drop_area2.addEventListener("dragleave", function(e){
     e.preventDefault();
+    drop_area2.style = "border: 2px dashed #f7673b";
     drop_area2.innerText = "Drag & Drop your image here";
   });
 

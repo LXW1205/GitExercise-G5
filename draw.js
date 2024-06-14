@@ -78,18 +78,21 @@
   //Drag and Drop to Import Image
   drop_area.addEventListener("dragover", function(e){
     e.preventDefault();
+    drop_area.style = "border: 2px dashed #19DC02";
     drop_area.innerText = "Release your image to upload";
   });
   
   drop_area.addEventListener("drop", function(e){
     e.preventDefault();
     image_sel.files = e.dataTransfer.files;
+    drop_area.style = "border: 2px dashed #f7673b";
     drop_area.innerText = "Drag & Drop your image here";
     importImage();
   })
 
   drop_area.addEventListener("dragleave", function(e){
     e.preventDefault();
+    drop_area.style = "border: 2px dashed #f7673b";
     drop_area.innerText = "Drag & Drop your image here";
   });
 
