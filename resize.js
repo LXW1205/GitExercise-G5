@@ -79,6 +79,7 @@ function importImage() {
   //Show Download Button
   const downloadAppear = () => {
     downloadButton.classList.remove("hide");
+    downloadButton.classList.add('button-87');
   }
   
   //Download Edited Image

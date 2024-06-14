@@ -33,7 +33,8 @@
       rotate_option.classList.remove("hide");
       option.classList.remove("hide");
       rename.classList.remove("hide");
-      previewButton.classList.remove("hide");  
+      previewButton.classList.remove("hide");
+      download.classList.add("hide");
     }
   }
 
@@ -111,6 +112,7 @@
     e.preventDefault();
     filename.classList.remove("hide");
     downloadButton.classList.remove("hide");
+    downloadButton.classList.add('button-87');
     let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
     previewImage.src = imgSrc;
 
@@ -122,5 +124,5 @@
 
   window.onload = () => {
     localStorage.removeItem("imageData");
-    download.classList.add("hide");
+    downloadButton.classList.add("hide");
   }
