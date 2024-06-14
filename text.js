@@ -181,6 +181,7 @@ color_picker.addEventListener("change", () => {
 clear.addEventListener("click", () => {
   ctx.putImageData(uploaded_img, 0, 0); //To clear the whole text
   download.classList.add("hide");
+  downloadButton.classList.remove('button-87');
   saveHistory();
 })
 
@@ -188,7 +189,8 @@ text_btn.addEventListener("click", () => {
   insert_text = text.value;
   text_x = Math.floor((canvas.width - ctx.measureText(insert_text).width) / 2); 
   text_y = Math.floor((canvas.height + parseInt(text_size, 10)) / 2); 
-  downloadButton.classList.remove("hide"); 
+  downloadButton.classList.remove("hide");
+  downloadButton.classList.add('button-87'); 
   inputText();
   saveHistory();
 })
@@ -258,5 +260,5 @@ downloadButton.addEventListener("click", () => {
 
 window.onload = () => {
   localStorage.removeItem("imageData");
-  download.classList.add("hide");
+  downloadButton.classList.add("hide");
 }

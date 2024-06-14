@@ -370,17 +370,8 @@ footer{
   margin-top: 1px;
 }
 
-.btn button{
-  font-size: 1em;
-}
-
 .btn a{
-  border: 1px solid #f5a84a;
-  background-color: #f5a84a;
   text-decoration: none;
-  padding: 1em;
-  font-size: 1em;
-  border-radius: 10px;
 }
 
 .hide{

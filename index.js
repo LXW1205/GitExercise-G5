@@ -123,7 +123,7 @@ class SpecialFooter extends HTMLElement {
 
       <h4><a style="color:red;" href="https://pdf-lib.js.org/">PDF-LIB</a></h4>
 
-      <h4><a style="color: #1ad591e5;" href="https://parall.ax/products/jspdf">jsPDF</a></h4>
+      <h4><a style="color: #8D52FB;" href="https://parall.ax/products/jspdf">jsPDF</a></h4>
       
       <h4><a style="color:rgb(75, 179, 66);" href="https://html2canvas.hertzen.com/">html2canvas</a></h4>
 
