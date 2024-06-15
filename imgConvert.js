@@ -87,18 +87,8 @@ drop_area.addEventListener("dragleave", function(e){
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
-                
-                // convert img to png
-                var pngDataUrl = canvas.toDataURL('image/png');
-                
-                var downloadLink = document.getElementById('downloadLink');
-                downloadLink.href = pngDataUrl;
-                downloadLink.download = 'converted-image.png';
-                downloadLink.style.display = 'block';
-                downloadLink.textContent = 'Download PNG';
-            }
             img.src = event.target.result;
-        }
-        
+        }        
         reader.readAsDataURL(file)
+        }
       }
