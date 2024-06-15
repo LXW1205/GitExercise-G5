@@ -28,7 +28,7 @@ function runImage() {
 
 let img_upload = document.getElementById('imageUpload');
 img_upload.addEventListener('change', displayImage);
-//display img in the border
+
 function displayImage(event) {
     const file = event.target.files[0];
     if (file) {
@@ -75,30 +75,7 @@ drop_area.addEventListener("dragleave", function(e){
     downloadLink.download = 'converted.' + format;
     downloadLink.style.display = 'block';
     downloadLink.textContent = 'Download ' + format.toUpperCase();
-
-        var reader = new FileReader();
         
-        reader.onload = function(event) {
-            var img = new Image();
-            img.onload = function() {
-                
-                var canvas = document.getElementById('canvas');
-                var ctx = canvas.getContext('2d');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                
-                // convert img to png
-                var pngDataUrl = canvas.toDataURL('image/png');
-                
-                var downloadLink = document.getElementById('downloadLink');
-                downloadLink.href = pngDataUrl;
-                downloadLink.download = 'converted-image.png';
-                downloadLink.style.display = 'block';
-                downloadLink.textContent = 'Download PNG';
-            }
-            img.src = event.target.result;
-        }
-        
-        reader.readAsDataURL(file)
-      }
+    reader.readAsDataURL(file)
+    }
+         

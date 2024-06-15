@@ -1,10 +1,15 @@
 let image_sel = document.getElementById("input-file");
 image_sel.addEventListener('change', displayImage);
+let originalFileName;
+
 function displayImage() {
+    let file = event.target.files[0];
+    originalFileName = file.name;
     const reader = new FileReader();
     reader.onload = function(e) {
       const poster = document.querySelector('.poster img');
       poster.src = e.target.result;
+      poster.style.filter = '';
 
       //brightness and contrast range
       const brightnessInput = document.getElementById('brightness');
@@ -48,28 +53,22 @@ function updateImageFilter() {
 }
 
 function download() {
-  //get img element
   const img = document.querySelector('#output');
-
-  //create canvas
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
-  //set height and width of canvas
   canvas.width = img.width;
   canvas.height = img.height;
 
-  //draw image with filter
   ctx.filter = img.style.filter;
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-  //download
   const link = document.createElement('a');
-  link.download = 'adjusted-image.png';
+  link.download = originalFileName;
   link.href = canvas.toDataURL();
   link.click();
 }
 
-//add event listeners to the input elements
+//Event Listener
 document.getElementById('brightness').addEventListener('input', updateImageFilter);
 document.getElementById('contrast').addEventListener('input', updateImageFilter);
