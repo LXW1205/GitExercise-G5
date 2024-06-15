@@ -31,33 +31,33 @@
 
 <body>
   <div class="wall" align="center">
-    <div id="paper"></div>
-      <div class="poster">
-          <h2>Convert Image Format</h2>
-          <div class="drop_area">
-          <h4>Drag & Drop your image here</h4>
-          </div>
-        
-          <div class="upload-img">
-            <input type="file" id="imageUpload" accept="image/jpg, image/png, image/jpeg" onchange="displayImage(event)">
-            <label class="button-87" for="imageUpload">Import Image</label>
-            <div id="imageContainer" style="margin-top: 20px;">
-                <img id="output" style="max-width: 1000px; max-height: 3000px;" />
-          </div>
-            </div>
+    <div class="poster">
+      <h2>Convert Image Format</h2>
+      <div class="drop_area">
+        <h4>Drag & Drop your image here</h4>
+      </div>
+    
+      <div class="upload-img">
+        <input type="file" id="imageUpload" accept="image/jpg, image/png, image/jpeg" onchange="displayImage(event)">
+        <label class="button-87" for="imageUpload">Import Image</label>
+        <div id="imageContainer" style="margin-top: 20px;">
+            <img id="output" style="max-width: 1000px; max-height: 3000px;" />
+        </div>
+      </div>
 
-            <div class="upload-img">
-                <button class="button-87" type="button" id="convertToPng" onclick="convertTo('png')">Convert to PNG</button>
-                <button class="button-87" type="button" id="convertToJpg" onclick="convertTo('jpg')">Convert to JPG</button>
-                <button class="button-87" type="button" id="convertToJpeg" onclick="convertTo('jpeg')">Convert to JPEG</button>
-            </div>
+      <div class="upload-img">
+          <button class="button-87" type="button" id="convertToPng" onclick="convertTo('png')">Convert to PNG</button>
+          <button class="button-87" type="button" id="convertToJpg" onclick="convertTo('jpg')">Convert to JPG</button>
+          <button class="button-87" type="button" id="convertToJpeg" onclick="convertTo('jpeg')">Convert to JPEG</button>
+      </div>
 
-            <br><br><br>
+      <br><br><br>
 
-        <a id="downloadLink" style="display: none;">Download PNG</a>
-        <br>
-        <canvas id="canvas" style="display: none;"></canvas>
-  </div>
+      <a id="downloadLink" style="display: none;">Download PNG</a>
+      <br>
+      <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+</div>
         
   <script src="index.js"></script>
   <script src="imgConvert.js"></script>
