@@ -3,18 +3,20 @@ const fileInput2 = document.getElementById('input-file2');
 
 fileInput.addEventListener('change', importpdf);
   async function importpdf() {
-    hide.classList.remove("hide");  
+    pdf1.classList.remove("hide");
 
     const file = fileInput.files[0];
     const pdfData = await file.arrayBuffer();
     const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
 
     const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-    document.getElementById('pdf').src = pdfDataUri;
+    document.getElementById('pdf1').src = pdfDataUri;
   }
 
-  fileInput2.addEventListener('change', importimg);
+fileInput2.addEventListener('change', importimg);
   async function importimg() {
+    hide.classList.remove("hide");
+    
     const reader = new FileReader()
     reader.onload = (e) => {
       const images = new Image()
@@ -72,6 +74,9 @@ let drop_area2 = document.querySelector(".drop_area2");
   });
 
 async function embedimg() {
+  pdf1.classList.add("hide");  
+  canvas.classList.add("hide");
+  pdf2.classList.remove("hide");
 
   let pages = document.getElementById('pages'); 
   let pagesInput = pages.value; 
@@ -100,35 +105,21 @@ async function embedimg() {
   const [copiedPage] = await embedPdf.copyPages(pdfDoc, [pagesInput - 1]);
   embedPdf.addPage(copiedPage);
 
-  if (fileInput2.type === 'image/jpeg') {
-    const jpgImageBytes = await fetch(fileInput2).then((res) => res.arrayBuffer())
+  const imgData = await fileInput2.file[0];
 
-    const jpgImage = await embedPdf.embedJpg(jpgImageBytes)
-    const jpgDims = jpgImage.scale(Imgscale)
+  const jpgImage = await embedPdf.embedJpg(imgData)
 
-    embedPdf.drawImage(jpgImage, {
+  const jpgDims = jpgImage.scale(Imgscale)
+
+  embedPdf.drawImage(jpgImage, {
     x: x_cord,
     y: y_cord,
     width: jpgDims.width,
-    height: jpgDims.height,})
-    } 
+    height: jpgDims.height,
+  }) 
 
-  else if (fileInput2.type === 'image/png') {
-    const pngImageBytes = await fetch(fileInput2).then((res) => res.arrayBuffer())
-
-    const pngImage = await embedPdf.embedPng(pngImageBytes)
-    const pngDims = pngImage.scale(Imgscale)
-
-    embedPdf.drawImage(pngImage, {
-    x: x_cord,
-    y: y_cord,
-    width: pngDims.width,
-    height: pngDims.height,})
-    } 
-
-  else {
-      alert("Unable to embed Image because of the file format");
-      }
+  const pdfDataUri = await embedPdf.saveAsBase64({ dataUri: true });
+  document.getElementById('pdf2').src = pdfDataUri;
 
   const embededPdfData = await embedPdf.save();
   const blob = new Blob([embededPdfData], { type: 'application/pdf' });
