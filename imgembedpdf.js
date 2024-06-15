@@ -38,21 +38,18 @@ let drop_area1 = document.querySelector(".drop_area");
 
   drop_area1.addEventListener("dragover", function(e){
     e.preventDefault();
-    drop_area1.style = "border: 2px dashed #19DC02";
     drop_area1.innerText = "Release your PDF to upload";
   });
 
   drop_area1.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput.files = e.dataTransfer.files;
-    drop_area1.style = "border: 2px dashed #f7673b";
     drop_area1.innerText = "Drag & Drop your PDF here";
-    importpdf();
+    importpdf1();
   })
 
   drop_area1.addEventListener("dragleave", function(e){
     e.preventDefault();
-    drop_area1.style = "border: 2px dashed #f7673b";
     drop_area1.innerText = "Drag & Drop your PDF here";
   });
 
@@ -61,21 +58,18 @@ let drop_area2 = document.querySelector(".drop_area2");
 
   drop_area2.addEventListener("dragover", function(e){
     e.preventDefault();
-    drop_area2.style = "border: 2px dashed #19DC02";
     drop_area2.innerText = "Release your image to upload";
   });
 
   drop_area2.addEventListener("drop", function(e){
     e.preventDefault();
     fileInput2.files = e.dataTransfer.files;
-    drop_area2.style = "border: 2px dashed #f7673b";
     drop_area2.innerText = "Drag & Drop your image here";
     importimg();
   })
 
   drop_area2.addEventListener("dragleave", function(e){
     e.preventDefault();
-    drop_area2.style = "border: 2px dashed #f7673b";
     drop_area2.innerText = "Drag & Drop your image here";
   });
 
@@ -88,13 +82,13 @@ async function embedimg() {
   let pagesInput = pages.value; 
 
   let scale = document.getElementById('scale'); 
-  let Imgscale = scale.value; 
+  let Imgscale = Number(scale.value); 
 
   let xcor = document.getElementById('x-cor'); 
-  let x_cord = xcor.value; 
+  let x_cord = Number(xcor.value); 
 
   let ycor = document.getElementById('y-cor'); 
-  let y_cord = ycor.value; 
+  let y_cord = Number(ycor.value); 
 
   let filename = document.getElementById('filename'); 
   let Filerename = filename;
@@ -109,15 +103,23 @@ async function embedimg() {
   const embedPdf = await PDFLib.PDFDocument.create();
 
   const [copiedPage] = await embedPdf.copyPages(pdfDoc, [pagesInput - 1]);
-  embedPdf.addPage(copiedPage);
+  
+  const file2 = fileInput2.files[0];
 
-  const imgData = await fileInput2.file[0];
+  const imgData = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file2);
+  });
 
-  const jpgImage = await embedPdf.embedJpg(imgData)
+  const jpgImage = await embedPdf.embedJpg(imgData);
 
-  const jpgDims = jpgImage.scale(Imgscale)
+  const jpgDims = jpgImage.scale(Imgscale);
 
-  embedPdf.drawImage(jpgImage, {
+  const page = embedPdf.addPage(copiedPage);
+
+  page.drawImage(jpgImage, {
     x: x_cord,
     y: y_cord,
     width: jpgDims.width,
