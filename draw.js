@@ -40,6 +40,7 @@
       canvas.height = images.height;
       ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
       uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      alert("Please rename (if wish) before editing the image, click ok to proceed :)");
       tools_element.classList.remove("hide");
       rename.classList.remove("hide");
       saveHistory();
@@ -55,15 +56,16 @@
     reader.onload = (e) => {
       const images = new Image()
       images.onload = () => {
-        canvas.width = images.width//Resizing
-        canvas.height = images.height
+        canvas.width = images.width;
+        canvas.height = images.height;
         if (images.naturalWidth <= 80 || images.naturalHeight <= 30){
-          alert("Please import an image larger than 80px X 30px (width X height).")
+          alert("Please import an image larger than 80px X 30px (width X height).");
         } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950){
-          alert("Please import an image smaller than 1050px X 950px (width X height).")
+          alert("Please import an image smaller than 1050px X 950px (width X height).");
         } else {      
-          ctx.drawImage(images, 0, 0, canvas.width, canvas.height)     
-          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+          ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
+          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          alert("Please rename (if wish) before editing the image, click ok to proceed :)");
           tools_element.classList.remove("hide");
           rename.classList.remove("hide");
           saveHistory();
@@ -72,7 +74,7 @@
       images.src = e.target.result;
       fileName = image_sel.files[0].name.split(".")[0];
     }
-    reader.readAsDataURL(image_sel.files[0])
+    reader.readAsDataURL(image_sel.files[0]);
   }
 
   //Drag and Drop to Import Image

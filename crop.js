@@ -29,6 +29,7 @@
       }
                   
       cropper = new Cropper(image);
+      alert("Please rename (if wish) before editing the image, click ok to proceed :)");
       zoom_option.classList.remove("hide");
       rotate_option.classList.remove("hide");
       option.classList.remove("hide");
@@ -60,6 +61,7 @@
         }
                     
         cropper = new Cropper(image);
+        alert("Please rename (if wish) before editing the image, click ok to proceed :)");
         zoom_option.classList.remove("hide");
         rotate_option.classList.remove("hide");
         option.classList.remove("hide");
