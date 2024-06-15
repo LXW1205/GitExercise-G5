@@ -26,54 +26,53 @@
   
 <body>
   <div class="wall" align="center">
-    <div id="paper"></div>
-      <div class="poster">
-        <div id="desc" style="font-size: smaller;" align="center">Disclaimer: This tool only works with jpg/jpeg images, feel free to use our <span style="color:orangered;" onclick="location.href='imgConvert.html'">converting tools</span> if you're not too fed up about it</div>
+    <div class="poster">
+      <div id="desc" style="font-size: smaller;" align="center">Disclaimer: This tool only works with jpg/jpeg images, feel free to use our <span style="color:orangered;" onclick="location.href='imgConvert.html'">converting tools</span> if you're not too fed up about it</div>
 
-        <h2>Import your PDF and image</h2>
+      <h2>Import your PDF and image</h2>
 
-        <div class="drop_area">
-          <h4>Drag & Drop your PDF here</h4>
-        </div>
-  
-        <div class="drop_area2">
-          <h4>Drag & Drop your image here</h4>
-        </div>
+      <div class="drop_area">
+        <h4>Drag & Drop your PDF here</h4>
+      </div>
 
-        <label class="button-87" for="input-file">Import PDF</label>
-        <input type="file" id="input-file" accept=".pdf"><br>
+      <div class="drop_area2">
+        <h4>Drag & Drop your image here</h4>
+      </div>
 
-        <label class="button-87" for="input-file2">Import Image</label>
-        <input type="file" id="input-file2" accept="image/jpg"><br>                
+      <label class="button-87" for="input-file">Import PDF</label>
+      <input type="file" id="input-file" accept=".pdf"><br>
 
-        <iframe id="pdf1" class="hide" style="width: 45%; height: 700px;"></iframe>
-          
-          <div id="hide" class="hide">
+      <label class="button-87" for="input-file2">Import Image</label>
+      <input type="file" id="input-file2" accept="image/jpg"><br>                
 
-            <canvas id="canvas" align="center" width="0" height="0"></canvas>
-
-            <br>
-              
-            <textarea id="pages" rows="4" cols="30" placeholder="Enter pages you want to embed the image (e.g. 1,3,5)"></textarea>
-            
-            <textarea id="scale" rows="4" cols="20" placeholder="Rescale the image"></textarea>
-
-            <textarea id="x-cor" rows="4" cols="20" placeholder="x-cordinates to embed"></textarea>
-
-            <textarea id="y-cor" rows="4" cols="20" placeholder="y-cordinates to embed"></textarea>
-
-            <br>
-
-            <textarea id="filename" rows="4" cols="30" placeholder="Rename the file (or leave it blank)"></textarea>
-
-            <label class="button-87" onclick="embedimg()">Embed image</label><br>
-
-        </div>
+      <iframe id="pdf1" class="hide" style="width: 45%; height: 700px;"></iframe>
         
-        <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+      <div id="hide" class="hide">
 
-        <iframe id="pdf2" class="hide" style="width: 45%; height: 700px;"></iframe>
-              
+        <canvas id="canvas" align="center" width="0" height="0"></canvas>
+
+        <br>
+          
+        <textarea id="pages" rows="4" cols="30" placeholder="Enter pages you want to embed the image (e.g. 1,3,5)"></textarea>
+        
+        <textarea id="scale" rows="4" cols="20" placeholder="Rescale the image"></textarea>
+
+        <textarea id="x-cor" rows="4" cols="20" placeholder="x-cordinates to embed"></textarea>
+
+        <textarea id="y-cor" rows="4" cols="20" placeholder="y-cordinates to embed"></textarea>
+
+        <br>
+
+        <textarea id="filename" rows="4" cols="30" placeholder="Rename the file (or leave it blank)"></textarea>
+
+        <label class="button-87" onclick="embedimg()">Embed image</label><br>
+
+      </div>
+      
+      <a id="downloadLink" href="#" style="display:none">Download Changed PDF</a>
+
+      <iframe id="pdf2" class="hide" style="width: 45%; height: 700px;"></iframe>
+            
     </div>
   </div>
 

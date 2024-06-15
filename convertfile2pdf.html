@@ -29,27 +29,26 @@
     
 <body>
   <div class="wall" align="center">
-      <div id="paper"></div>
-        <div class="poster">
-          <h2>Convert an Image to PDF</h2>
-        <div class="drop_area">
-          <h4>Drag & Drop your image here</h4>
-        </div>
-          <div>
-            <input type="file" id="container" multiple="multiple" accept="image/*">
-          </div>
-             
-            <div>
-              <input type="file" id="input-file" multiple="multiple" accept="image/*" onchange="displayImage(event)">
-              <label class="button-87" for="input-file">Import Image</label>
-              <div  style="margin-top: 20px;">
-                  <img id="output" style="max-width: 1000px; max-height: 3000px;" />
-            </div>
-              
-              <center class="hide">
-                <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
-              </center>
+    <div class="poster">
+      <h2>Convert an Image to PDF</h2>
+      <div class="drop_area">
+        <h4>Drag & Drop your image here</h4>
       </div>
+      <div>
+        <input type="file" id="container" multiple="multiple" accept="image/*">
+      </div>
+          
+      <div>
+        <input type="file" id="input-file" multiple="multiple" accept="image/*" onchange="displayImage(event)">
+        <label class="button-87" for="input-file">Import Image</label>
+        <div  style="margin-top: 20px;">
+            <img id="output" style="max-width: 1000px; max-height: 3000px;" />
+      </div>
+          
+      <center class="hide">
+        <button class="button-87" type="button" onclick="convertToPDF()">Convert to PDF</button>
+      </center>
+    </div>
   </div>
  
 
