@@ -18,18 +18,21 @@ let drop_area = document.querySelector(".drop_area");
   
 drop_area.addEventListener("dragover", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #19DC02";
   drop_area.innerText = "Release your PDF to upload";
 });
  
 drop_area.addEventListener("drop", function(e){
   e.preventDefault();
   fileInput.files = e.dataTransfer.files;
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your PDF here";
   importpdf();
 })
 
 drop_area.addEventListener("dragleave", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your PDF here";
 });
 
