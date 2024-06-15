@@ -5,9 +5,13 @@ let tools_element = document.querySelector(".tools");
 let input_width = document.querySelector("#width_input");
 let input_height = document.querySelector("#height_input");
 let lockAspectRatio = document.querySelector("#lockRatio");
+let rename = document.querySelector(".rename");
 let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
+
+let filename = document.getElementById('filename'); 
+let Filerename = filename;
 
 //Global variables set as default
 let uploaded_img = null;
@@ -20,16 +24,19 @@ function importImage() {
     reader.onload = (e) => {
       const images = new Image()
       images.onload = () => {
-        uploaded_img = images
-        canvas.width = images.width //Resizing
-        canvas.height = images.height
-        input_width.value = images.naturalWidth 
-        input_height.value = images.naturalHeight
-        initial_ratio = images.naturalWidth / images.naturalHeight
-        ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
+        uploaded_img = images;
+        canvas.width = images.width;
+        canvas.height = images.height;
+        input_width.value = images.naturalWidth;
+        input_height.value = images.naturalHeight;
+        initial_ratio = images.naturalWidth / images.naturalHeight;
+        ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
+        alert("Please rename (if wish) before editing the image, click ok to proceed :)");
       }      
       images.src = e.target.result;
+      fileName = image_sel.files[0].name.split(".")[0];
       tools_element.classList.remove("hide");
+      rename.classList.remove("hide");
     }
     reader.readAsDataURL(image_sel.files[0])
   }
@@ -89,10 +96,10 @@ function importImage() {
   downloadButton.addEventListener("click", (e) => {
     e.preventDefault();
     let imgSrc = canvas.toDataURL();    
-    const fileName = "resized_image";
+    const Namefile = Filerename.value.trim() || 'drawed_image';
     const a = document.createElement("a");
     a.href = imgSrc;
-    a.download = `${fileName}.png`;
+    a.download = `${Namefile}.png`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

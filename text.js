@@ -15,9 +15,13 @@ let clear = document.querySelector(".clean");
 let text = document.getElementById("text");
 let text_btn = document.getElementById("text-btn");
 let text_btn2 = document.getElementById("text-btn2");
+let rename = document.querySelector(".rename");
 let downloadButton = document.getElementById("download");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
+
+let filename = document.getElementById('filename'); 
+let Filerename = filename;
 
 //Global variables set as default
 let uploaded_img = null;
@@ -47,7 +51,9 @@ const imageData = localStorage.getItem("imageData");
       canvas.height = images.height;
       ctx.drawImage(images, 0, 0, canvas.width, canvas.height);
       uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      alert("Please rename (if wish) before editing the image, click ok to proceed :)");
       tools_element.classList.remove("hide");
+      rename.classList.remove("hide");
       saveHistory();
       localStorage.removeItem("imageData");
       //console.log("Image data removed from localStorage");
@@ -60,22 +66,25 @@ function importImage() {
     const reader = new FileReader()
     reader.onload = (e) => {      
       images.onload = () => {
-        canvas.width = images.width//Resizing
-        canvas.height = images.height
+        canvas.width = images.width;
+        canvas.height = images.height;
         if (images.naturalWidth <= 80 || images.naturalHeight <= 30) {
-          alert("Please import an image larger than 80px X 30px (width X height). ")
+          alert("Please import an image larger than 80px X 30px (width X height).");
         } else if (images.naturalWidth >= 1050 || images.naturalHeight >= 950) {
-          alert("Please import an image smaller than 1050px X 950px (width X height). ")
+          alert("Please import an image smaller than 1050px X 950px (width X height).");
         } else {
-          ctx.drawImage(images, 0, 0, canvas.width, canvas.height)
+          ctx.drawImage(images, 0, 0, canvas.width, canvas.height);          
+          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          alert("Please rename (if wish) before editing the image, click ok to proceed :)");
           tools_element.classList.remove("hide");
-          uploaded_img = ctx.getImageData(0, 0, canvas.width, canvas.height)
-          saveHistory()
+          rename.classList.remove("hide");
+          saveHistory();
         }
       }      
       images.src = e.target.result;
+      fileName = image_sel.files[0].name.split(".")[0];
     }
-    reader.readAsDataURL(image_sel.files[0])
+    reader.readAsDataURL(image_sel.files[0]);
   }
 
   //Drag and Drop to Import Image
@@ -256,8 +265,10 @@ canvas.addEventListener("mouseup", () => {
 //Download Edited Image
 downloadButton.addEventListener("click", () => {
   const imgSrc = canvas.toDataURL();
-  const fileName = "edited_image";
-  downloadButton.download = `${fileName}.png`;
+
+  const Namefile = Filerename.value.trim() || 'edited_image';
+
+  downloadButton.download = `${Namefile}.png`;
   downloadButton.setAttribute("href", imgSrc);
 })
 
