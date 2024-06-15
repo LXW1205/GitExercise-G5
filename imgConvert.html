@@ -31,15 +31,13 @@
 
 <body>
   <div class="wall" align="center">
+    <div id="paper"></div>
+      <div class="poster">
+          <h2>Convert Image Format</h2>
+          <div class="drop_area">
+          <h4>Drag & Drop your image here</h4>
+          </div>
         
-        <div id="paper"></div>
-        <div class="poster">
-            <h2>Convert Image Format</h2>
-            <div class="drop_area">
-                <h4>Drag & Drop your image here</h4>
-            </div>
-        
-
           <div class="upload-img">
             <input type="file" id="imageUpload" accept="image/jpg, image/png, image/jpeg" onchange="displayImage(event)">
             <label class="button-87" for="imageUpload">Import Image</label>
@@ -54,24 +52,21 @@
                 <button class="button-87" type="button" id="convertToJpeg" onclick="convertTo('jpeg')">Convert to JPEG</button>
             </div>
 
-            <br><br>
-    <a id="downloadLink" style="display: none;">Download PNG</a>
-    <br>
-    <canvas id="canvas" style="display: none;"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+            <br><br><br>
 
+        <a id="downloadLink" style="display: none;">Download PNG</a>
+        <br>
+        <canvas id="canvas" style="display: none;"></canvas>
+  </div>
+        
+  <script src="index.js"></script>
+  <script src="imgConvert.js"></script>
+
+</body>
 
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 <footer>
   <special-footer></special-footer>
 </footer>
-
-    <script src="index.js"></script>
-    <script src="imgConvert.js"></script>
 
 </html>
