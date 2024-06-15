@@ -41,11 +41,8 @@ function convertToPDF() {
   const { jsPDF } = window.jspdf;
   const img = document.querySelector('.poster img');
   const pdf = new jsPDF();
-  if (img.src) {
-      pdf.addImage(img.src, 'image/*', 15, 40, 180, 160);
-      const pdfFileName = uploadedFileName ? `${uploadedFileName}.pdf` : 'download.pdf';
-        pdf.save(pdfFileName);
-  } else {
-      alert("Please upload an image first.");
-  }
+
+  pdf.addImage(img.src, 'image/*', 15, 40, 180, 160);
+  const pdfFileName = uploadedFileName ? `${uploadedFileName}.pdf` : 'download.pdf';
+  pdf.save(pdfFileName);  
 }  

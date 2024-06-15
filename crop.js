@@ -35,7 +35,7 @@
       option.classList.remove("hide");
       rename.classList.remove("hide");
       previewButton.classList.remove("hide");
-      download.classList.add("hide");
+      previewButton.classList.add("button-87");
     }
   }
 
@@ -66,7 +66,8 @@
         rotate_option.classList.remove("hide");
         option.classList.remove("hide");
         rename.classList.remove("hide");
-        previewButton.classList.remove("hide");  
+        previewButton.classList.remove("hide");
+        previewButton.classList.add("button-87");
       }
     };
     fileName = file_input.files[0].name.split(".")[0];

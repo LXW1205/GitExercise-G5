@@ -4,10 +4,7 @@
     <title>Image to PDF</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">    
   </head>
     
 <header>
@@ -31,6 +28,7 @@
   <div class="wall" align="center">
       <div id="paper"></div>
         <div class="poster">
+          <div id="desc" style="font-size: smaller;" align="center">DISCLAIMER: If your image is very small, the converted image may not be what you might expect, feel free to use our <span style="color:orangered;" onclick="location.href='imgConvert.html'">Resize Image function</span> to make your image bigger and then convert to pdf :D</div>
           <h2>Convert an Image to PDF</h2>
         <div class="drop_area">
           <h4>Drag & Drop your image here</h4>
@@ -53,8 +51,11 @@
   </div>
  
 
-  <script src="index.js"></script>
+<script src="index.js"></script>
 <script src="convertfile2pdf.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 </body>
 

@@ -28,7 +28,7 @@ function runImage() {
 
 let img_upload = document.getElementById('imageUpload');
 img_upload.addEventListener('change', displayImage);
-//display img in the border
+
 function displayImage(event) {
     const file = event.target.files[0];
     if (file) {
@@ -45,18 +45,21 @@ function displayImage(event) {
 let drop_area = document.querySelector(".drop_area");
 drop_area.addEventListener("dragover", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #19DC02";
   drop_area.innerText = "Release your image to upload";
 });
 
 drop_area.addEventListener("drop", function(e){
   e.preventDefault();
   img_upload.files = e.dataTransfer.files;
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your image here";
   displayImage({ target: img_upload });
 });
 
 drop_area.addEventListener("dragleave", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your image here";
 });
 
@@ -75,20 +78,7 @@ drop_area.addEventListener("dragleave", function(e){
     downloadLink.download = 'converted.' + format;
     downloadLink.style.display = 'block';
     downloadLink.textContent = 'Download ' + format.toUpperCase();
-
-        var reader = new FileReader();
         
-        reader.onload = function(event) {
-            var img = new Image();
-            img.onload = function() {
-                
-                var canvas = document.getElementById('canvas');
-                var ctx = canvas.getContext('2d');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-            img.src = event.target.result;
-        }        
-        reader.readAsDataURL(file)
-        }
-      }
+    reader.readAsDataURL(file)
+    }
+         
