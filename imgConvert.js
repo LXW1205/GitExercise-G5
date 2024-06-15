@@ -45,18 +45,21 @@ function displayImage(event) {
 let drop_area = document.querySelector(".drop_area");
 drop_area.addEventListener("dragover", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #19DC02";
   drop_area.innerText = "Release your image to upload";
 });
 
 drop_area.addEventListener("drop", function(e){
   e.preventDefault();
   img_upload.files = e.dataTransfer.files;
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your image here";
   displayImage({ target: img_upload });
 });
 
 drop_area.addEventListener("dragleave", function(e){
   e.preventDefault();
+  drop_area.style = "border: 2px dashed #f7673b";
   drop_area.innerText = "Drag & Drop your image here";
 });
 

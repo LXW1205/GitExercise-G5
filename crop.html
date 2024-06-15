@@ -30,70 +30,69 @@
         <br></br>
 
     <body>
-  <div class="wall" align="center">
-            <div id="paper">
-                <div class="poster">                    
-                    <center><h2>Import your image to crop</h2></center> 
-                    <div class="drop_area">                    
-                        <h4>Drag & Drop your image here</h4>
-                    </div>               
-                    <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
-                    <label class="button-87"for="input-file">Import Image</label>
-                    <div class="volume">
-                        <div class="image-volume">
-                            <img id="img">
-                        </div>
-                        <div class="preview-volume">
-                            <img id="preview-image">
-                        </div>
+        <div class="wall" align="center">            
+            <div class="poster">                    
+                <center><h2>Import your image to crop</h2></center> 
+                <div class="drop_area">                    
+                    <h4>Drag & Drop your image here</h4>
+                </div>               
+                <input type="file" id="input-file" accept="image/jpg, image/png, image/jpeg">
+                <label class="button-87" for="input-file">Import Image</label>
+                <div class="volume">
+                    <div class="image-volume">
+                        <img id="img">
                     </div>
-
-                    <div class="tools">
-                        <div class="zoom hide" align="left">
-                            <div id="zoom1">Zoom</div>
-                            <li>
-                                <img src="Images/Zoom_in.png" id="icon">
-                            </li>
-                            <li>
-                                <img src="Images/Zoom_out.png" id="icon">
-                            </li>
-                        </div>
-                        <div class="rotate hide" align="left">
-                            <div id="rotate1">Rotate</div>
-                            <li>
-                                <img src="Images/Clockwise.png" id="icon">
-                            </li>
-                            <li>
-                                <img src="Images/Anti-clockwise.png" id="icon">
-                            </li>
-                        </div>
-                        <div class="aspect-ratio hide" align="left">
-                            <div id="aspect-ratio1">Aspect Ratio</div>
-                            <li>16:9</li>
-                            <li>5:4</li>
-                            <li>2:3</li>
-                            <li>1:1</li>
-                            <li>Custom</li>
-                            <br></br>                            
-                        </div>                                              
-                    </div>                    
-                    <textarea class="rename hide" id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
-                    
-                    <div class="btn">
-                        <button id="preview" class="hide">Preview</button>
-                        <a href="" id="download" class="hide">Download</a>
+                    <div class="preview-volume">
+                        <img id="preview-image">
                     </div>
                 </div>
-            </div>
+
+                <div class="tools">
+                    <div class="zoom hide" align="left">
+                        <div id="zoom1">Zoom</div>
+                        <li>
+                            <img src="Images/Zoom_in.png" id="icon">
+                        </li>
+                        <li>
+                            <img src="Images/Zoom_out.png" id="icon">
+                        </li>
+                    </div>
+                    <div class="rotate hide" align="left">
+                        <div id="rotate1">Rotate</div>
+                        <li>
+                            <img src="Images/Clockwise.png" id="icon">
+                        </li>
+                        <li>
+                            <img src="Images/Anti-clockwise.png" id="icon">
+                        </li>
+                    </div>
+                    <div class="aspect-ratio hide" align="left">
+                        <div id="aspect-ratio1">Aspect Ratio</div>
+                        <li>16:9</li>
+                        <li>5:4</li>
+                        <li>2:3</li>
+                        <li>1:1</li>
+                        <li>Custom</li>
+                        <br></br>                            
+                    </div>                                              
+                </div>                    
+                <textarea class="rename hide" id="filename" rows="4" cols="35" placeholder="Rename the file (or leave it blank)"></textarea>
+                
+                <div class="btn">
+                    <button id="preview" class="hide">Preview</button>
+                    <a href="" id="download" class="hide">Download</a>
+                </div>
+            </div>                    
         </div>
-</body>
+
+        <script src="index.js"></script>
+        <script src="crop.js"></script>
+
+    </body>
 
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 <footer>
     <special-footer></special-footer>
 </footer>
-
-<script src="index.js"></script>
-<script src="crop.js"></script>
 
 </html>
