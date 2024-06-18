@@ -79,6 +79,6 @@ drop_area.addEventListener("dragleave", function(e){
     downloadLink.style.display = 'block';
     downloadLink.textContent = 'Download ' + format.toUpperCase();
         
-    reader.readAsDataURL(file)
+    reader.readAsDataURL();
     }
          
